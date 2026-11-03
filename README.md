@@ -231,37 +231,7 @@ techkart_backend/
 - **MySQL 8.0+** or **MariaDB 10.5+**.
 - Apache (with `mod_rewrite` enabled) or Nginx.
 
-### 2. Clone & Environment Setup
-Clone the repository and copy the environment template:
-```bash
-git clone <repository_url> techkart_backend
-cd techkart_backend
-cp .env.example .env
-```
-
-Edit `.env` with your local database credentials and security keys:
-```ini
-APP_ENV=development
-APP_DEBUG=true
-APP_URL=http://localhost:8000
-
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_NAME=techkart_db
-DB_USER=root
-DB_PASS=your_mysql_password
-
-JWT_SECRET=generate_a_long_random_string_of_at_least_32_characters
-JWT_EXPIRY=604800
-
-# Google Gemini API
-GEMINI_API_KEY=your_gemini_api_key_here
-GEMINI_MODEL=gemini-3.5-flash-lite
-GEMINI_VISION_MODEL=gemini-3.5-flash-lite
-GEMINI_FALLBACK_MODEL=gemini-3.1-flash-lite
-```
-
-### 3. Database Initialization
+### 2. Database Initialization
 Create the database and apply the database migrations in sequential order:
 ```bash
 mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS techkart_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
@@ -291,7 +261,7 @@ php database/seed_45_categories.php
 php database/seed_buddy_demo_records.php
 ```
 
-### 4. Running the Development Server
+### 3. Running the Development Server
 Launch the PHP built-in web server targeting the `public` directory:
 ```bash
 php -S 127.0.0.1:8000 -t public
@@ -416,7 +386,7 @@ Checks server readiness and database ping.
 
 ---
 
-### 5. Shopping Cart & Inventory Validation
+### 4. Shopping Cart & Inventory Validation
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
@@ -428,7 +398,7 @@ Checks server readiness and database ping.
 
 ---
 
-### 6. Customer Wishlist
+### 5. Customer Wishlist
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
@@ -439,7 +409,7 @@ Checks server readiness and database ping.
 
 ---
 
-### 7. Delivery Addresses
+### 6. Delivery Addresses
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
@@ -450,7 +420,7 @@ Checks server readiness and database ping.
 
 ---
 
-### 8. Checkout & Order Placement
+### 7. Checkout & Order Placement
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
@@ -462,7 +432,7 @@ Checks server readiness and database ping.
 
 ---
 
-### 9. Payments & Payment Verification
+### 8. Payments & Payment Verification
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
@@ -471,7 +441,7 @@ Checks server readiness and database ping.
 
 ---
 
-### 10. Live Order Tracking & Logistics
+### 9. Live Order Tracking & Logistics
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
@@ -479,7 +449,7 @@ Checks server readiness and database ping.
 
 ---
 
-### 11. Customer Product Reviews & Ratings
+### 10. Customer Product Reviews & Ratings
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
@@ -491,7 +461,7 @@ Checks server readiness and database ping.
 
 ---
 
-### 12. Customer Returns & Refunds
+### 11. Customer Returns & Refunds
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
@@ -502,7 +472,7 @@ Checks server readiness and database ping.
 
 ---
 
-### 13. AI Multimodal Visual Search & Chat Assistant
+### 12. AI Multimodal Visual Search & Chat Assistant
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
@@ -513,7 +483,7 @@ Checks server readiness and database ping.
 
 ---
 
-### 14. Buddy Merchant Store & Profile
+### 13. Buddy Merchant Store & Profile
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
@@ -522,7 +492,7 @@ Checks server readiness and database ping.
 
 ---
 
-### 15. Buddy Merchant Catalog & Product Approval Lifecycle
+### 14. Buddy Merchant Catalog & Product Approval Lifecycle
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
@@ -536,7 +506,7 @@ Checks server readiness and database ping.
 
 ---
 
-### 16. Buddy Inventory Control & Low Stock Alerts
+### 15. Buddy Inventory Control & Low Stock Alerts
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
@@ -547,7 +517,7 @@ Checks server readiness and database ping.
 
 ---
 
-### 17. Buddy Order Fulfillment & Shipping
+### 16. Buddy Order Fulfillment & Shipping
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
@@ -560,7 +530,7 @@ Checks server readiness and database ping.
 
 ---
 
-### 18. Buddy Returns Decision & Reverse Logistics
+### 17. Buddy Returns Decision & Reverse Logistics
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
@@ -571,7 +541,7 @@ Checks server readiness and database ping.
 
 ---
 
-### 19. Buddy Merchant & Admin Review Moderation
+### 18. Buddy Merchant & Admin Review Moderation
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
@@ -582,7 +552,7 @@ Checks server readiness and database ping.
 
 ---
 
-### 20. Buddy Analytics, Revenue Reports & Financial Settlements
+### 19. Buddy Analytics, Revenue Reports & Financial Settlements
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
@@ -594,7 +564,7 @@ Checks server readiness and database ping.
 
 ---
 
-### 21. Buddy Administrative Controls
+### 20. Buddy Administrative Controls
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|

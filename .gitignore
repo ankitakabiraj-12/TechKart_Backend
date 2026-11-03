@@ -1,0 +1,37 @@
+﻿# Environment files and secrets
+.env
+.env.*
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+*service-account*.json
+*credentials*.json
+*secret*
+*private*
+
+# Dependencies and generated files
+vendor/
+uploads/
+*.log
+*.code-workspace
+.DS_Store
+Thumbs.db
+
+# Database backups and temporary files
+database/backups/
+scratch/
+*.sql
+*.dump
+*.bak
+*.backup
+
+# Keep database schema migrations
+!database/migrations/
+!database/migrations/*.sql
+
+# Never commit demo password reset script
+database/set_demo_passwords.php
+
+database/seed_*.php

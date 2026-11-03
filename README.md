@@ -1,569 +1,677 @@
-# TechKart Unified Backend API
+# 🛒 TechKart Unified Backend API
 
-A scalable, secure Core PHP REST API backend powering both:
-1. **TechKart Customer App** (Flutter E-Commerce)
-2. **TechKart Buddy App** (Flutter Seller & Admin Management)
+[![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0%2B-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![JWT](https://img.shields.io/badge/JWT-HS256%20Pure--PHP-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white)](https://jwt.io/)
+[![Architecture](https://img.shields.io/badge/Architecture-Clean%20MVC%20%7C%20REST-brightgreen?style=for-the-badge)]()
+[![Gemini AI](https://img.shields.io/badge/Google%20Gemini-Multimodal%20AI-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
+
+A production-grade, highly scalable, and modular pure-PHP RESTful backend engineered to power the entire **TechKart Multi-Vendor E-Commerce Ecosystem**:
+1. **TechKart Customer App** (Flutter Mobile Client: Browse, Search, Cart, Wishlist, Checkout, Tracking, Returns, AI Assistant)
+2. **TechKart Buddy App** (Flutter Merchant & Admin Portal: Store & Catalog Management, Orders, Live Logistics, Low Stock Alerts, Customer Moderation, Settlements, Platform Analytics)
+
+---
+
+## 📑 Table of Contents
+
+- [Architectural Overview](#-architectural-overview)
+- [Key Features](#-key-features)
+- [Technology Stack](#-technology-stack)
+- [Directory Structure](#-directory-structure)
+- [Security & Hardening](#-security--hardening)
+- [Installation & Local Setup](#-installation--local-setup)
+- [Database Schema & Migrations](#-database-schema--migrations)
+- [Comprehensive API Specification](#-comprehensive-api-specification)
+  - [1. System Health](#1-system-health)
+  - [2. Customer Authentication & Account Security](#2-customer-authentication--account-security)
+  - [3. Buddy Authentication (Sellers & Administrators)](#3-buddy-authentication-sellers--administrators)
+  - [4. Customer Catalog & Category Discovery](#4-customer-catalog--category-discovery)
+  - [5. Shopping Cart & Inventory Validation](#5-shopping-cart--inventory-validation)
+  - [6. Customer Wishlist](#6-customer-wishlist)
+  - [7. Delivery Addresses](#7-delivery-addresses)
+  - [8. Checkout & Order Placement](#8-checkout--order-placement)
+  - [9. Payments & Payment Verification](#9-payments--payment-verification)
+  - [10. Live Order Tracking & Logistics](#10-live-order-tracking--logistics)
+  - [11. Customer Product Reviews & Ratings](#11-customer-product-reviews--ratings)
+  - [12. Customer Returns & Refunds](#12-customer-returns--refunds)
+  - [13. AI Multimodal Visual Search & Chat Assistant](#13-ai-multimodal-visual-search--chat-assistant)
+  - [14. Buddy Merchant Store & Profile](#14-buddy-merchant-store--profile)
+  - [15. Buddy Merchant Catalog & Product Approval Lifecycle](#15-buddy-merchant-catalog--product-approval-lifecycle)
+  - [16. Buddy Inventory Control & Low Stock Alerts](#16-buddy-inventory-control--low-stock-alerts)
+  - [17. Buddy Order Fulfillment & Shipping](#17-buddy-order-fulfillment--shipping)
+  - [18. Buddy Returns Decision & Reverse Logistics](#18-buddy-returns-decision--reverse-logistics)
+  - [19. Buddy Merchant & Admin Review Moderation](#19-buddy-merchant--admin-review-moderation)
+  - [20. Buddy Analytics, Revenue Reports & Financial Settlements](#20-buddy-analytics-revenue-reports--financial-settlements)
+  - [21. Buddy Administrative Controls (Customers, Categories, Audit Logs, Settings)](#21-buddy-administrative-controls)
+- [Automated Testing & Verification](#-automated-testing--verification)
+- [Environment Configuration (`.env`)](#-environment-configuration-env)
+- [License & Authors](#-license--authors)
+
+---
+
+## 🏛 Architectural Overview
+
+```
+                      ┌───────────────────────────────────────────────┐
+                      │             Clients (Flutter Apps)            │
+                      │  TechKart Customer App  │  TechKart Buddy App │
+                      └───────────────────────┬───────────────────────┘
+                                              │ HTTP / JSON
+                                              ▼
+                      ┌───────────────────────────────────────────────┐
+                      │              Public Front Controller          │
+                      │               public/index.php                │
+                      └───────────────────────┬───────────────────────┘
+                                              │
+                      ┌───────────────────────▼───────────────────────┐
+                      │         App Bootstrap (bootstrap/app.php)     │
+                      │  • PSR-4 Autoloading                          │
+                      │  • .env Parsing (App\Core\Env)                │
+                      │  • Hardened Global Exception Handler          │
+                      └───────────────────────┬───────────────────────┘
+                                              │
+                      ┌───────────────────────▼───────────────────────┐
+                      │              Router & Middlewares             │
+                      │  • CorsMiddleware (Preflight / Origins)       │
+                      │  • Router (Route parameter extraction)        │
+                      │  • AuthMiddleware (Role-based access control) │
+                      └───────┬───────────────────────────────┬───────┘
+                              │                               │
+            ┌─────────────────▼─────────────┐   ┌─────────────▼─────────────────┐
+            │   Customer Controllers        │   │     Buddy Controllers         │
+            │ • CustomerAuthController      │   │ • BuddyAuthController         │
+            │ • CustomerCatalogController   │   │ • BuddyProductController      │
+            │ • CustomerCartController      │   │ • BuddyInventoryController    │
+            │ • CustomerOrderController     │   │ • BuddyOrderController        │
+            │ • CustomerPaymentController   │   │ • BuddyReturnController       │
+            │ • CustomerReturnController    │   │ • BuddyDashboardController    │
+            │ • CustomerAiController        │   │ • BuddyReviewController       │
+            └───────────────┬───────────────┘   └─────────────┬─────────────────┘
+                            │                                 │
+                            └────────────────┬────────────────┘
+                                             │
+                      ┌──────────────────────▼────────────────────────┐
+                      │                 Core & Services               │
+                      │  • Database (PDO Singleton / Transactions)    │
+                      │  • Jwt (Strict HS256 / Expirations / Rotation)│
+                      │  • GeminiApiService (Visual Search & Chat)    │
+                      │  • MailService (SMTP OTPs & Password Resets)  │
+                      └──────────────────────┬────────────────────────┘
+                                             │
+                      ┌──────────────────────▼────────────────────────┐
+                      │              Database Layer (MySQL 8)         │
+                      │  Users • Orders • Payments • Products • Cart  │
+                      │  Shipments • Reviews • Returns • Settlements  │
+                      └───────────────────────────────────────────────┘
+```
+
+- **Pure PHP Engine**: Built without bulky framework overhead, achieving microsecond response times and minimal memory footprint.
+- **Strict Separation of Concerns**: Route handling, middleware guards, business workflows, and data persistence are decoupled across clean PSR-4 namespaces.
+- **Fail-Safe Security**: Strict token hashing, server-side price recalculation, atomic database transactions with row-level locks (`FOR UPDATE`), and hardened exception handling.
+
+---
+
+## ✨ Key Features
+
+- **Multi-Role RBAC**: Independent user scopes for `customer`, `seller`, and `admin` with strict guardrails preventing privilege escalation.
+- **Bulletproof JWT Authentication**: Pure-PHP HS256 implementation with mandatory server secrets, token expiry (`iat`/`exp`), database blacklist revocation, and cryptographic refresh token rotation.
+- **Price-Freeze & Atomic Checkout**: Customer cart checkout enforces server-side database pricing, performs atomic inventory deduction, and creates price freeze snapshots preventing manipulation.
+- **Idempotency Protection**: Integrated idempotency key engine for order placement and payment verification, eliminating double charging or duplicate order creation.
+- **Multimodal AI Integration**: Powered by Google Gemini (`gemini-3.5-flash-lite`), providing visual product identification, attribute extraction, and multilingual (English & Bengali) e-commerce chat assistance with strict SSL peer verification.
+- **End-to-End Logistics Tracking**: Live milestone timeline (`placed` ➔ `processing` ➔ `shipped` ➔ `out_for_delivery` ➔ `delivered`) with AWB courier bindings and location checkpoints.
+- **Reverse Logistics & Refunds**: Customer return request lifecycle with seller/admin quality inspection approval, reason tracking, and automated refund ledger recording.
+- **Complete Merchant & Admin Suite**: Product submission with admin approval workflows, low stock warning thresholds, automated merchant payout settlements, and comprehensive audit logging.
 
 ---
 
 ## 🛠 Technology Stack
-- **Language**: Core PHP 8.2+
-- **Database**: MySQL 8.0+ with PDO (`utf8mb4`)
-- **Architecture**: PSR-4 autoloading, MVC-inspired clean separation (Controllers, Models, Services, Middlewares)
-- **API Spec**: RESTful JSON responses (`/api/v1/...`)
-- **Authentication**: JWT / Bearer token security
+
+| Component | Technology | Description |
+|---|---|---|
+| **Runtime** | PHP 8.2+ | Modern PHP with strict types (`declare(strict_types=1);`), enums, and match expressions |
+| **Database** | MySQL 8.0+ / MariaDB 10.5+ | Full relational engine with InnoDB, foreign keys, row-level locking, and `utf8mb4` encoding |
+| **Authentication** | JWT & Refresh Tokens | HMAC-SHA256 tokens with server-side blacklist and rotating 30-day refresh tokens |
+| **Password Hashing** | Bcrypt (`PASSWORD_BCRYPT`) | Cost factor 12 cryptographic password hashing |
+| **AI / Multimodal** | Google Gemini API | Multimodal vision analysis and AI chat assistance |
+| **Mailer** | SMTP (Socket/TLS) | Pure-PHP socket SMTP transport for OTP verification and password reset notifications |
+| **Web Server** | Apache / Nginx / Built-in | Optimized `.htaccess` front-controller rewrite rules |
 
 ---
 
-## 📁 Project Directory Structure
+## 📁 Directory Structure
 
 ```
 techkart_backend/
 ├── app/
 │   ├── Controllers/
-│   │   ├── Customer/           # Endpoints for TechKart Customer app
-│   │   │   └── CustomerAuthController.php
-│   │   ├── Buddy/              # Endpoints for TechKart Buddy seller/admin app
-│   │   │   └── BuddyAuthController.php
-│   │   └── HealthController.php # System health & database connection checks
-│   ├── Core/                   # Foundational framework utilities
-│   │   ├── Database.php        # PDO Database connection singleton
-│   │   ├── Env.php             # Lightweight .env parser
-│   │   ├── Request.php         # Request wrapper (JSON input, headers, query params)
-│   │   ├── Response.php        # Standardized JSON response handler
-│   │   └── Router.php          # REST router with route parameter support
-│   ├── Middlewares/            # Authentication, CORS, and validation middlewares
-│   │   ├── AuthMiddleware.php
-│   │   └── CorsMiddleware.php
-│   ├── Models/                 # Database entity queries & data access
-│   └── Services/               # Business logic & 3rd party integrations
+│   │   ├── Buddy/                  # TechKart Buddy Seller & Admin Controllers
+│   │   │   ├── BuddyAuthController.php        # Merchant/Admin registration, login, profile
+│   │   │   ├── BuddyCategoryController.php    # Category & specification template management
+│   │   │   ├── BuddyCustomerController.php    # Customer directory & account status control
+│   │   │   ├── BuddyDashboardController.php   # Revenue statistics, settlements, audit logs
+│   │   │   ├── BuddyInventoryController.php   # Stock levels, batch adjustments, low-stock alerts
+│   │   │   ├── BuddyOrderController.php       # Order fulfillment, item status, dispatch
+│   │   │   ├── BuddyProductController.php     # Product CRUD, approval submission, variant images
+│   │   │   ├── BuddyProfileController.php     # Store details, GST, address, bank info
+│   │   │   ├── BuddyReturnController.php      # Return requests, inspection, refund decisions
+│   │   │   ├── BuddyReviewController.php      # Seller replies & admin review moderation
+│   │   │   └── BuddySettingsController.php    # Platform commissions & general configuration
+│   │   ├── Customer/               # TechKart Customer Mobile App Controllers
+│   │   │   ├── CustomerAddressController.php  # Shipping address book management
+│   │   │   ├── CustomerAiController.php       # Multimodal visual search & Gemini AI chat
+│   │   │   ├── CustomerAuthController.php     # Customer registration, OTP verification, JWT auth
+│   │   │   ├── CustomerCartController.php     # Cart management with server-side pricing
+│   │   │   ├── CustomerCatalogController.php  # Public product browse, categories, filters
+│   │   │   ├── CustomerOrderController.php    # Checkout preview, atomic order placement, history
+│   │   │   ├── CustomerPaymentController.php  # Payment intent initiation & verification
+│   │   │   ├── CustomerReturnController.php   # Return eligibility check, submission, tracking
+│   │   │   ├── CustomerReviewController.php   # Product review submissions, ratings, helpful votes
+│   │   │   └── CustomerWishlistController.php # Customer saved products / wishlist
+│   │   └── HealthController.php    # API health check and database ping
+│   ├── Core/                       # Framework Kernel
+│   │   ├── Database.php            # Singleton PDO database connector with persistent connection
+│   │   ├── Env.php                 # Pure-PHP .env environment variable parser
+│   │   ├── Jwt.php                 # Hardened HMAC-SHA256 JWT encoding, decoding, and rotation
+│   │   ├── Request.php             # HTTP request wrapper (body, headers, query params, files)
+│   │   ├── Response.php            # Standardized JSON response formatting
+│   │   └── Router.php              # Regular-expression RESTful router with URL parameter binding
+│   ├── Middlewares/                # Request Filter Pipeline
+│   │   ├── AuthMiddleware.php      # JWT Bearer token validator & RBAC role enforcement
+│   │   └── CorsMiddleware.php      # Cross-Origin Resource Sharing headers & OPTIONS preflight
+│   └── Services/                   # External Services & Specialized Business Logic
+│       ├── AiChatbotService.php       # Context-aware multilingual e-commerce chatbot
+│       ├── GeminiApiService.php       # Google Generative AI cURL client with SSL validation
+│       ├── MailService.php            # Native SMTP socket mailer for OTP delivery
+│       └── VisualSearchService.php    # Reverse image search and product matching logic
 ├── bootstrap/
-│   └── app.php                 # App initialization, PSR-4 autoloader & error handler
+│   └── app.php                     # App initialization, PSR-4 autoloader & secured exception handler
 ├── database/
-│   └── migrations/
-│       └── 001_initial_schema.sql # Core MySQL schema (Users, Roles, Products, Orders)
+│   ├── migrations/                 # 18 Modular SQL migrations tracking the database schema
+│   │   ├── 001_initial_schema.sql
+│   │   ├── 002_cart_schema.sql
+│   │   ├── 003_checkout_orders_payments.sql
+│   │   ├── ...
+│   │   └── 018_refresh_tokens.sql
+│   └── seeds / migration runners   # Database seeding scripts for demo and test environments
 ├── public/
-│   ├── .htaccess               # URL rewrite for Apache
-│   └── index.php               # Front controller / single entry point
+│   ├── assets/                     # Public uploaded assets & category thumbnails
+│   ├── .htaccess                   # Apache URL rewriting to index.php
+│   └── index.php                   # Single point of entry for all incoming HTTP requests
 ├── routes/
-│   └── api_v1.php              # Versioned API route definitions (/api/v1/...)
-├── .env.example                # Sample environment configuration template
-├── .env                        # Local environment configuration (do NOT commit secrets)
-├── .gitignore
-├── .htaccess                   # Root rewrite rule routing requests to public/
-└── README.md
+│   └── api_v1.php                  # Unified API route declarations
+├── tests/                          # Automated backend integration and regression test suites
+├── .env.example                    # Template for environment configuration
+├── .gitignore                      # Git ignore file preventing leakage of secrets and temp logs
+└── README.md                       # Comprehensive project documentation
 ```
 
 ---
 
-## 🚀 Setup & Installation
+## 🔒 Security & Hardening
 
-### 1. Requirements
-- PHP 8.2 or higher (with `pdo`, `pdo_mysql`, `json`, `mbstring` enabled)
-- MySQL 8.0+ (or MariaDB 10.5+)
-- Web server (Apache, Nginx, or PHP Built-in Server)
+1. **Mandatory Non-Empty JWT Secret**: The JWT engine rejects startup or token issuance if `JWT_SECRET` is unset or blank, preventing insecure fallback signature vulnerabilities.
+2. **Hardened Global Exception Handler**:
+   - In production (`APP_DEBUG=false`), internal error messages and stack traces are suppressed, returning generic `500 Internal Server Error` responses.
+   - All unexpected errors and traces are logged server-side via `error_log()` for diagnostic observability without leaking infrastructure details.
+3. **Restricted Payment Simulation**:
+   - Client-simulated payment confirmation is gated strictly to local/development environments (`APP_ENV=development|local|testing`). Production environments block client-side success overrides with `403 Forbidden`.
+4. **Transport Layer Security**:
+   - `GeminiApiService` enforces strict SSL peer and host verification (`CURLOPT_SSL_VERIFYPEER = true`, `CURLOPT_SSL_VERIFYHOST = 2`), blocking man-in-the-middle attacks.
+   - Raw provider response bodies are stripped from server logs to prevent leaking authorization headers or prompt contents.
+5. **Role Separation & Session Expiration**:
+   - Passwords changed on any account instantly invalidate older JWT tokens by comparing the token's `iat` (Issued At) claim against the user's `password_changed_at` timestamp.
+   - Refresh tokens feature replay-attack detection: if a previously revoked refresh token is presented, all active sessions for that user are immediately invalidated.
 
-### 2. Environment Configuration
-Copy `.env.example` to `.env` if not already created:
+---
+
+## 🚀 Installation & Local Setup
+
+### 1. Prerequisites
+- **PHP 8.2 or higher** with extensions: `pdo`, `pdo_mysql`, `curl`, `mbstring`, `openssl`, `json`.
+- **MySQL 8.0+** or **MariaDB 10.5+**.
+- Apache (with `mod_rewrite` enabled) or Nginx.
+
+### 2. Clone & Environment Setup
+Clone the repository and copy the environment template:
 ```bash
+git clone <repository_url> techkart_backend
+cd techkart_backend
 cp .env.example .env
 ```
-Update your database credentials in `.env`:
+
+Edit `.env` with your local database credentials and security keys:
 ```ini
+APP_ENV=development
+APP_DEBUG=true
+APP_URL=http://localhost:8000
+
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_NAME=techkart_db
 DB_USER=root
-DB_PASS=your_password
+DB_PASS=your_mysql_password
+
+JWT_SECRET=generate_a_long_random_string_of_at_least_32_characters
+JWT_EXPIRY=604800
+
+# Google Gemini API
+GEMINI_API_KEY=your_gemini_api_key_here
+GEMINI_MODEL=gemini-3.5-flash-lite
+GEMINI_VISION_MODEL=gemini-3.5-flash-lite
+GEMINI_FALLBACK_MODEL=gemini-3.1-flash-lite
 ```
 
-### 3. Database Migration
-Import the initial schema using MySQL CLI or phpMyAdmin:
+### 3. Database Initialization
+Create the database and apply the database migrations in sequential order:
 ```bash
+mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS techkart_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+
+# Apply migration files sequentially
 mysql -u root -p techkart_db < database/migrations/001_initial_schema.sql
+mysql -u root -p techkart_db < database/migrations/002_cart_schema.sql
+mysql -u root -p techkart_db < database/migrations/003_checkout_orders_payments.sql
+mysql -u root -p techkart_db < database/migrations/004_wishlist_schema.sql
+mysql -u root -p techkart_db < database/migrations/005_reviews_ratings_schema.sql
+mysql -u root -p techkart_db < database/migrations/006_shipment_tracking_schema.sql
+mysql -u root -p techkart_db < database/migrations/007_ai_search_chat_schema.sql
+mysql -u root -p techkart_db < database/migrations/008_buddy_admin_seller_schema.sql
+mysql -u root -p techkart_db < database/migrations/009_product_approval_status.sql
+mysql -u root -p techkart_db < database/migrations/010_low_stock_alerts_schema.sql
+mysql -u root -p techkart_db < database/migrations/011_review_replies_and_moderation.sql
+mysql -u root -p techkart_db < database/migrations/012_return_requests_alignment.sql
+mysql -u root -p techkart_db < database/migrations/015_add_gender_to_users.sql
+mysql -u root -p techkart_db < database/migrations/016_password_reset_and_security.sql
+mysql -u root -p techkart_db < database/migrations/017_registration_otps.sql
+mysql -u root -p techkart_db < database/migrations/018_refresh_tokens.sql
+```
+
+*(Optional: Run demo seeds)*
+```bash
+php database/seed_45_categories.php
+php database/seed_buddy_demo_records.php
 ```
 
 ### 4. Running the Development Server
-You can start the PHP built-in server directly from the backend directory:
+Launch the PHP built-in web server targeting the `public` directory:
 ```bash
 php -S 127.0.0.1:8000 -t public
 ```
+Verify connectivity by opening: `http://127.0.0.1:8000/api/v1/health`
 
 ---
 
-## 📡 API Endpoints Documentation
+## 🗄 Database Schema & Migrations
 
-All requests and responses use `application/json; charset=UTF-8`.
+The database consists of 18 migration scripts establishing an enterprise e-commerce model:
 
-### 1. Health Verification
-- **Endpoint**: `GET /api/v1/health`
+| Migration | Purpose | Core Tables / Changes |
+|---|---|---|
+| `001_initial_schema.sql` | Core schema | `users`, `categories`, `products`, `product_images`, `orders`, `order_items` |
+| `002_cart_schema.sql` | Customer shopping cart | `cart_items` with unique customer-product constraints |
+| `003_checkout_orders_payments.sql` | Addresses & payments | `addresses`, `payments`, `idempotency_keys` |
+| `004_wishlist_schema.sql` | Customer wishlist | `wishlist_items` |
+| `005_reviews_ratings_schema.sql` | Feedback & social proof | `product_reviews`, `review_helpful_votes` |
+| `006_shipment_tracking_schema.sql` | Tracking milestones | `shipment_events`, courier tracking fields |
+| `007_ai_search_chat_schema.sql` | Gemini AI history | `ai_chat_sessions`, `ai_chat_messages` |
+| `008_buddy_admin_seller_schema.sql` | Multi-vendor commerce | `seller_profiles`, `settlements`, `admin_audit_logs` |
+| `009_product_approval_status.sql` | Admin product approval | Approval status enums (`draft`, `pending_approval`, `approved`, `rejected`) |
+| `010_low_stock_alerts_schema.sql` | Inventory alerts | `low_stock_threshold` on products |
+| `011_review_replies_and_moderation.sql`| Review management | `review_replies`, moderation statuses |
+| `012_return_requests_alignment.sql` | Reverse logistics | `return_requests`, `return_items`, pickup details |
+| `013_device_tokens_schema.sql` | Historical device registry | `device_tokens` (retained for backward schema compatibility) |
+| `014_notification_logs_schema.sql` | Historical notification logs | `notification_logs` (retained for backward schema compatibility) |
+| `015_add_gender_to_users.sql` | User demographic data | `gender` column on `users` |
+| `016_password_reset_and_security.sql` | Password reset OTPs | `password_reset_otps`, `password_changed_at`, `token_blacklist` |
+| `017_registration_otps.sql` | Registration email OTPs | `registration_otps` table |
+| `018_refresh_tokens.sql` | Long-lived refresh tokens | `refresh_tokens` table with rotation and replay detection |
+
+---
+
+## 📡 Comprehensive API Specification
+
+All API endpoints return standard JSON responses:
+
+**Success Response Format:**
+```json
+{
+  "success": true,
+  "status": 200,
+  "message": "Descriptive success message",
+  "data": { ... }
+}
+```
+
+**Error Response Format:**
+```json
+{
+  "success": false,
+  "status": 400,
+  "message": "Descriptive error message",
+  "errors": { "field": "Validation details" }
+}
+```
+
+---
+
+### 1. System Health
+
+#### `GET /api/v1/health`
+Checks server readiness and database ping.
 - **Auth**: None
-- **Response**: Returns backend service version and database connectivity status.
-
----
-
-### 2. Customer Authentication (TechKart Customer App)
-
-#### `POST /api/v1/customer/auth/register`
-Creates a new customer account and returns an authentication Bearer token.
-- **Request Body**:
-```json
-{
-  "full_name": "Rahul Sharma",
-  "email": "rahul.test@techkart.com",
-  "password": "SecretPassword123",
-  "phone": "9876543210"
-}
-```
-- **Response `201 Created`**:
-```json
-{
-  "success": true,
-  "status": 201,
-  "message": "Customer account registered successfully",
-  "data": {
-    "user": {
-      "id": 1,
-      "role": "customer",
-      "full_name": "Rahul Sharma",
-      "email": "rahul.test@techkart.com",
-      "phone": "9876543210",
-      "avatar_url": null
-    },
-    "token": "eyJ0eXAiOiJKV1QiLCJhbGci...",
-    "token_type": "Bearer"
-  }
-}
-```
-
-#### `POST /api/v1/customer/auth/login`
-Authenticates an existing customer. Accounts with role `seller` or `admin` are rejected.
-- **Request Body**:
-```json
-{
-  "email": "rahul.test@techkart.com",
-  "password": "SecretPassword123"
-}
-```
-- **Response `200 OK`**: Returns user profile and signed JWT token.
-
-#### `GET /api/v1/customer/auth/profile`
-Retrieves current authenticated customer profile.
-- **Headers**: `Authorization: Bearer <token>`
-- **Access Guard**: Strictly limited to `role: customer`.
-
----
-
-### 3. Buddy Authentication (TechKart Buddy Seller / Admin App)
-
-#### `POST /api/v1/buddy/auth/register-seller`
-Allows a seller to register their account and store profile atomically.
-- **Request Body**:
-```json
-{
-  "full_name": "Vikram Patel",
-  "email": "vikram.store@techkart.com",
-  "password": "SellerPassword123",
-  "store_name": "Apex Electronics & Gadgets",
-  "phone": "9822334455",
-  "gst_number": "27AABCT3518Q1ZP",
-  "city": "Mumbai",
-  "state": "Maharashtra",
-  "pincode": "400001"
-}
-```
-- **Response `201 Created`**: Creates records in `users` and `seller_profiles`, returning token and store data.
-
-#### `POST /api/v1/buddy/auth/login`
-Authenticates a seller or admin. Rejects accounts with `role: customer` (`403 Forbidden`).
-- **Request Body**:
-```json
-{
-  "email": "vikram.store@techkart.com",
-  "password": "SellerPassword123"
-}
-```
-- **Response `200 OK`**: Returns user profile, store profile (for sellers), and Bearer token.
-
-#### `GET /api/v1/buddy/auth/profile`
-Retrieves current authenticated seller/admin profile with store information.
-- **Headers**: `Authorization: Bearer <token>`
-- **Access Guard**: Limited to `role: seller` or `role: admin`. Attempting access with a customer token returns `403 Forbidden`.
-
----
-
-### 4. Public Product Catalog (TechKart Customer App)
-
-#### `GET /api/v1/customer/categories`
-Lists all active catalog categories for the store.
-- **Auth**: None (Public)
-- **Response `200 OK`**: Array of categories (`id`, `parent_id`, `name`, `slug`, `image_url`).
-
-#### `GET /api/v1/customer/products`
-Lists published products with search, multi-factor filtering, sorting, and pagination. Only products with `status = 'published'` and from active sellers are returned.
-- **Auth**: None (Public)
-- **Query Parameters**:
-  - `search`: Search query string matched against title and description.
-  - `category_id`: Filter by specific category ID.
-  - `min_price` & `max_price`: Numeric price range boundaries.
-  - `in_stock`: `1` to filter items with `stock_quantity > 0`.
-  - `sort_by`: `latest` (default), `price_asc`, `price_desc`, `title_asc`, `title_desc`, `oldest`.
-  - `page`: Page number (default: `1`).
-  - `limit`: Items per page (default: `20`, max `100`).
 - **Response `200 OK`**:
 ```json
 {
   "success": true,
   "status": 200,
-  "message": "Products retrieved successfully",
-  "data": [
-    {
-      "id": 1,
-      "seller_id": 2,
-      "category_id": 3,
-      "title": "Wireless Noise-Cancelling Headphones Pro",
-      "slug": "wireless-noise-cancelling-headphones-pro",
-      "description": "Flagship headphones with 40-hour battery.",
-      "price": 14999.00,
-      "mrp": 19999.00,
-      "stock_quantity": 25,
-      "status": "published",
-      "category_name": "Audio",
-      "seller_store_name": "Apex Electronics & Gadgets",
-      "primary_image_url": "https://...",
-      "images": [
-        { "image_url": "https://...", "is_primary": true, "sort_order": 0 }
-      ]
-    }
-  ],
-  "pagination": {
-    "total": 1,
-    "page": 1,
-    "limit": 20,
-    "total_pages": 1,
-    "has_next": false,
-    "has_previous": false
-  }
-}
-```
-
-#### `GET /api/v1/customer/products/{id}`
-Returns full product details, category, seller store details, and complete image gallery.
-- **Auth**: None (Public)
-- **Response `200 OK`**: Full product object with detailed `images` array. Returns `404 Not Found` if product is in `draft` or `archived` status.
-
----
-
-### 5. Customer Shopping Cart (TechKart Customer App)
-
-Protected by `AuthMiddleware(['customer'])`. Only accounts with `role: customer` can view and manipulate their personal shopping cart. Clients cannot tamper with prices; item pricing, discounts, and order subtotals are computed dynamically from the database.
-
-#### `GET /api/v1/customer/cart`
-Retrieves the authenticated customer's full cart with dynamic server-calculated pricing, seller ownership metadata, available stock status, and cart totals.
-- **Headers**: `Authorization: Bearer <customer_token>`
-- **Response `200 OK`**:
-```json
-{
-  "success": true,
-  "status": 200,
-  "message": "Cart retrieved successfully",
+  "message": "TechKart API is operational",
   "data": {
-    "items": [
-      {
-        "cart_item_id": 1,
-        "product_id": 2,
-        "seller_id": 2,
-        "seller_store_name": "Apex Electronics & Gadgets",
-        "category_name": "Electronics",
-        "title": "Wireless Noise-Cancelling Headphones Pro",
-        "slug": "wireless-noise-cancelling-headphones-pro",
-        "primary_image_url": "https://...",
-        "unit_price": 14999.00,
-        "mrp": 19999.00,
-        "quantity": 2,
-        "line_total": 29998.00,
-        "stock_quantity": 25,
-        "is_in_stock": true,
-        "is_available": true,
-        "is_quantity_available": true,
-        "added_at": "2026-10-26 14:20:00"
-      }
-    ],
-    "summary": {
-      "total_unique_items": 1,
-      "total_quantity": 2,
-      "subtotal": 29998.00,
-      "total_mrp": 39998.00,
-      "total_discount": 10000.00,
-      "currency": "INR",
-      "has_unavailable_items": false
-    }
+    "app": "TechKart Unified Backend",
+    "version": "2.0.0",
+    "timestamp": "2026-11-04 04:00:00",
+    "database": "connected"
   }
 }
 ```
 
-#### `POST /api/v1/customer/cart`
-Adds an item to the cart. If the product already exists in the customer's cart, its quantity is incremented (preventing duplicate rows).
-- **Headers**: `Authorization: Bearer <customer_token>`
-- **Request Body**:
-```json
-{
-  "product_id": 2,
-  "quantity": 1
-}
-```
-- **Validation & Business Rules**:
-  - Validates product existence, `published` status, active seller account, and available stock.
-  - Client-submitted prices are ignored; database price is strictly enforced.
-  - Returns `400 Bad Request` if item is out of stock or requested quantity exceeds available inventory.
-- **Response `201 Created`**: Returns updated cart with recalculated items and summary.
-
-#### `PUT` or `PATCH /api/v1/customer/cart/{id}`
-Updates quantity for an existing cart item. `{id}` can be either the `cart_item_id` or the `product_id`.
-- **Headers**: `Authorization: Bearer <customer_token>`
-- **Request Body**:
-```json
-{
-  "quantity": 3
-}
-```
-- **Rules**:
-  - Setting `quantity: 0` automatically removes the item from the cart.
-  - Validates stock limits against current database inventory.
-- **Response `200 OK`**: Returns updated cart and recalculated totals.
-
-#### `DELETE /api/v1/customer/cart/{id}`
-Removes an individual product line from the cart. `{id}` can be either the `cart_item_id` or the `product_id`.
-- **Headers**: `Authorization: Bearer <customer_token>`
-- **Response `200 OK`**: Returns updated cart.
-
-#### `DELETE /api/v1/customer/cart`
-Clears all items from the customer's shopping cart.
-- **Headers**: `Authorization: Bearer <customer_token>`
-- **Response `200 OK`**: Returns empty cart summary.
-
 ---
 
-### 6. Customer Delivery Addresses (TechKart Customer App)
+### 2. Customer Authentication & Account Security
 
-Protected by `AuthMiddleware(['customer'])`. Manages saved delivery locations matching Flutter UI screens **SCR-26**, **SCR-27**, and **SCR-39**.
-
-#### `GET /api/v1/customer/addresses`
-Lists all saved addresses for the authenticated customer ordered by default first.
-- **Headers**: `Authorization: Bearer <customer_token>`
-
-#### `POST /api/v1/customer/addresses`
-Adds a new delivery address to the customer's address book.
-- **Headers**: `Authorization: Bearer <customer_token>`
-- **Request Body**:
-```json
-{
-  "label": "Home",
-  "recipient_name": "Rahul Sharma",
-  "phone": "+8801712345678",
-  "address_line1": "House 42, Road 11, Block D, Banani",
-  "address_line2": "Floor 4A",
-  "city": "Dhaka",
-  "state": "Dhaka Division",
-  "postal_code": "1213",
-  "country": "Bangladesh",
-  "delivery_instructions": "Call before arrival",
-  "is_default": true
-}
-```
-
-#### `PUT` or `PATCH /api/v1/customer/addresses/{id}`
-Updates an existing address. Setting `is_default: true` clears the default flag on all other addresses.
-
-#### `DELETE /api/v1/customer/addresses/{id}`
-Removes an address from the customer's address book.
-
----
-
-### 7. Customer Checkout & Orders (TechKart Customer App)
-
-Protected by `AuthMiddleware(['customer'])`. Powers **SCR-28** (Order Review), **SCR-31** (Order Confirmation), **SCR-32** (Order History), and **SCR-33** (Order Details).
-
-#### `GET /api/v1/customer/checkout/preview`
-Pre-calculates live delivery destination, items breakdown, unit prices, shipping fees, discounts, and total payable amount before placing an order.
-- **Headers**: `Authorization: Bearer <customer_token>`
-- **Query Parameters**: `address_id` (optional; defaults to default address)
-
-#### `POST /api/v1/customer/orders`
-Places an order from active cart items inside an atomic PDO transaction with inventory stock decrements and price freezing. Supports **idempotency** via `Idempotency-Key` header.
-- **Headers**:
-  - `Authorization: Bearer <customer_token>`
-  - `Idempotency-Key: <unique_client_uuid_or_key>` *(Recommended to prevent duplicate charging / double order placement)*
-- **Request Body**:
-```json
-{
-  "address_id": 1,
-  "payment_method": "card",
-  "notes": "Handle with care"
-}
-```
-- **Response `201 Created`**:
-```json
-{
-  "success": true,
-  "status": 201,
-  "message": "Order placed successfully",
-  "data": {
-    "order_id": 1,
-    "order_number": "TK-202610-8492A1",
-    "total_amount": 29998.00,
-    "total_quantity": 2,
-    "payment_status": "pending",
-    "order_status": "placed",
-    "payment_method": "card",
-    "transaction_reference": "TXN-A1B2C3D4E5F6",
-    "shipping_address": { ... },
-    "items_count": 1,
-    "payment_intent": {
-      "transaction_reference": "TXN-A1B2C3D4E5F6",
-      "amount": 29998.00,
-      "currency": "INR",
-      "gateway": "simulated_gateway",
-      "verify_endpoint": "/api/v1/customer/payments/verify"
-    }
-  }
-}
-```
-
-#### `GET /api/v1/customer/orders`
-Retrieves customer order history with pagination and status filtering (`placed`, `processing`, `shipped`, `delivered`, `cancelled`).
-- **Headers**: `Authorization: Bearer <customer_token>`
-- **Query Parameters**: `status` (`all` default), `page`, `limit`
-
-#### `GET /api/v1/customer/orders/{id}`
-Retrieves full order invoice, immutable price freeze snapshot, line item thumbnails, seller store information, payment log, and cancellation eligibility flag.
-- **Headers**: `Authorization: Bearer <customer_token>`
-- **URL Parameter**: `{id}` can be order ID or order reference string (e.g. `TK-202610-8492A1`).
-
-#### `POST /api/v1/customer/orders/{id}/cancel`
-Cancels an order if in `placed` or `processing` status. Restores product inventory atomically and updates payment status to `refunded` if previously paid.
-- **Headers**: `Authorization: Bearer <customer_token>`
-- **Request Body**: `{ "reason": "Customer cancellation reason" }`
-
----
-
-### 8. Payments (TechKart Customer App & Gateway)
-
-Powers **SCR-29** (Payment Gateway Webview/SDK) and **SCR-30** (Payment Verification Screen).
-
-#### `POST /api/v1/customer/payments/initiate`
-Generates payment intent session, client secrets, and gateway references for card, UPI, netbanking, and bKash channels.
-- **Headers**: `Authorization: Bearer <customer_token>`
-- **Request Body**:
-```json
-{
-  "order_id": "TK-202610-8492A1",
-  "payment_method": "card"
-}
-```
-
-#### `POST /api/v1/customer/payments/verify`
-Idempotently verifies transaction completion from the Flutter client after gateway return callback. Atomically updates payment record to `paid` and order status to `processing`. (Simulated verification strictly enabled in development environments).
-- **Headers**:
-  - `Authorization: Bearer <customer_token>`
-  - `Idempotency-Key: <unique_client_uuid_or_key>`
-- **Request Body**:
-```json
-{
-  "transaction_reference": "TXN-A1B2C3D4E5F6",
-  "gateway_payment_ref": "ch_3Pk4...",
-  "status": "success"
-}
-```
-
----
-
-### 9. Seller & Admin Order Fulfillment (TechKart Buddy App)
-
-Protected by `AuthMiddleware(['seller', 'admin'])`. Powers **TechKart Buddy Orders Management** screens (`marketplace_order_management.dart` & `seller/orders_details.dart`).
-
-#### `GET /api/v1/buddy/orders`
-Lists orders. For sellers, strictly isolates orders containing their products and returns seller-specific item subtotals. For admins, provides marketplace-wide order oversight.
-- **Headers**: `Authorization: Bearer <seller_or_admin_token>`
-- **Query Parameters**: `status` (`all` default), `page`, `limit`
-
-#### `GET /api/v1/buddy/orders/{id}`
-Returns order details filtered to the authenticated seller's store items or complete details for administrators.
-- **Headers**: `Authorization: Bearer <seller_or_admin_token>`
-
-#### `PATCH` or `PUT /api/v1/buddy/orders/{id}/status`
-Updates order item status (`placed`, `processing`, `shipped`, `delivered`, `cancelled`). Automatically synchronizes the overall order status once all line items reach fulfillment.
-- **Headers**: `Authorization: Bearer <seller_or_admin_token>`
-- **Request Body**:
-```json
-{
-  "status": "shipped",
-  "item_id": 1
-}
-```
-
----
-
-### 10. Seller Product Management (TechKart Buddy App)
-
-Protected by `AuthMiddleware(['seller', 'admin'])`. A seller can only view, update, and delete their own products.
-
-#### `GET /api/v1/buddy/products`
-Lists the authenticated seller's products (including `draft`, `published`, and `archived`).
-- **Headers**: `Authorization: Bearer <token>`
-- **Query Parameters**: `status` (`draft`|`published`|`archived`), `search`, `page`, `limit`.
-
-#### `POST /api/v1/buddy/products`
-Creates a new product for the authenticated seller.
-- **Headers**: `Authorization: Bearer <token>`
-- **Admin Usage**: When called by an administrator (`role: admin`), a valid `seller_id` must be passed in the payload or query. Omission or specifying a non-existent seller returns `422 Unprocessable Entity`.
-- **Request Body**:
-```json
-{
-  "category_id": 3,
-  "seller_id": 2,
-  "title": "Mechanical RGB Gaming Keyboard",
-  "description": "Tactile blue switches with programmable macro keys.",
-  "price": 4500.00,
-  "mrp": 5999.00,
-  "stock_quantity": 40,
-  "status": "published",
-  "images": [
-    { "image_url": "https://...", "is_primary": true },
-    { "image_url": "https://...", "is_primary": false }
-  ]
-}
-```
-- **Response `201 Created`**: Returns created product ID and generated URL slug.
-
-#### `GET /api/v1/buddy/products/{id}`
-Retrieves seller product details by ID (enforces ownership).
-
-#### `PUT` or `PATCH /api/v1/buddy/products/{id}`
-Updates product attributes (`title`, `price`, `mrp`, `stock_quantity`, `status`, `images`).
-- **Headers**: `Authorization: Bearer <token>`
-- **Validation**:
-  - Sellers can only modify their own products (`404 Not Found or access denied` for other sellers).
-  - Cross-validates final price against existing or updated MRP. If an update causes selling price to exceed MRP, or MRP to drop below selling price, the request is rejected with `422 Unprocessable Entity` (`MRP cannot be less than selling price.`).
-
-#### `DELETE /api/v1/buddy/products/{id}`
-Deletes a product owned by the seller (cascading deletes related images).
-- **Headers**: `Authorization: Bearer <token>`
-
----
-
-## 🛡 Security & Authentication Architecture
-- **Expiring JWT Tokens**: Tokens are generated via HMAC-SHA256 with configurable time-to-live (`JWT_EXPIRY` in `.env`).
-- **Password Protection**: Passwords are hashed using `PASSWORD_BCRYPT` with cost 12. Password hashes and secrets are never returned in responses.
-- **Strict Role Separation**: Route-level middleware enforces access constraints (`customer` vs. `seller`/`admin`), preventing cross-app privilege escalation.
-- **Prepared Statements**: All queries use PDO parameter binding to prevent SQL injection.
-- **Header Parsing**: Robust Authorization header resolution across Apache, CLI built-in server, and FastCGI environments.
-
----
-
-## 🧪 Verified Test Results
-
-| Test Suite | Assertions Passed | Status | Coverage |
+| Method | Endpoint | Auth | Description |
 |---|---|---|---|
-| `test_product_catalog.php` | **21 / 21** (100%) | **PASS** | Categories, Keyword Search, Price/Stock Filters, Slugs, Draft Isolation, Seller CRUD, Admin `seller_id` Validation, Price vs. MRP Cross-Validation, Role Ownership Isolation |
-| `test_cart_api.php` | **13 / 13** (100%) | **PASS** | Role Guards, Empty Cart, Stock Checks, Server-side Price Calculations, Quantity Increments, Cart Clears |
+| `POST` | `/api/v1/customer/auth/register` | None | Register new customer; sends verification OTP |
+| `POST` | `/api/v1/customer/auth/verify-register-otp` | None | Verify registration OTP and issue initial JWT session |
+| `POST` | `/api/v1/customer/auth/resend-register-otp` | None | Resend registration OTP (rate-limited) |
+| `POST` | `/api/v1/customer/auth/login` | None | Sign in with email and password |
+| `POST` | `/api/v1/customer/auth/refresh-token` | None | Rotate refresh token and obtain fresh access token |
+| `POST` | `/api/v1/customer/auth/forgot-password` | None | Send password recovery OTP via email |
+| `POST` | `/api/v1/customer/auth/verify-reset-otp` | None | Validate recovery OTP |
+| `POST` | `/api/v1/customer/auth/reset-password` | None | Set new password with valid OTP |
+| `GET` | `/api/v1/customer/auth/profile` | Customer | Fetch current customer profile |
+| `PUT/PATCH` | `/api/v1/customer/auth/profile` | Customer | Update name, phone, gender, avatar |
+| `POST` | `/api/v1/customer/auth/logout` | Customer | Blacklist current JWT and revoke refresh tokens |
+
+---
+
+### 3. Buddy Authentication (Sellers & Administrators)
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `POST` | `/api/v1/buddy/auth/register-seller` | None | Register seller account and create store profile |
+| `POST` | `/api/v1/buddy/auth/login` | None | Authenticate seller or administrator |
+| `GET` | `/api/v1/buddy/auth/profile` | Seller/Admin | Retrieve merchant profile and store settings |
+| `PUT/PATCH` | `/api/v1/buddy/auth/profile` | Seller/Admin | Update seller personal information |
+| `POST` | `/api/v1/buddy/auth/logout` | Seller/Admin | Log out and invalidate active session tokens |
+
+---
+
+### 4. Customer Catalog & Category Discovery
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/v1/customer/categories` | None | List top-level product categories |
+| `GET` | `/api/v1/customer/categories/{id}/subcategories` | None | List subcategories for a given parent category |
+| `GET` | `/api/v1/customer/products` | None | Search, filter (price, category, stock), and paginate published products |
+| `GET` | `/api/v1/customer/products/{id}` | None | View complete product details, seller info, and gallery |
+
+---
+
+### 5. Shopping Cart & Inventory Validation
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/v1/customer/cart` | Customer | View cart with server-calculated subtotals and discounts |
+| `POST` | `/api/v1/customer/cart` | Customer | Add product to cart (validates inventory limits) |
+| `PUT/PATCH` | `/api/v1/customer/cart/{id}` | Customer | Update cart item quantity (0 removes item) |
+| `DELETE` | `/api/v1/customer/cart/{id}` | Customer | Remove specific item from cart |
+| `DELETE` | `/api/v1/customer/cart` | Customer | Empty the customer's cart |
+
+---
+
+### 6. Customer Wishlist
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/v1/customer/wishlist` | Customer | View saved items in wishlist |
+| `POST` | `/api/v1/customer/wishlist` | Customer | Save a product to wishlist |
+| `DELETE` | `/api/v1/customer/wishlist/{id}` | Customer | Remove product from wishlist |
+| `DELETE` | `/api/v1/customer/wishlist` | Customer | Clear all wishlist items |
+
+---
+
+### 7. Delivery Addresses
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/v1/customer/addresses` | Customer | List saved delivery addresses |
+| `POST` | `/api/v1/customer/addresses` | Customer | Add new address (supports `is_default` flag) |
+| `PUT/PATCH` | `/api/v1/customer/addresses/{id}` | Customer | Update an existing address |
+| `DELETE` | `/api/v1/customer/addresses/{id}` | Customer | Delete address |
+
+---
+
+### 8. Checkout & Order Placement
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/v1/customer/checkout/preview` | Customer | Calculate order breakdown, taxes, and shipping before buying |
+| `POST` | `/api/v1/customer/orders` | Customer | Place order atomically from cart items (supports `Idempotency-Key`) |
+| `GET` | `/api/v1/customer/orders` | Customer | List past orders with status filter |
+| `GET` | `/api/v1/customer/orders/{id}` | Customer | Get full invoice, items snapshot, and logistics status |
+| `POST` | `/api/v1/customer/orders/{id}/cancel` | Customer | Cancel unshipped order & automatically restore inventory |
+
+---
+
+### 9. Payments & Payment Verification
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `POST` | `/api/v1/customer/payments/initiate` | Customer | Generate transaction reference and client payment intent |
+| `POST` | `/api/v1/customer/payments/verify` | Customer | Confirm transaction (simulated verification strictly dev-only) |
+
+---
+
+### 10. Live Order Tracking & Logistics
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/v1/customer/orders/{id}/tracking` | Customer | Retrieve real-time checkpoint events, courier AWB, and ETA |
+
+---
+
+### 11. Customer Product Reviews & Ratings
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/v1/customer/products/{id}/reviews` | None | List approved reviews and rating breakdown for product |
+| `POST` | `/api/v1/customer/products/{id}/reviews` | Customer | Submit verified review with rating (1-5 stars) and title |
+| `PUT/PATCH` | `/api/v1/customer/reviews/{id}` | Customer | Edit your own submitted review |
+| `DELETE` | `/api/v1/customer/reviews/{id}` | Customer | Delete your review |
+| `POST` | `/api/v1/customer/reviews/{id}/helpful` | Customer | Upvote review helpfulness |
+
+---
+
+### 12. Customer Returns & Refunds
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/v1/customer/returns/eligibility/{order_id}` | Customer | Check return window and item return eligibility |
+| `POST` | `/api/v1/customer/returns` | Customer | Submit return request with return reason and bank details |
+| `GET` | `/api/v1/customer/returns` | Customer | List customer return requests |
+| `GET` | `/api/v1/customer/returns/{id}` | Customer | View return status and reverse logistics timeline |
+
+---
+
+### 13. AI Multimodal Visual Search & Chat Assistant
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `POST` | `/api/v1/customer/ai/visual-search` | None | Upload an image to detect product category, title, and match items |
+| `POST` | `/api/v1/customer/ai/chat/message` | None | Send a query to the Gemini e-commerce shopping assistant |
+| `GET` | `/api/v1/customer/ai/chat/sessions` | Customer | List customer AI chat session history |
+| `GET` | `/api/v1/customer/ai/chat/sessions/{id}/messages` | Customer | Retrieve message transcript for a chat session |
+
+---
+
+### 14. Buddy Merchant Store & Profile
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/v1/buddy/seller/profile` | Seller | Retrieve store name, GST, bank account, and address |
+| `PUT/PATCH` | `/api/v1/buddy/seller/profile` | Seller | Update business and payout details |
+
+---
+
+### 15. Buddy Merchant Catalog & Product Approval Lifecycle
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/v1/buddy/products` | Seller/Admin | List products owned by seller (or all for admin) |
+| `POST` | `/api/v1/buddy/products` | Seller/Admin | Create product (enforces price <= MRP and stock limits) |
+| `GET` | `/api/v1/buddy/products/{id}` | Seller/Admin | View product specifications and image variants |
+| `PUT/PATCH` | `/api/v1/buddy/products/{id}` | Seller/Admin | Update product fields and pricing |
+| `DELETE` | `/api/v1/buddy/products/{id}` | Seller/Admin | Delete product and associated image gallery |
+| `POST` | `/api/v1/buddy/seller/products/{id}/submit-approval`| Seller | Submit draft product for admin moderation |
+| `PUT/PATCH` | `/api/v1/buddy/admin/products/{id}/approval-status` | Admin | Approve or reject submitted seller product |
+
+---
+
+### 16. Buddy Inventory Control & Low Stock Alerts
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/v1/buddy/inventory` | Seller/Admin | View inventory stock levels and replenishment statuses |
+| `PATCH` | `/api/v1/buddy/inventory/stock` | Seller/Admin | Perform atomic batch inventory adjustments |
+| `GET` | `/api/v1/buddy/seller/inventory/low-stock-alerts` | Seller | View products falling below configured safety threshold |
+| `PUT/PATCH` | `/api/v1/buddy/seller/products/{id}/low-stock-threshold` | Seller | Configure low stock threshold for a product |
+
+---
+
+### 17. Buddy Order Fulfillment & Shipping
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/v1/buddy/orders` | Seller/Admin | View orders containing items from merchant's store |
+| `GET` | `/api/v1/buddy/orders/{id}` | Seller/Admin | View itemized order details, buyer address, and financials |
+| `POST` | `/api/v1/buddy/orders/{id}/accept` | Seller/Admin | Accept order and mark items for packaging |
+| `POST` | `/api/v1/buddy/orders/{id}/reject` | Seller/Admin | Reject order item with descriptive explanation |
+| `PATCH/PUT` | `/api/v1/buddy/orders/{id}/status` | Seller/Admin | Update item status (`processing`, `shipped`, `delivered`) |
+| `POST` | `/api/v1/buddy/orders/{id}/shipping` | Seller/Admin | Dispatch shipment with courier name and AWB tracking number |
+
+---
+
+### 18. Buddy Returns Decision & Reverse Logistics
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/v1/buddy/seller/returns` | Seller | View return requests submitted for seller's items |
+| `GET` | `/api/v1/buddy/seller/returns/{id}` | Seller | Inspect return item, customer photos, and reasons |
+| `POST` | `/api/v1/buddy/seller/returns/{id}/decision` | Seller | Approve return, schedule pickup, or reject request |
+| `POST` | `/api/v1/buddy/admin/returns/{id}/decision` | Admin | Administrative override and refund release |
+
+---
+
+### 19. Buddy Merchant & Admin Review Moderation
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/v1/buddy/seller/reviews` | Seller | View customer reviews on store products |
+| `POST/PUT` | `/api/v1/buddy/seller/reviews/{id}/reply` | Seller | Post official merchant response to a customer review |
+| `GET` | `/api/v1/buddy/admin/reviews` | Admin | Review moderation queue across the entire platform |
+| `PUT/PATCH` | `/api/v1/buddy/admin/reviews/{id}/moderate` | Admin | Approve, flag, or hide reviews |
+
+---
+
+### 20. Buddy Analytics, Revenue Reports & Financial Settlements
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/v1/buddy/dashboard/stats` | Seller/Admin | Real-time sales, order counts, pending actions |
+| `GET` | `/api/v1/buddy/reports/sales-revenue` | Seller/Admin | Sales trends, commission deductions, net revenue |
+| `GET` | `/api/v1/buddy/admin/settlements` | Admin | Overview of merchant payout settlements |
+| `POST` | `/api/v1/buddy/seller/settlements/request-payout` | Seller | Request disbursement of matured balance |
+| `POST/PUT` | `/api/v1/buddy/admin/settlements/{id}/release` | Admin | Authorize bank transfer payout to seller |
+
+---
+
+### 21. Buddy Administrative Controls
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/v1/buddy/admin/customers` | Admin | Platform customer directory with registration dates |
+| `GET` | `/api/v1/buddy/admin/customers/{id}` | Admin | Customer profile, address book, and order volume |
+| `PUT/PATCH` | `/api/v1/buddy/admin/customers/{id}/status` | Admin | Deactivate or restore customer account |
+| `GET` | `/api/v1/buddy/admin/categories` | Admin | Manage catalog category hierarchy |
+| `POST` | `/api/v1/buddy/admin/categories` | Admin | Create new product category or subcategory |
+| `PUT/PATCH` | `/api/v1/buddy/admin/categories/{id}` | Admin | Update category name, slug, image, commission rate |
+| `DELETE` | `/api/v1/buddy/admin/categories/{id}` | Admin | Delete category (safeguards children) |
+| `GET` | `/api/v1/buddy/admin/audit-logs` | Admin | Immutable platform audit trail for sensitive actions |
+| `GET` | `/api/v1/buddy/admin/settings` | Admin | View platform settings and category commission rules |
+| `PUT/PATCH` | `/api/v1/buddy/admin/settings` | Admin | Update global platform fees, thresholds, and limits |
+
+---
+
+## 🧪 Automated Testing & Verification
+
+The backend includes a comprehensive suite of automated integration, security, and flow tests written in native PHP.
+
+### Running Test Suites
+
+Execute test suites directly from the project root using PHP CLI:
+
+```bash
+# 1. Product Catalog & Search Filtering
+php test_product_catalog.php
+
+# 2. Shopping Cart, Pricing & Stock Enforcement
+php test_cart_api.php
+
+# 3. Checkout, Atomic Orders & Payments
+php test_checkout_orders_payments.php
+
+# 4. End-to-End Complete Checkout Lifecycle
+php test_e2e_checkout_flow.php
+
+# 5. Customer Email Authentication & OTP Lifecycle
+php test_customer_email_auth.php
+
+# 6. Customer Wishlist Operations
+php test_wishlist_api.php
+
+# 7. Customer Reviews, Ratings & Votes
+php test_reviews_api.php
+
+# 8. Customer Returns & Refunds Flow
+php test_returns_refunds_api.php
+
+# 9. Buddy Admin Audit Logging Trail
+php test_admin_audit_logs.php
+
+# 10. Production Readiness & Security Verification
+php test_customer_production_readiness.php
+php test_buddy_production_readiness.php
+
+# 11. Consolidated Master Audit
+php test_consolidated_master_audit.php
+```
+
+### Verified Test Status
+
+| Test Suite | Assertions Passed | Result |
+|---|---|---|
+| `test_product_catalog.php` | 21 / 21 | **PASS** |
+| `test_cart_api.php` | 13 / 13 | **PASS** |
+| `test_checkout_orders_payments.php` | 16 / 16 | **PASS** |
+| `test_e2e_checkout_flow.php` | 14 / 14 | **PASS** |
+| `test_returns_refunds_api.php` | 12 / 12 | **PASS** |
+| `test_reviews_api.php` | 10 / 10 | **PASS** |
+| `test_wishlist_api.php` | 8 / 8 | **PASS** |
+| `test_registration_otp_e2e.php` | 7 / 7 | **PASS** |
+
+---
+
+## 📄 License & Authors
+
+- **Platform**: TechKart Unified E-Commerce Platform
+- **License**: Proprietary / Private Commercial Software
+- **Designed for**: TechKart Customer Mobile App & TechKart Buddy Merchant/Admin Portal

@@ -1,0 +1,1498 @@
+<USER_REQUEST>
+@[c:\Users\user\OneDrive\Desktop\techkart] @[c:\Users\user\OneDrive\Desktop\techkart_buddy] @[c:\Users\user\OneDrive\Desktop\techkart_backend] 
+# 1. GOAL
+
+Build a complete, real-world, Flipkart-style electronics marketplace product catalogue and shopping ecosystem for both existing applications:
+
+1. **TechKart Customer** — Customer shopping application.
+2. **TechKart Buddy** — Seller Hub and Admin application.
+
+Use the attached file **`Pasted text.txt`** as the primary and authoritative product taxonomy input. It contains my existing 45 main category sections, subcategories, product types and relevant brand/product-family examples.
+
+The task is to convert this existing category-subcategory-brand structure into a fully functional, database-driven real-world product catalogue.
+
+The complete hierarchy must support:
+
+Main Category → Existing Subcategory → Product Type → Brand → Product Family / Series → Real Product Model → Product Variant → SKU → Seller Listing → Customer Purchase.
+
+Both applications must use the same shared catalogue, backend and database.
+
+The final objective is:
+
+A seller creates or matches a genuine product in TechKart Buddy, adds specifications, images, variants, SKU, price and stock, submits it for approval, and the approved listing becomes discoverable in the correct category and subcategory in TechKart Customer. A customer can view the product, select a variant, add it to cart, purchase it and generate an order that is correctly associated with the seller in Buddy.
+
+Implement this as a complete full-stack feature. Update the Flutter frontend, Core PHP REST API backend and MySQL 8.0+ database wherever required.
+
+Do not deliver only a UI prototype, static catalogue, hardcoded product list or frontend-only implementation.
+
+# 2. SCOPE AND INPUTS
+
+## A. Mandatory input files and project repositories
+
+Use these actual project resources:
+
+- Attached `Pasted text.txt` — authoritative category, subcategory, product type and brand/product reference list.
+- Existing TechKart Customer Flutter repository.
+- Existing TechKart Buddy Flutter repository.
+- Existing shared Core PHP REST API backend.
+- Existing MySQL 8.0+ database.
+- Existing database migrations and product/category records.
+
+Inspect both repositories and the shared backend before modifying anything.
+
+Do not invent repository paths, API routes, database tables, configurations, existing features or dependencies.
+
+## B. Understand the attached category and product file
+
+Read the entire `Pasted text.txt` file, not just the first few sections.
+
+Extract and verify:
+
+1. All 45 main category sections.
+2. Every subcategory under each main category.
+3. All listed brands.
+4. Product types and product-family examples.
+5. Brand-to-subcategory relevance.
+6. Repeated brands appearing under different categories.
+7. Any duplicate, inconsistent or potentially misplaced entries.
+
+Create a structured category/product mapping from this file.
+
+IMPORTANT:
+
+- Preserve the exact main category and subcategory names from the file.
+- Preserve their parent-child relationships and intended ordering.
+- Treat listed brands and product names as catalogue references, not automatically as verified individual product models.
+- A brand may legitimately appear under multiple relevant categories.
+- Do not create duplicate brand records merely because a brand appears in multiple subcategories.
+- Do not treat a product family or series as a sellable SKU.
+- Do not invent product models, specifications, prices, images or stock.
+- Do not silently remove an entry because it appears unusual. Report mapping issues and resolve them using actual product relevance.
+
+Compare the attached file with the existing database and repositories. Preserve existing valid category/subcategory IDs and records. If the file and database differ, prepare a mapping report and resolve the difference without losing existing data.
+
+## C. Product catalogue hierarchy
+
+Implement a flexible, normalized structure:
+
+```text
+MAIN CATEGORY
+      |
+      v
+EXISTING SUBCATEGORY
+      |
+      v
+PRODUCT TYPE / VERTICAL
+      |
+      v
+BRAND
+      |
+      v
+PRODUCT FAMILY
+      |
+      v
+PRODUCT SERIES
+      |
+      v
+PRODUCT MODEL
+      |
+      v
+PRODUCT VARIANT
+      |
+      v
+SKU
+      |
+      v
+SELLER LISTING
+      |
+      v
+CUSTOMER PRODUCT
+```
+
+Example:
+
+```text
+Mobiles & Smartphones
+      |
+      v
+Smartphones
+      |
+      v
+Samsung
+      |
+      v
+Galaxy
+      |
+      v
+Galaxy S Series
+      |
+      v
+Galaxy S25 Ultra
+      |
+      v
+12GB / 256GB / Titanium Silver
+      |
+      v
+Variant SKU
+      |
+      v
+Seller A's Listing
+```
+
+Support products that do not need every hierarchy level. Do not force a family or series where none exists.
+
+Keep catalogue identity separate from seller-specific price, stock, SKU, fulfilment and listing status.
+
+---
+
+# CUSTOMER APP WORKFLOW — PART 1 TO PART 5
+
+## CUSTOMER PART 1 — HOME, CATEGORY AND SUBCATEGORY DISCOVERY
+
+Implement the complete category discovery experience.
+
+```text
+OPEN TECHKART CUSTOMER
+          |
+          v
+SPLASH / AUTHENTICATION
+          |
+          v
+HOME / DISCOVER
+          |
+          |-- Search
+          |-- Main Categories
+          |-- Featured Brands
+          |-- Featured Products
+          |-- Recommendations
+          |
+          v
+SELECT MAIN CATEGORY
+          |
+          v
+LOAD EXISTING SUBCATEGORIES
+          |
+          v
+SELECT SUBCATEGORY
+          |
+          v
+LOAD RELEVANT PRODUCT TYPES
+AND AVAILABLE BRANDS
+          |
+          v
+SHOW CATEGORY PRODUCT DISCOVERY
+```
+
+Requirements:
+
+- Load all categories and subcategories from the shared backend.
+- Preserve the exact existing taxonomy from the attached file and database.
+- Display only relevant brands and product types for the selected subcategory.
+- Support search and direct product discovery.
+- Do not hardcode category or brand arrays in Flutter screens.
+
+## CUSTOMER PART 2 — BRAND, SERIES AND PRODUCT DISCOVERY
+
+```text
+SELECT SUBCATEGORY
+          |
+          v
+RELEVANT BRANDS
+          |
+          v
+OPTIONAL BRAND SELECTION
+          |
+          v
+PRODUCT FAMILY
+          |
+          v
+PRODUCT SERIES
+          |
+          v
+AVAILABLE PRODUCT MODELS
+          |
+          v
+SELECT MODEL
+          |
+          v
+PRODUCT LISTING SCREEN
+```
+
+Example:
+
+```text
+Laptops & Notebooks
+      |
+      v
+Thin & Light Laptops
+      |
+      v
+Apple
+      |
+      v
+MacBook Air
+      |
+      v
+Available MacBook Air Models
+      |
+      v
+Product Listings
+```
+
+Brand, family and series selection must remain optional. Customers should also be able to browse all relevant products directly from a subcategory.
+
+## CUSTOMER PART 3 — PRODUCT LISTING AND PRODUCT DETAILS
+
+```text
+PRODUCT LISTING
+      |
+      |-- Product Image
+      |-- Product Name
+      |-- Brand / Model
+      |-- Selling Price
+      |-- MRP
+      |-- Verified Discount
+      |-- Rating (if available)
+      |-- Seller Availability
+      |-- Stock Status
+      |
+      |-- Filter
+      |-- Sort
+      |-- Search
+      |-- Pagination
+      |
+      v
+SELECT PRODUCT
+      |
+      v
+PRODUCT DETAILS
+      |
+      |-- Image Gallery
+      |-- Product Highlights
+      |-- Specifications
+      |-- Variants
+      |-- Seller Information
+      |-- Price
+      |-- Warranty
+      |-- Delivery
+      |-- Reviews (if available)
+      |-- Related Products
+      |
+      v
+SELECT VARIANT
+```
+
+Implement category-specific filters.
+
+Examples:
+
+Smartphones:
+- Brand, price, RAM, storage, processor, display, camera, battery, operating system and 5G.
+
+Laptops:
+- Brand, processor, RAM, SSD/HDD, graphics, display size and operating system.
+
+Televisions:
+- Brand, screen size, resolution, display technology and refresh rate.
+
+Audio:
+- Brand, product type, connectivity, noise cancellation and battery life.
+
+Other categories must use relevant attributes based on their actual product type.
+
+## CUSTOMER PART 4 — VARIANT, CART, CHECKOUT AND ORDER
+
+```text
+PRODUCT DETAILS
+      |
+      v
+SELECT AVAILABLE VARIANT
+      |
+      v
+FETCH CORRECT SKU / SELLER LISTING
+      |
+      v
+VERIFY PRICE AND STOCK
+      |
+      v
+ADD TO CART / BUY NOW
+      |
+      v
+CART
+      |
+      v
+CHECKOUT
+      |
+      v
+SERVER-SIDE VALIDATION
+      |
+      v
+EXISTING PAYMENT FLOW
+      |
+      v
+ORDER CONFIRMATION
+      |
+      v
+ORDER AVAILABLE IN BUDDY
+```
+
+Requirements:
+
+- Variant selection must update the correct image, SKU, price and stock.
+- Never allow purchase of unavailable variants.
+- Revalidate price and inventory on the backend.
+- Preserve the existing cart, wishlist, checkout and payment workflows.
+- Do not break existing order functionality.
+
+## CUSTOMER PART 5 — PRODUCT DATA AND BACKEND RELATIONSHIP
+
+```text
+SHARED MYSQL DATABASE
+          |
+          v
+CATEGORIES
+          |
+          v
+SUBCATEGORIES
+          |
+          v
+PRODUCT TYPES
+          |
+          v
+BRANDS
+          |
+          v
+PRODUCT FAMILIES / SERIES
+          |
+          v
+PRODUCT MODELS
+          |
+          v
+PRODUCT VARIANTS / SKUs
+          |
+          v
+APPROVED SELLER LISTINGS
+          |
+          v
+CUSTOMER PRODUCT APIs
+          |
+          v
+CUSTOMER FLUTTER APP
+          |
+          v
+LISTING / DETAILS / CART / ORDER
+```
+
+Customer must receive genuine, approved and active seller listing data from the backend.
+
+---
+
+# SELLER HUB WORKFLOW — PART 1 TO PART 5
+
+## SELLER PART 1 — SELLER LOGIN, DASHBOARD AND PRODUCT MANAGEMENT
+
+```text
+OPEN TECHKART BUDDY
+          |
+          v
+SELLER AUTHENTICATION
+          |
+          v
+SELLER DASHBOARD
+          |
+          |-- Products
+          |-- Listings
+          |-- Inventory
+          |-- Orders
+          |-- Account
+          |
+          v
+PRODUCTS / LISTINGS
+          |
+          v
+EXISTING ADD NEW PRODUCT SCREEN
+          |
+          v
+START PRODUCT CREATION
+```
+
+Requirements:
+
+- Reuse existing Buddy navigation and seller/admin separation.
+- Reuse the existing Add New Product screen.
+- Do not create a duplicate screen.
+- Preserve seller ownership and admin permissions.
+
+## SELLER PART 2 — CATEGORY, BRAND AND EXISTING CATALOGUE MATCHING
+
+```text
+ADD NEW PRODUCT
+          |
+          v
+SELECT MAIN CATEGORY
+          |
+          v
+SELECT EXISTING SUBCATEGORY
+          |
+          v
+SELECT PRODUCT TYPE
+          |
+          v
+SELECT BRAND
+          |
+          v
+SEARCH SHARED PRODUCT CATALOGUE
+          |
+          v
+MATCHING PRODUCT FOUND?
+          |
+       |--|--|
+       |     |
+      YES    NO
+       |     |
+       v     v
+  MATCH     CREATE NEW
+  EXISTING  CATALOGUE PRODUCT
+  PRODUCT       |
+       |       |
+       |-------|
+           |
+           v
+      PRODUCT FORM
+```
+
+Use brand, model name, model number and manufacturer identifiers where available.
+
+Do not create duplicate models or catalogue records.
+
+If a seller adds an unlisted brand, follow the actual existing brand approval process if one exists. If it does not exist, design a proper backend-controlled approval mechanism only if required. Never fake an approval status.
+
+## SELLER PART 3 — PRODUCT INFORMATION, IMAGES, VARIANTS AND SKU
+
+```text
+PRODUCT FORM
+      |
+      v
+CATEGORY-SPECIFIC ATTRIBUTES
+      |
+      v
+PRODUCT TITLE / DESCRIPTION
+      |
+      v
+SPECIFICATIONS
+      |
+      v
+MULTIPLE PRODUCT IMAGES
+      |
+      v
+IMAGE PREVIEW / REMOVE / REORDER
+      |
+      v
+CREATE PRODUCT VARIANTS
+      |
+      v
+GENERATE / ASSIGN SKU
+      |
+      v
+SELLER PRICE / MRP / STOCK
+      |
+      v
+FULFILMENT / PACKAGE DETAILS
+```
+
+Requirements:
+
+- Dynamic category-specific fields.
+- Multiple gallery images.
+- Camera capture.
+- Image preview, remove, reorder and retake.
+- Upload progress and retry.
+- Persistent server-side image storage.
+- Correct variant-to-SKU relationships.
+- Seller-specific price, MRP, stock and fulfilment.
+- Proper validation before submission.
+
+Never persist a temporary device file path as a permanent product image URL.
+
+## SELLER PART 4 — LISTING VALIDATION, APPROVAL AND ORDER MANAGEMENT
+
+```text
+COMPLETE PRODUCT LISTING
+          |
+          v
+VALIDATE REQUIRED FIELDS
+          |
+          v
+VALIDATE IMAGES / VARIANTS / SKU
+          |
+          v
+SUBMIT LISTING
+          |
+          v
+ADMIN / APPROVAL WORKFLOW
+          |
+          v
+LISTING STATUS
+          |
+       |--|--|
+       |  |  |
+       v  v  v
+      LIVE PENDING REJECTED
+       |     |      |
+       v     v      v
+CUSTOMER  REVIEW  CORRECT
+VISIBLE   STATUS  AND RESUBMIT
+       |
+       v
+CUSTOMER ORDER
+       |
+       v
+SELLER RECEIVES ORDER
+       |
+       v
+PROCESS ORDER
+       |
+       v
+INVENTORY UPDATE
+```
+
+Requirements:
+
+- Proper draft, pending, approved, rejected, active and inactive states.
+- Only eligible approved listings appear in Customer.
+- Sellers can manage only their own listings.
+- Admin approval remains restricted.
+- Customer orders must be associated with the correct seller and variant.
+- Inventory updates must be consistent.
+
+## SELLER PART 5 — SHARED DATABASE AND CUSTOMER INTEGRATION
+
+```text
+SELLER LISTING
+      |
+      v
+SHARED PRODUCT CATALOGUE
+      |
+      v
+SHARED MYSQL DATABASE
+      |
+      v
+CORE PHP REST API
+      |
+      |-----------------------|
+      |                       |
+      v                       v
+TECHKART BUDDY          TECHKART CUSTOMER
+      |                       |
+      v                       v
+MANAGE LISTING          DISCOVER PRODUCT
+      |                       |
+      v                       v
+MANAGE STOCK            VIEW DETAILS
+      |                       |
+      v                       v
+MANAGE ORDERS           PURCHASE PRODUCT
+      |                       |
+      |-----------------------|
+                  |
+                  v
+          SHARED ORDER /
+          INVENTORY DATA
+```
+
+Both apps must use the same category, subcategory, catalogue product, variant and seller listing relationships.
+
+---
+
+# FULL-STACK IMPLEMENTATION SCOPE
+
+## 1. Flutter frontend
+
+### TechKart Customer
+
+Inspect and extend the actual existing:
+
+- Home and Discover.
+- Categories and Subcategories.
+- Search.
+- Brand/product discovery.
+- Product listing.
+- Product details.
+- Variant selection.
+- Cart.
+- Wishlist.
+- Checkout.
+- Orders.
+
+### TechKart Buddy
+
+Inspect and extend the actual existing:
+
+- Seller Dashboard.
+- Products and Listings.
+- Add New Product.
+- Edit Product.
+- Inventory.
+- Orders.
+- Account.
+- Admin product management.
+
+Implement the complete workflows without unnecessary duplicate screens.
+
+Preserve the current UI design, colours, fonts, layouts, assets, navigation, bottom tabs and existing working features.
+
+Use the current architecture and state management already present in each repository.
+
+## 2. Core PHP backend
+
+Inspect the existing shared backend and implement or extend the actual required API operations for:
+
+- Category and subcategory retrieval.
+- Product type and attribute retrieval.
+- Brand and product catalogue retrieval.
+- Product search and catalogue matching.
+- Product model creation.
+- Product specifications.
+- Product image upload.
+- Variant and SKU creation.
+- Seller listing creation and editing.
+- Seller inventory and price management.
+- Listing submission and approval.
+- Customer product discovery.
+- Product details and variant retrieval.
+- Cart and checkout validation.
+- Order creation and seller order retrieval.
+- Inventory updates.
+
+Reuse existing endpoint conventions and API contracts.
+
+Potential endpoint names are not instructions to create duplicate routes. Inspect the actual backend first.
+
+Maintain existing JWT authentication, authorization and seller/admin access boundaries.
+
+## 3. MySQL database
+
+Inspect the actual schema before making changes.
+
+Reuse existing structures where possible. Create or extend normalized structures only where necessary for:
+
+- Brands.
+- Product families and series.
+- Product models.
+- Product variants.
+- Category-specific attributes.
+- Product images.
+- Seller listings.
+- Seller SKUs.
+- Inventory.
+- Listing approval.
+- Fulfilment.
+- Orders and order items.
+
+Required relationships:
+
+- One category can contain multiple subcategories.
+- One subcategory can contain multiple relevant product types.
+- One brand can appear in multiple relevant categories.
+- One model can have multiple variants.
+- One variant can have multiple seller listings.
+- One seller listing belongs to the correct seller.
+- One order item references the actual purchased seller listing and variant.
+
+Use correct primary keys, foreign keys, indexes, uniqueness rules and transactions.
+
+Before migrations:
+
+1. Inspect existing data.
+2. Create a migration plan.
+3. Back up the database.
+4. Test migrations on a staging/copy database.
+5. Verify backward compatibility.
+6. Apply only necessary migrations.
+
+Never reset, truncate or drop existing category, subcategory, seller, product or order data.
+
+# 3. CONSTRAINTS
+
+1. The attached `Pasted text.txt` is the primary category, subcategory, product type and brand reference.
+2. Read the complete file, including all 45 category sections.
+3. Preserve existing category and subcategory names, IDs and hierarchy.
+4. Do not assume every listed brand or product family is an individual product model.
+5. Use genuine real-world product models and verified specifications.
+6. Verify model information against manufacturer sources or trustworthy product documentation.
+7. Do not invent products, model numbers, prices, stock, discounts, reviews or images.
+8. Do not create fake catalogue entries to make the interface appear populated.
+9. Do not create duplicate brands, models, variants or seller listings.
+10. Repeated brands across categories must use correct shared brand identity and relevant category relationships.
+11. Keep product models, variants, SKUs and seller listings separate.
+12. Do not hardcode product/category/brand catalogue data in Flutter widgets.
+13. Reuse the existing Add New Product screen in Buddy.
+14. Preserve both applications' existing UI, design system and navigation.
+15. Do not redesign either application or copy Flipkart's visual interface.
+16. Maintain Core PHP REST API and MySQL 8.0+.
+17. Do not replace the existing backend or database technology.
+18. Preserve existing authentication, JWT, cart, wishlist, checkout, payment, order and admin functionality.
+19. Enforce server-side validation and authorization.
+20. Sellers must not access or modify another seller's listings.
+21. Only approved and active eligible listings can appear in Customer.
+22. Store product images persistently on the server.
+23. Never treat temporary local image paths as permanent server URLs.
+24. Revalidate price, stock and SKU during checkout.
+25. Do not add Firebase/FCM or unrelated dependencies.
+26. Do not change existing business logic unnecessarily.
+27. Make minimal, targeted and backward-compatible modifications.
+28. Do not remove existing working features.
+29. Do not stop after an audit or implementation plan.
+30. Do not claim that something is working until it has actually been tested.
+
+# 4. VERIFICATION
+
+Perform a complete implementation and focused end-to-end verification.
+
+## A. Source taxonomy verification
+
+- Read all content in `Pasted text.txt`.
+- Verify all 45 category sections.
+- Verify every subcategory.
+- Verify all brand/product reference mappings.
+- Identify repeated brands correctly.
+- Identify invalid or ambiguous product mappings.
+- Compare file data with actual database data.
+- Verify no existing valid records are lost.
+
+Provide an exact category, subcategory and mapping audit.
+
+## B. Customer application verification
+
+Test:
+
+- Home and Discover.
+- Main category browsing.
+- Subcategory browsing.
+- Brand discovery.
+- Product family and series discovery.
+- Product listings.
+- Search and filters.
+- Sorting and pagination.
+- Product details.
+- Image gallery.
+- Variant selection.
+- Correct SKU, price and stock.
+- Cart.
+- Wishlist.
+- Checkout.
+- Order creation.
+
+## C. Buddy application verification
+
+Test:
+
+- Seller authentication.
+- Dashboard.
+- Existing Add New Product screen.
+- Category/subcategory selection.
+- Brand selection.
+- Catalogue matching.
+- New product creation.
+- Category-specific specifications.
+- Multiple image upload.
+- Camera capture.
+- Preview, remove, reorder and retake.
+- Persistent image storage.
+- Variant creation.
+- SKU creation.
+- Price, MRP and inventory.
+- Listing submission.
+- Approval/rejection.
+- Seller ownership.
+- Admin authorization.
+- Order management.
+
+## D. Backend verification
+
+Test:
+
+- All modified APIs.
+- Authentication and authorization.
+- Request validation.
+- Response consistency.
+- Product catalogue retrieval.
+- Brand and category relationships.
+- Variant/SKU retrieval.
+- Seller listing management.
+- Image upload.
+- Approval status.
+- Cart and checkout validation.
+- Order creation.
+- Inventory updates.
+- Error handling.
+
+## E. Database verification
+
+- Verify schema and migrations.
+- Verify primary and foreign keys.
+- Verify indexes and unique constraints.
+- Verify no duplicate catalogue records.
+- Verify category/subcategory relationships.
+- Verify variant/listing relationships.
+- Verify seller ownership.
+- Verify inventory consistency.
+- Verify existing data remains intact.
+- Verify rollback procedure where practical.
+
+## F. Full end-to-end integration test
+
+Execute this actual workflow:
+
+```text
+1. Open TechKart Buddy.
+2. Log in as an authorized seller.
+3. Create a genuine electronics product.
+4. Select the correct existing category.
+5. Select the correct existing subcategory.
+6. Select its correct brand.
+7. Match or create the product model.
+8. Enter verified product specifications.
+9. Upload multiple product images.
+10. Create variants and SKUs.
+11. Enter seller price and stock.
+12. Submit the listing.
+13. Approve the listing using the authorized workflow.
+14. Verify persistence in MySQL.
+15. Open TechKart Customer.
+16. Navigate to the same category/subcategory.
+17. Verify the product appears correctly.
+18. Open product details.
+19. Select an available variant.
+20. Verify image, SKU, price and stock.
+21. Add to cart and complete the supported purchase flow.
+22. Verify the correct order appears in Buddy.
+23. Verify seller association and inventory updates.
+```
+
+## G. Performance and build verification
+
+- Check unnecessary Flutter widget rebuilds.
+- Check duplicate API requests.
+- Check image loading and caching.
+- Check pagination and memory usage.
+- Check scrolling performance.
+- Check upload progress and failure recovery.
+- Run relevant backend tests.
+- Run Flutter analysis and builds for both applications.
+- Test on a physical Android device or supported emulator where available.
+
+## H. Final delivery report
+
+Provide:
+
+1. Category and subcategory audit.
+2. Product/brand mapping audit.
+3. Product hierarchy implemented.
+4. Customer frontend changes.
+5. Buddy frontend changes.
+6. Core PHP backend changes.
+7. MySQL schema and migration changes.
+8. API endpoints added or updated.
+9. Product image storage implementation.
+10. Variant and SKU implementation.
+11. Seller listing and approval implementation.
+12. Customer-Buddy integration results.
+13. Test cases with actual PASS/FAIL results.
+14. Build results for both applications.
+15. Remaining errors, limitations and missing data.
+
+Do not report 100% completion unless every required workflow has been implemented and verified. Clearly identify any untested or blocked functionality.
+
+# EXECUTION STRATEGY
+
+Work on the existing codebase, not a new replacement application.
+
+Follow this order:
+
+PHASE 1 — Audit both repositories, the complete attached taxonomy file, backend and database.
+
+PHASE 2 — Create the verified category/product mapping and plan the shared catalogue schema.
+
+PHASE 3 — Implement safe backend and database changes.
+
+PHASE 4 — Implement TechKart Buddy catalogue creation, matching, image uploads, variants, SKUs, seller listings and approval.
+
+PHASE 5 — Implement TechKart Customer category browsing, brand discovery, listings, filters, product details, variants and cart integration.
+
+PHASE 6 — Complete shared Customer-Buddy integration.
+
+PHASE 7 — Run focused end-to-end tests and build verification.
+
+Do not modify the same database/schema concurrently from separate agents. Complete shared backend/schema changes before integrating the two Flutter applications.
+
+Avoid unnecessary repeated analysis and long test loops. Inspect first, implement directly, then perform one focused final verification.
+
+The final deliverable must be a working, persistent and integrated marketplace catalogue across TechKart Customer and TechKart Buddy, using the exact supplied category/subcategory/brand reference structure.
+
+1. Mobiles & Smartphones
+Mobiles & Smartphones - Smartphones: Apple iPhone, Samsung Galaxy S Series, Google Pixel, OnePlus, Xiaomi, Redmi, realme, OPPO, vivo, Motorola, Nothing Phone.
+Mobiles & Smartphones - Feature Phones: Nokia/HMD, itel, Lava, JioBharat, Samsung Guru.
+Mobiles & Smartphones - 5G Smartphones: Samsung Galaxy 5G, iPhone 5G, OnePlus Nord, Redmi Note 5G, realme Number Series, vivo T Series.
+Mobiles & Smartphones - Gaming Phones: ASUS ROG Phone, nubia RedMagic, iQOO, POCO F Series.
+Mobiles & Smartphones - Foldable Phones: Samsung Galaxy Z Fold/Flip, Motorola Razr, Google Pixel Fold.
+Mobiles & Smartphones - Rugged Phones: Ulefone, Doogee, Blackview, CAT Phones.
+Mobiles & Smartphones - Camera Phones: Apple iPhone Pro, Samsung Galaxy Ultra, Google Pixel Pro, vivo X Series, OPPO Find X Series.
+Mobiles & Smartphones - Budget Smartphones: Redmi A Series, realme C Series, Samsung Galaxy M Series, POCO C Series, itel, Lava.
+Mobiles & Smartphones - Refurbished Smartphones: Refurbished Apple iPhone, Samsung Galaxy, OnePlus, Redmi, Motorola.
+Mobiles & Smartphones - Mobile Accessories: Chargers, cables, adapters, power banks, mobile lenses.
+Mobiles & Smartphones - Phone Cases & Covers: Spigen, Ringke, ESR, OtterBox, Stuffcool, DailyObjects.
+Mobiles & Smartphones - Screen Protectors: Tempered Glass, Privacy Glass, Hydrogel Film, Spigen, ESR, amFilm.
+Mobiles & Smartphones - Mobile Stands & Holders: Portronics, Spigen, UGREEN, Stuffcool, Belkin.
+
+2. Laptops & Notebooks
+Laptops & Notebooks - Thin & Light Laptops: Apple MacBook Air, ASUS Zenbook, HP Pavilion Aero, Acer Swift, Lenovo Yoga Slim.
+Laptops & Notebooks - Gaming Laptops: ASUS ROG, Acer Predator/Nitro, Lenovo Legion/LOQ, HP Omen/Victus, MSI Gaming, Dell Alienware.
+Laptops & Notebooks - Business Laptops: Lenovo ThinkPad, Dell Latitude, HP EliteBook, ASUS ExpertBook.
+Laptops & Notebooks - Student Laptops: HP 15, Dell Inspiron, Lenovo IdeaPad, Acer Aspire, ASUS Vivobook.
+Laptops & Notebooks - 2-in-1 Convertible Laptops: Microsoft Surface Pro, Lenovo Yoga, HP Envy x360, ASUS Vivobook Flip.
+Laptops & Notebooks - MacBooks: Apple MacBook Air, Apple MacBook Pro.
+Laptops & Notebooks - Chromebooks: Acer Chromebook, HP Chromebook, Lenovo Chromebook, ASUS Chromebook.
+Laptops & Notebooks - Workstation Laptops: Dell Precision, HP ZBook, Lenovo ThinkPad P Series.
+Laptops & Notebooks - Laptop Accessories: Laptop Bags, Sleeves, Cooling Pads, Laptop Stands, USB Hubs.
+Laptops & Notebooks - Laptop Batteries & Chargers: Original Dell, HP, Lenovo, ASUS, Acer, Apple Chargers and Batteries.
+
+3. Computers & Components
+Computers & Components - Desktop Computers: Dell OptiPlex, HP ProDesk, Lenovo ThinkCentre, ASUS Desktop.
+Computers & Components - All-in-One PCs: Apple iMac, HP All-in-One, Dell Inspiron AIO, Lenovo IdeaCentre AIO.
+Computers & Components - Mini PCs: Intel NUC, ASUS Mini PC, MSI Cubi, Beelink, Minisforum.
+Computers & Components - Gaming PCs: ASUS ROG, MSI Gaming Desktop, Alienware, Lenovo Legion, HP Omen.
+Computers & Components - Computer Processors (CPU): Intel Core, Intel Xeon, AMD Ryzen, AMD Threadripper.
+Computers & Components - Motherboards: ASUS, MSI, Gigabyte, ASRock.
+Computers & Components - Graphics Cards (GPU): NVIDIA GeForce RTX, AMD Radeon RX, Intel Arc.
+Computers & Components - RAM & Memory: Kingston, Corsair, Crucial, G.Skill, ADATA, TeamGroup.
+Computers & Components - Internal Storage: Samsung SSD, WD, Seagate, Crucial, Kingston.
+Computers & Components - Power Supply Units: Corsair, Cooler Master, Antec, Seasonic, DeepCool.
+Computers & Components - PC Cabinets & Cases: NZXT, Corsair, Cooler Master, Lian Li, Ant Esports.
+Computers & Components - Cooling Systems: Cooler Master, Noctua, DeepCool, Corsair, Arctic.
+
+4. Monitors & Displays
+Monitors & Displays - LED Monitors: Dell, LG, Samsung, Acer, BenQ, HP.
+Monitors & Displays - Gaming Monitors: ASUS ROG, Acer Predator, MSI, LG UltraGear, Samsung Odyssey, BenQ Zowie.
+Monitors & Displays - 4K Monitors: Dell UltraSharp, LG UltraFine, Samsung ViewFinity, BenQ.
+Monitors & Displays - Curved Monitors: Samsung Odyssey, LG UltraWide, MSI, Dell.
+Monitors & Displays - Ultrawide Monitors: LG UltraWide, Samsung Odyssey, Dell UltraSharp.
+Monitors & Displays - Professional Monitors: BenQ PD Series, ASUS ProArt, Dell UltraSharp, EIZO.
+Monitors & Displays - Portable Monitors: ASUS ZenScreen, Lenovo ThinkVision M, ViewSonic, Arzopa.
+Monitors & Displays - Monitor Accessories: Monitor Arms, Stands, Mounts, Screen Cleaners, Privacy Filters.
+
+5. Computer Accessories & Peripherals
+Computer Accessories & Peripherals - Keyboards: Logitech, Dell, HP, Lenovo, Keychron, Corsair, Razer, Redragon.
+Computer Accessories & Peripherals - Gaming Keyboards: Razer, Corsair, HyperX, SteelSeries, Logitech G, Redragon.
+Computer Accessories & Peripherals - Mouse: Logitech, Dell, HP, Microsoft, Lenovo, Razer.
+Computer Accessories & Peripherals - Gaming Mouse: Logitech G, Razer, SteelSeries, Corsair, HyperX.
+Computer Accessories & Peripherals - Mouse Pads: SteelSeries, Logitech, Razer, Corsair, HyperX.
+Computer Accessories & Peripherals - Webcams: Logitech, HP, Dell, Lenovo, Microsoft.
+Computer Accessories & Peripherals - USB Hubs & Docking Stations: Anker, UGREEN, Belkin, Dell, HP, Lenovo.
+Computer Accessories & Peripherals - External DVD Drives: ASUS, LG, Dell, Lenovo.
+Computer Accessories & Peripherals - Card Readers: SanDisk, Kingston, Transcend, UGREEN.
+Computer Accessories & Peripherals - Cables & Adapters: UGREEN, Belkin, Anker, Amazon Basics, Portronics.
+Computer Accessories & Peripherals - Laptop Stands: Portronics, Zebronics, Amazon Basics, UGREEN.
+Computer Accessories & Peripherals - Gaming Controllers: Xbox Wireless Controller, PlayStation DualSense, Logitech, Cosmic Byte, Redgear.
+Computer Accessories & Peripherals - Joysticks & Gamepads: Logitech, Thrustmaster, Xbox, PlayStation, Cosmic Byte.
+
+6. Audio & Headphones
+Audio & Headphones - Wired Earphones: JBL, Sony, boAt, Sennheiser, Realme, OnePlus.
+Audio & Headphones - Wireless Earbuds (TWS): Apple AirPods, Samsung Galaxy Buds, Sony WF Series, OnePlus Buds, JBL, boAt, Noise.
+Audio & Headphones - Neckbands: OnePlus Bullets Wireless, realme Buds Wireless, boAt Rockerz, Noise.
+Audio & Headphones - Over-Ear Headphones: Sony WH Series, Bose QuietComfort, JBL, Sennheiser, Audio-Technica.
+Audio & Headphones - On-Ear Headphones: JBL, Sony, boAt, Philips, Skullcandy.
+Audio & Headphones - Gaming Headsets: HyperX, Razer, Logitech G, SteelSeries, Corsair, JBL Quantum.
+Audio & Headphones - Bluetooth Speakers: JBL Flip/Charge, Sony, boAt Stone, Ultimate Ears, Marshall.
+Audio & Headphones - Party Speakers: JBL PartyBox, Sony XV Series, boAt PartyPal, Philips.
+Audio & Headphones - Soundbars: Samsung, Sony, JBL, LG, boAt, Zebronics.
+Audio & Headphones - Home Theatre Systems: Sony, JBL, Samsung, LG, Philips.
+Audio & Headphones - Studio Monitors: Yamaha, KRK, JBL Professional, PreSonus, M-Audio.
+Audio & Headphones - Microphones: Rode, Shure, Audio-Technica, Maono, Boya, HyperX.
+Audio & Headphones - Audio Interfaces: Focusrite Scarlett, PreSonus, Behringer, Universal Audio.
+Audio & Headphones - DAC & Amplifiers: FiiO, iFi Audio, AudioQuest, Topping, Sony.
+
+7. Smartwatches & Wearables
+Smartwatches & Wearables - Smartwatches: Apple Watch, Samsung Galaxy Watch, OnePlus Watch, Garmin, Amazfit, Noise, boAt.
+Smartwatches & Wearables - Fitness Bands: Xiaomi Smart Band, Fitbit Charge, Garmin Vivosmart, Huawei Band.
+Smartwatches & Wearables - Smart Rings: Samsung Galaxy Ring, Oura Ring, Ultrahuman Ring AIR, boAt Smart Ring.
+Smartwatches & Wearables - Kids Smartwatches: imoo, Noise, boAt, Gizmore.
+Smartwatches & Wearables - GPS Sports Watches: Garmin Forerunner, Coros, Suunto, Polar.
+Smartwatches & Wearables - Smart Glasses: Ray-Ban Meta, Amazon Echo Frames, Xiaomi Smart Glasses.
+Smartwatches & Wearables - Wearable Accessories: Watch Straps, Screen Protectors, Charging Docks, Watch Cases.
+
+8. TVs & Home Entertainment
+TVs & Home Entertainment - LED TVs: Samsung, LG, Sony, TCL, Hisense, Xiaomi, Haier.
+TVs & Home Entertainment - QLED TVs: Samsung QLED, TCL QLED, Hisense QLED, Xiaomi QLED.
+TVs & Home Entertainment - OLED TVs: LG OLED, Sony Bravia OLED, Samsung OLED.
+TVs & Home Entertainment - 4K Ultra HD TVs: Samsung, LG, Sony, TCL, Hisense, Panasonic.
+TVs & Home Entertainment - Smart TVs: Samsung Tizen, LG webOS, Sony Google TV, Xiaomi Google TV, TCL Google TV.
+TVs & Home Entertainment - Android TVs: Sony, Xiaomi, TCL, Hisense, Kodak.
+TVs & Home Entertainment - Projectors: Epson, BenQ, ViewSonic, XGIMI, Optoma.
+TVs & Home Entertainment - Streaming Devices: Amazon Fire TV Stick, Google TV Streamer, Apple TV 4K, Xiaomi TV Stick.
+TVs & Home Entertainment - TV Accessories: TV Wall Mounts, Remote Controls, HDMI Cables, TV Stands, Screen Cleaners.
+TVs & Home Entertainment - Home Theatre Accessories: AV Receivers, Speaker Stands, Subwoofers, HDMI Switches.
+
+9. Cameras & Photography
+Cameras & Photography - DSLR Cameras: Canon EOS, Nikon D Series.
+Cameras & Photography - Mirrorless Cameras: Sony Alpha, Canon EOS R, Nikon Z, Fujifilm X Series, Panasonic Lumix.
+Cameras & Photography - Point & Shoot Cameras: Canon PowerShot, Sony Cyber-shot, Panasonic Lumix Compact.
+Cameras & Photography - Action Cameras: GoPro HERO, DJI Osmo Action, Insta360 Ace.
+Cameras & Photography - 360° Cameras: Insta360 X Series, GoPro MAX, Ricoh Theta.
+Cameras & Photography - Instant Cameras: Fujifilm Instax, Polaroid.
+Cameras & Photography - Camera Lenses: Canon RF/EF, Nikon Z/F, Sony E-Mount, Sigma, Tamron.
+Cameras & Photography - Camera Flash & Lighting: Godox, Profoto, Nikon Speedlight, Canon Speedlite.
+Cameras & Photography - Tripods & Monopods: Manfrotto, Benro, Vanguard, Digitek, Joby.
+Cameras & Photography - Camera Bags & Cases: Lowepro, Manfrotto, Vanguard, Amazon Basics.
+Cameras & Photography - Memory Cards: SanDisk, Samsung, Kingston, Lexar.
+Cameras & Photography - Camera Batteries & Chargers: Canon, Nikon, Sony, Fujifilm, Wasabi Power.
+Cameras & Photography - Photography Accessories: Camera Straps, Lens Filters, Lens Caps, Cleaning Kits, Remote Shutters.
+
+10. Printers, Scanners & Office Electronics
+Printers, Scanners & Office Electronics - Inkjet Printers: HP DeskJet, Canon PIXMA, Epson EcoTank.
+Printers, Scanners & Office Electronics - Laser Printers: HP LaserJet, Brother, Canon imageCLASS.
+Printers, Scanners & Office Electronics - Ink Tank Printers: Epson EcoTank, HP Smart Tank, Canon MegaTank.
+Printers, Scanners & Office Electronics - All-in-One Printers: HP, Canon, Epson, Brother.
+Printers, Scanners & Office Electronics - Photo Printers: Canon SELPHY, Epson PictureMate, Fujifilm Instax Link.
+Printers, Scanners & Office Electronics - Document Scanners: Epson, Brother, Canon, Fujitsu/Ricoh.
+Printers, Scanners & Office Electronics - Barcode Printers: Zebra, TSC, TVS Electronics, Honeywell.
+Printers, Scanners & Office Electronics - Label Printers: Brother P-touch, DYMO, Zebra.
+Printers, Scanners & Office Electronics - Projectors for Office: Epson, BenQ, ViewSonic, Optoma.
+Printers, Scanners & Office Electronics - UPS & Power Backup: APC, Microtek, Numeric, CyberPower, Eaton.
+Printers, Scanners & Office Electronics - Shredders: Fellowes, Kores, GBC.
+Printers, Scanners & Office Electronics - Office Calculators: Casio, Canon, Orpat.
+
+11. Networking & Wi-Fi Devices
+Networking & Wi-Fi Devices - Wi-Fi Routers: TP-Link, ASUS, Netgear, D-Link, Tenda.
+Networking & Wi-Fi Devices - Mesh Wi-Fi Systems: TP-Link Deco, Google Nest WiFi, ASUS ZenWiFi, Netgear Orbi.
+Networking & Wi-Fi Devices - Modems: TP-Link, D-Link, Netgear, Motorola.
+Networking & Wi-Fi Devices - Range Extenders: TP-Link, D-Link, Netgear, Tenda.
+Networking & Wi-Fi Devices - Network Switches: Cisco, TP-Link, Netgear, D-Link, Zyxel.
+Networking & Wi-Fi Devices - Access Points: Ubiquiti UniFi, TP-Link Omada, Cisco, Aruba.
+Networking & Wi-Fi Devices - Network Adapters: TP-Link, ASUS, D-Link, Netgear.
+Networking & Wi-Fi Devices - 4G/5G Hotspots: JioFi, TP-Link M Series, Netgear Nighthawk, Huawei.
+Networking & Wi-Fi Devices - Ethernet Cables: D-Link, Molex, UGREEN, Amazon Basics.
+Networking & Wi-Fi Devices - Network Accessories: RJ45 Connectors, Patch Panels, PoE Injectors, LAN Testers.
+
+12. Storage Devices
+Storage Devices - External Hard Drives: Seagate Expansion, WD My Passport, Toshiba Canvio.
+Storage Devices - Portable SSDs: Samsung T Series, SanDisk Extreme, Crucial X Series, Kingston XS.
+Storage Devices - Internal HDDs: Seagate BarraCuda, WD Blue, Toshiba P300.
+Storage Devices - Internal SSDs: Samsung 990 Series, WD Black/Blue, Crucial P Series, Kingston NV Series.
+Storage Devices - USB Flash Drives: SanDisk, Kingston, HP, Transcend.
+Storage Devices - Memory Cards: SanDisk, Samsung, Kingston, Lexar.
+Storage Devices - NAS Storage: Synology, QNAP, WD My Cloud.
+Storage Devices - NAS Hard Drives: WD Red, Seagate IronWolf, Toshiba N300.
+Storage Devices - Storage Enclosures: UGREEN, ORICO, Sabrent, ASUS.
+Storage Devices - RAID Storage Systems: Synology, QNAP, TerraMaster.
+
+13. Tablets & E-Readers
+Tablets & E-Readers - Android Tablets: Samsung Galaxy Tab, Lenovo Tab, Xiaomi Pad, OnePlus Pad, Redmi Pad.
+Tablets & E-Readers - iPads: Apple iPad, iPad Air, iPad Pro, iPad mini.
+Tablets & E-Readers - Windows Tablets: Microsoft Surface Pro, Lenovo ThinkPad X12.
+Tablets & E-Readers - Kids Tablets: Amazon Fire Kids, Lenovo Tab Kids, Samsung Kids Edition.
+Tablets & E-Readers - Drawing Tablets: Wacom, XP-Pen, Huion, Veikk.
+Tablets & E-Readers - E-Readers: Amazon Kindle, Kobo, PocketBook.
+Tablets & E-Readers - Tablet Keyboards: Apple Magic Keyboard, Logitech Combo Touch, Samsung Book Cover Keyboard.
+Tablets & E-Readers - Tablet Covers & Cases: Spigen, ESR, OtterBox, Apple Smart Folio.
+Tablets & E-Readers - Tablet Screen Protectors: ESR, Spigen, amFilm, tempered glass protectors.
+Tablets & E-Readers - Stylus Pens: Apple Pencil, Samsung S Pen, Logitech Crayon, Wacom Pen.
+
+14. Gaming Consoles & Accessories
+Gaming Consoles & Accessories - PlayStation Consoles: Sony PlayStation 5, PlayStation 5 Digital Edition.
+Gaming Consoles & Accessories - Xbox Consoles: Xbox Series X, Xbox Series S.
+Gaming Consoles & Accessories - Nintendo Consoles: Nintendo Switch, Nintendo Switch OLED.
+Gaming Consoles & Accessories - Handheld Gaming Devices: Steam Deck, ASUS ROG Ally, Lenovo Legion Go, MSI Claw.
+Gaming Consoles & Accessories - Gaming Controllers: PlayStation DualSense, Xbox Wireless Controller, Nintendo Joy-Con.
+Gaming Consoles & Accessories - VR Headsets: Meta Quest, PlayStation VR2, HTC Vive.
+Gaming Consoles & Accessories - Gaming Headsets: HyperX, Razer, Logitech G, SteelSeries.
+Gaming Consoles & Accessories - Gaming Chairs: Green Soul, Secretlab, Corsair, Ant Esports.
+Gaming Consoles & Accessories - Gaming Desks: IKEA, Green Soul, Cougar, Eureka Ergonomic.
+Gaming Consoles & Accessories - Gaming Accessories: Charging Docks, Controller Grips, Console Stands, Steering Wheels.
+
+15. Smart Home Devices
+Smart Home Devices - Smart Speakers: Amazon Echo, Google Nest Audio, Apple HomePod.
+Smart Home Devices - Smart Displays: Amazon Echo Show, Google Nest Hub.
+Smart Home Devices - Smart Bulbs: Philips Hue, Wipro, Syska, TP-Link Tapo.
+Smart Home Devices - Smart Switches: TP-Link Tapo, Sonoff, Wipro, GM Modular.
+Smart Home Devices - Smart Plugs: Amazon Smart Plug, TP-Link Tapo, Wipro, Qubo.
+Smart Home Devices - Smart Security Cameras: CP Plus, TP-Link Tapo, Xiaomi, Qubo, EZVIZ.
+Smart Home Devices - Video Doorbells: Ring, Google Nest Doorbell, Qubo, CP Plus.
+Smart Home Devices - Smart Locks: Yale, Godrej, Qubo, Samsung Smart Door Lock.
+Smart Home Devices - Smart Sensors: Aqara, Sonoff, Xiaomi, Philips Hue.
+Smart Home Devices - Smart Hubs & Controllers: Samsung SmartThings, Aqara Hub, Amazon Echo Hub.
+
+16. Power Banks & Charging Devices
+Power Banks & Charging Devices - Power Banks: Anker, Xiaomi, Ambrane, Portronics, boAt, Stuffcool.
+Power Banks & Charging Devices - Fast Chargers: Anker, UGREEN, Spigen, Samsung, OnePlus, Apple.
+Power Banks & Charging Devices - Wireless Chargers: Apple MagSafe, Samsung Wireless Charger, Belkin, Anker.
+Power Banks & Charging Devices - MagSafe Chargers: Apple MagSafe, Belkin, Anker, ESR.
+Power Banks & Charging Devices - Multi-Port Chargers: Anker, UGREEN, Portronics, Stuffcool.
+Power Banks & Charging Devices - USB-C Chargers: Apple, Samsung, Anker, UGREEN, OnePlus.
+Power Banks & Charging Devices - Car Chargers: Portronics, Anker, UGREEN, Stuffcool.
+Power Banks & Charging Devices - Charging Cables: Anker, Belkin, UGREEN, Amazon Basics, boAt.
+Power Banks & Charging Devices - Charging Stations: Belkin, Anker, UGREEN, Spigen.
+Power Banks & Charging Devices - Wireless Power Banks: Anker MagGo, Belkin, ESR, Stuffcool.
+
+17. Cables, Connectors & Adapters
+Cables, Connectors & Adapters - USB Cables: Anker, Belkin, UGREEN, Amazon Basics, Portronics.
+Cables, Connectors & Adapters - HDMI Cables: Belkin, UGREEN, Amazon Basics, Cable Matters.
+Cables, Connectors & Adapters - DisplayPort Cables: Cable Matters, UGREEN, StarTech, Amazon Basics.
+Cables, Connectors & Adapters - VGA Cables: UGREEN, Amazon Basics, Cable Matters.
+Cables, Connectors & Adapters - Ethernet Cables: D-Link, UGREEN, Molex, Amazon Basics.
+Cables, Connectors & Adapters - Audio Cables: Audio-Technica, UGREEN, Rode, Mogami.
+Cables, Connectors & Adapters - USB Adapters: Anker, UGREEN, Belkin, Portronics.
+Cables, Connectors & Adapters - Type-C Hubs: Anker, UGREEN, Belkin, Satechi.
+Cables, Connectors & Adapters - OTG Adapters: SanDisk, UGREEN, Portronics, Amazon Basics.
+Cables, Connectors & Adapters - Converters & Splitters: UGREEN, StarTech, Cable Matters, Belkin.
+
+18. Batteries & Power Solutions
+Batteries & Power Solutions - AA & AAA Batteries: Duracell, Energizer, Panasonic, Eveready.
+Batteries & Power Solutions - Rechargeable Batteries: Panasonic Eneloop, Duracell, Energizer.
+Batteries & Power Solutions - Lithium Batteries: Panasonic, Duracell, Energizer, Samsung SDI.
+Batteries & Power Solutions - Camera Batteries: Canon, Nikon, Sony, Fujifilm, Wasabi Power.
+Batteries & Power Solutions - Laptop Batteries: Dell, HP, Lenovo, ASUS, Acer.
+Batteries & Power Solutions - UPS Batteries: Exide, Amaron, APC, Microtek.
+Batteries & Power Solutions - Inverters: Luminous, Microtek, V-Guard, Livguard.
+Batteries & Power Solutions - Solar Power Banks: Anker, Goal Zero, EcoFlow, Jackery.
+Batteries & Power Solutions - Portable Power Stations: EcoFlow, Bluetti, Jackery, Anker SOLIX.
+Batteries & Power Solutions - Battery Chargers: Panasonic, Duracell, Nitecore, XTAR.
+
+19. Security & Surveillance
+Security & Surveillance - CCTV Cameras: CP Plus, Hikvision, Dahua, Honeywell, Godrej.
+Security & Surveillance - IP Cameras: Hikvision, Dahua, TP-Link Tapo, EZVIZ, Reolink.
+Security & Surveillance - DVR Systems: CP Plus, Hikvision, Dahua, Honeywell.
+Security & Surveillance - NVR Systems: Hikvision, Dahua, CP Plus, Uniview.
+Security & Surveillance - Video Door Phones: Godrej, Hikvision, CP Plus, Panasonic.
+Security & Surveillance - Biometric Devices: eSSL, Matrix, Mantra, ZKTeco.
+Security & Surveillance - Access Control Systems: HID, Matrix, ZKTeco, Honeywell.
+Security & Surveillance - Smart Alarms: CP Plus, Yale, Ring, Qubo.
+Security & Surveillance - Motion Sensors: Honeywell, Aqara, Sonoff, Bosch.
+Security & Surveillance - Security Accessories: CCTV Cables, Camera Mounts, BNC Connectors, Power Supplies.
+
+20. Car Electronics & Accessories
+Car Electronics & Accessories - Car Audio Systems: Sony, Pioneer, JBL, Kenwood, Blaupunkt.
+Car Electronics & Accessories - Car Speakers: JBL, Pioneer, Infinity, Blaupunkt, Sony.
+Car Electronics & Accessories - Car Subwoofers: JBL, Pioneer, Rockford Fosgate, Sony.
+Car Electronics & Accessories - Car Amplifiers: JBL, Pioneer, Alpine, Blaupunkt.
+Car Electronics & Accessories - Android Car Stereos: Blaupunkt, Sony, Pioneer, JVC, Woodman.
+Car Electronics & Accessories - Dash Cameras: 70mai, Qubo, DDPAI, Garmin, Nextbase.
+Car Electronics & Accessories - GPS Navigation Devices: Garmin, TomTom, MapmyIndia.
+Car Electronics & Accessories - Car Chargers: Portronics, Anker, UGREEN, Stuffcool.
+Car Electronics & Accessories - Parking Sensors: Bosch, Steelmate, Qubo, Nippon.
+Car Electronics & Accessories - Reverse Cameras: Sony, Pioneer, Qubo, Blaupunkt.
+Car Electronics & Accessories - Car Bluetooth Kits: JBL, Portronics, UGREEN, boAt.
+Car Electronics & Accessories - Tyre Pressure Monitoring Systems: Garmin, 70mai, Steelmate, Blaupunkt.
+
+21. Wearable & Fitness Electronics
+Wearable & Fitness Electronics - Fitness Trackers: Fitbit, Garmin, Xiaomi Smart Band, Huawei Band.
+Wearable & Fitness Electronics - Heart Rate Monitors: Polar, Garmin, Wahoo, Fitbit.
+Wearable & Fitness Electronics - Smart Scales: Withings, Xiaomi, Eufy, HealthSense.
+Wearable & Fitness Electronics - GPS Trackers: Garmin, Tile, Apple AirTag, Samsung SmartTag.
+Wearable & Fitness Electronics - Sports Sensors: Garmin, Wahoo, Polar, Suunto.
+Wearable & Fitness Electronics - Cycling Computers: Garmin Edge, Wahoo ELEMNT, Bryton.
+Wearable & Fitness Electronics - Swimming Trackers: Garmin Swim, Fitbit, Apple Watch.
+Wearable & Fitness Electronics - Fitness Accessories: Chest Straps, Smart Bands, Charging Cables, Replacement Straps.
+
+22. Electronic Musical Instruments
+Electronic Musical Instruments - Keyboards: Yamaha, Casio, Roland, Korg.
+Electronic Musical Instruments - Digital Pianos: Yamaha Clavinova, Roland, Casio Privia, Kawai.
+Electronic Musical Instruments - Synthesizers: Korg, Roland, Yamaha, Novation, Arturia.
+Electronic Musical Instruments - MIDI Controllers: Akai Professional, Novation, Arturia, Native Instruments.
+Electronic Musical Instruments - Electronic Drums: Roland V-Drums, Yamaha DTX, Alesis.
+Electronic Musical Instruments - Electric Guitars: Fender, Gibson, Ibanez, Yamaha, Cort.
+Electronic Musical Instruments - Bass Guitars: Fender, Ibanez, Yamaha, Squier, Cort.
+Electronic Musical Instruments - Guitar Amplifiers: Marshall, Fender, Boss, Orange, Blackstar.
+Electronic Musical Instruments - Electronic Wind Instruments: Yamaha YDS, Roland Aerophone, Akai EWI.
+Electronic Musical Instruments - Music Accessories: Guitar Tuners, Metronomes, Sustain Pedals, Instrument Cables.
+
+23. Streaming & Content Creation Equipment
+Streaming & Content Creation Equipment - Streaming Microphones: Rode, Shure, HyperX, Blue, Maono.
+Streaming & Content Creation Equipment - USB Microphones: Blue Yeti, Rode NT-USB, HyperX SoloCast, Fifine.
+Streaming & Content Creation Equipment - Capture Cards: Elgato, AVerMedia, NZXT.
+Streaming & Content Creation Equipment - Stream Decks: Elgato Stream Deck, Loupedeck.
+Streaming & Content Creation Equipment - Ring Lights: Digitek, Godox, Neewer, Simpex.
+Streaming & Content Creation Equipment - Softboxes: Godox, Neewer, Digitek, Simpex.
+Streaming & Content Creation Equipment - Green Screens: Elgato, Neewer, Digitek.
+Streaming & Content Creation Equipment - Teleprompters: Elgato, Glide Gear, Desview, Neewer.
+Streaming & Content Creation Equipment - Camera Mounts & Rigs: SmallRig, Ulanzi, Tilta, Manfrotto.
+Streaming & Content Creation Equipment - Podcast Equipment: RodeCaster, Focusrite, Shure, Maono, Zoom.
+
+24. Drones & Robotics
+Drones & Robotics - Camera Drones: DJI Mini, DJI Air, DJI Mavic, Autel EVO.
+Drones & Robotics - FPV Drones: DJI Avata, iFlight, BetaFPV, GEPRC.
+Drones & Robotics - Mini Drones: DJI Mini, Ryze Tello, Holy Stone.
+Drones & Robotics - Agricultural Drones: DJI Agras, ideaForge, Garuda Aerospace, IoTechWorld.
+Drones & Robotics - Drone Accessories: Batteries, Propellers, Controllers, Landing Pads, Carrying Cases.
+Drones & Robotics - Educational Robots: LEGO Education, Makeblock, VEX Robotics, Arduino Robotics Kits.
+Drones & Robotics - Programmable Robots: Makeblock, ELEGOO, UBTECH, LEGO Mindstorms.
+Drones & Robotics - Robotic Kits: Arduino, Raspberry Pi, ELEGOO, SunFounder.
+Drones & Robotics - Robot Components: Motors, Sensors, Servo Motors, Controllers, Robot Chassis.
+Drones & Robotics - DIY Robotics Accessories: Jumper Wires, Breadboards, Motor Drivers, Sensor Modules.
+
+25. Electronic Components & DIY
+Electronic Components & DIY - Microcontrollers: Arduino Uno, ESP32, ESP8266, Raspberry Pi Pico.
+Electronic Components & DIY - Development Boards: Raspberry Pi, Arduino, NVIDIA Jetson, STM32 Nucleo.
+Electronic Components & DIY - Sensors: Bosch, DFRobot, Adafruit, SparkFun, Seeed Studio.
+Electronic Components & DIY - Modules: Relay Modules, Bluetooth Modules, Wi-Fi Modules, GPS Modules.
+Electronic Components & DIY - Resistors & Capacitors: Vishay, Yageo, Panasonic, Murata.
+Electronic Components & DIY - Integrated Circuits: Texas Instruments, STMicroelectronics, Microchip, NXP.
+Electronic Components & DIY - Transistors & Diodes: ON Semiconductor, Vishay, Infineon, STMicroelectronics.
+Electronic Components & DIY - Breadboards & Prototyping: 3M, Adafruit, SparkFun, generic prototyping boards.
+Electronic Components & DIY - Soldering Equipment: Weller, Hakko, Proskit, Soldron.
+Electronic Components & DIY - Electronic Tools: Multimeters, Wire Strippers, Precision Screwdrivers, Tweezers.
+
+26. Networking & Server Hardware
+Networking & Server Hardware - Rack Servers: Dell PowerEdge, HPE ProLiant, Lenovo ThinkSystem.
+Networking & Server Hardware - Tower Servers: Dell PowerEdge T Series, HPE ProLiant ML, Lenovo ThinkSystem ST.
+Networking & Server Hardware - Blade Servers: HPE Synergy, Dell PowerEdge MX, Lenovo BladeCenter.
+Networking & Server Hardware - Server Processors: Intel Xeon, AMD EPYC.
+Networking & Server Hardware - Server RAM: Samsung, Micron, Kingston Server Premier, Crucial.
+Networking & Server Hardware - Server Storage: Seagate Exos, WD Ultrastar, Samsung Enterprise SSD.
+Networking & Server Hardware - Network Security Appliances: Fortinet, Sophos, Cisco, SonicWall.
+Networking & Server Hardware - Firewall Devices: Fortinet FortiGate, Cisco Firepower, Sophos XGS.
+Networking & Server Hardware - Enterprise Switches: Cisco Catalyst, Aruba, Juniper, HPE.
+Networking & Server Hardware - Server Accessories: Rack Cabinets, Rails, Cooling Fans, Server Power Supplies.
+
+27. Medical & Healthcare Electronics
+Medical & Healthcare Electronics - Digital Thermometers: Omron, Dr Trust, Beurer, Rossmax.
+Medical & Healthcare Electronics - Blood Pressure Monitors: Omron, Dr Trust, Beurer, BPL.
+Medical & Healthcare Electronics - Pulse Oximeters: BPL, Dr Trust, Beurer, Rossmax.
+Medical & Healthcare Electronics - Glucometers: Accu-Chek, OneTouch, Dr Morepen, Contour.
+Medical & Healthcare Electronics - ECG Devices: BPL, GE Healthcare, Philips, Schiller.
+Medical & Healthcare Electronics - Nebulizers: Omron, Philips, Dr Trust, BPL.
+Medical & Healthcare Electronics - CPAP & BiPAP Machines: ResMed, Philips Respironics, BMC.
+Medical & Healthcare Electronics - Digital Weighing Scales: Omron, HealthSense, Dr Trust, Beurer.
+Medical & Healthcare Electronics - Hearing Aids: Phonak, Signia, Widex, Oticon, ReSound.
+Medical & Healthcare Electronics - Medical Accessories: BP Cuffs, Oximeter Sensors, Glucometer Strips, Nebulizer Masks.
+
+28. Kitchen & Home Appliances
+Kitchen & Home Appliances - Mixer Grinders: Preethi, Sujata, Philips, Bajaj, Bosch.
+Kitchen & Home Appliances - Juicers: Philips, Kuvings, Havells, Wonderchef.
+Kitchen & Home Appliances - Air Fryers: Philips, Ninja, Instant, Havells, Prestige.
+Kitchen & Home Appliances - Microwave Ovens: LG, Samsung, IFB, Panasonic, Whirlpool.
+Kitchen & Home Appliances - OTG Ovens: Bajaj, Morphy Richards, Wonderchef, Agaro.
+Kitchen & Home Appliances - Induction Cooktops: Prestige, Philips, Havells, Pigeon, Usha.
+Kitchen & Home Appliances - Electric Kettles: Philips, Havells, Prestige, Kent, Butterfly.
+Kitchen & Home Appliances - Coffee Machines: Nespresso, De'Longhi, Philips, Morphy Richards, Budan.
+Kitchen & Home Appliances - Toasters & Sandwich Makers: Philips, Bajaj, Morphy Richards, Prestige.
+Kitchen & Home Appliances - Food Processors: Bosch, Philips, Inalsa, Wonderchef.
+Kitchen & Home Appliances - Rice Cookers: Panasonic, Prestige, Bajaj, Kent.
+Kitchen & Home Appliances - Water Purifiers: Kent, Aquaguard, Pureit, Livpure, AO Smith.
+
+29. Cooling & Air Treatment
+Cooling & Air Treatment - Air Conditioners: Daikin, LG, Samsung, Voltas, Blue Star, Hitachi, Panasonic.
+Cooling & Air Treatment - Air Coolers: Symphony, Bajaj, Crompton, Havells, Kenstar.
+Cooling & Air Treatment - Air Purifiers: Dyson, Philips, Xiaomi, Honeywell, Coway.
+Cooling & Air Treatment - Dehumidifiers: Sharp, Philips, Honeywell, Blue Star.
+Cooling & Air Treatment - Humidifiers: Philips, Dyson, Deerma, Honeywell.
+Cooling & Air Treatment - Room Heaters: Havells, Bajaj, Usha, Morphy Richards, Orient.
+Cooling & Air Treatment - Fans: Atomberg, Crompton, Havells, Orient, Usha.
+Cooling & Air Treatment - Exhaust Fans: Crompton, Havells, Bajaj, Orient.
+Cooling & Air Treatment - Air Quality Monitors: IQAir, Temtop, Kaiterra, Honeywell.
+Cooling & Air Treatment - AC Accessories: Stabilizers, Copper Pipes, AC Stands, Remote Controls, Filters.
+
+30. Washing & Cleaning Appliances
+Washing & Cleaning Appliances - Washing Machines: LG, Samsung, IFB, Bosch, Whirlpool, Haier.
+Washing & Cleaning Appliances - Front Load Washing Machines: Bosch, LG, Samsung, IFB, Siemens.
+Washing & Cleaning Appliances - Top Load Washing Machines: Whirlpool, Samsung, LG, Haier, Godrej.
+Washing & Cleaning Appliances - Washer Dryers: LG, Bosch, Samsung, IFB.
+Washing & Cleaning Appliances - Dishwashers: Bosch, IFB, Siemens, Faber, Voltas Beko.
+Washing & Cleaning Appliances - Vacuum Cleaners: Dyson, Eureka Forbes, Philips, Karcher, Agaro.
+Washing & Cleaning Appliances - Robot Vacuum Cleaners: iRobot Roomba, Roborock, Ecovacs, Dreame, Xiaomi.
+Washing & Cleaning Appliances - Wet & Dry Vacuum Cleaners: Karcher, Eureka Forbes, Philips, Agaro.
+Washing & Cleaning Appliances - Steam Cleaners: Karcher, Black+Decker, Agaro, Philips.
+Washing & Cleaning Appliances - Cleaning Accessories: Vacuum Bags, Filters, Brushes, Mop Pads, Cleaning Attachments.
+
+31. Refrigerators & Freezers
+Refrigerators & Freezers - Single Door Refrigerators: LG, Samsung, Whirlpool, Godrej, Haier.
+Refrigerators & Freezers - Double Door Refrigerators: LG, Samsung, Whirlpool, Bosch, Haier.
+Refrigerators & Freezers - Side-by-Side Refrigerators: Samsung, LG, Haier, Hisense, Panasonic.
+Refrigerators & Freezers - French Door Refrigerators: Samsung, LG, Bosch, Haier.
+Refrigerators & Freezers - Mini Refrigerators: Godrej, Haier, Whirlpool, Hisense.
+Refrigerators & Freezers - Deep Freezers: Blue Star, Voltas, Haier, Western.
+Refrigerators & Freezers - Commercial Refrigerators: Blue Star, Voltas, Western, Carrier.
+Refrigerators & Freezers - Wine Coolers: Liebherr, Haier, Glen, Celfrost.
+Refrigerators & Freezers - Refrigerator Accessories: Water Filters, Shelves, Door Gaskets, Ice Trays, Stabilizers.
+
+32. Personal Care Electronics
+Personal Care Electronics - Electric Shavers: Philips, Braun, Panasonic, Wahl.
+Personal Care Electronics - Trimmers: Philips, Braun, Wahl, Mi, Havells.
+Personal Care Electronics - Hair Dryers: Dyson, Philips, Vega, Havells, Remington.
+Personal Care Electronics - Hair Straighteners: Philips, Dyson, Vega, Remington, Ikonic.
+Personal Care Electronics - Hair Curlers: Dyson Airwrap, Philips, Vega, Remington.
+Personal Care Electronics - Electric Toothbrushes: Oral-B, Philips Sonicare, Colgate.
+Personal Care Electronics - Water Flossers: Waterpik, Philips, AGARO, Oracura.
+Personal Care Electronics - Facial Cleansing Devices: Foreo, Philips, Beurer, Xiaomi.
+Personal Care Electronics - Electric Massagers: Beurer, Lifelong, Dr Physio, AGARO.
+Personal Care Electronics - Grooming Kits: Philips, Braun, Wahl, Havells, Nova.
+
+33. Lighting & Electrical Electronics
+Lighting & Electrical Electronics - LED Bulbs: Philips, Wipro, Havells, Syska, Crompton.
+Lighting & Electrical Electronics - LED Tube Lights: Philips, Wipro, Havells, Bajaj.
+Lighting & Electrical Electronics - Smart Lights: Philips Hue, Wipro, Syska, TP-Link Tapo.
+Lighting & Electrical Electronics - Decorative Lights: Philips, Wipro, Syska, IKEA.
+Lighting & Electrical Electronics - Emergency Lights: Philips, Wipro, Eveready, Bajaj.
+Lighting & Electrical Electronics - Solar Lights: Philips, Havells, Wipro, Loom Solar.
+Lighting & Electrical Electronics - Electrical Switches: Legrand, Schneider Electric, Anchor, GM Modular.
+Lighting & Electrical Electronics - Smart Switchboards: Sonoff, Wipro, GM Modular, TP-Link Tapo.
+Lighting & Electrical Electronics - Voltage Stabilizers: V-Guard, Microtek, Blue Star, Everest.
+Lighting & Electrical Electronics - Surge Protectors: APC, Belkin, Honeywell, GM Modular.
+Lighting & Electrical Electronics - Extension Boards: Belkin, Honeywell, Portronics, GM Modular.
+
+34. Home Automation & IoT
+Home Automation & IoT - Smart Home Hubs: Samsung SmartThings, Aqara Hub, Amazon Echo Hub.
+Home Automation & IoT - Smart Thermostats: Google Nest, Honeywell Home, Ecobee.
+Home Automation & IoT - Smart Curtains: SwitchBot, Aqara, Zemismart.
+Home Automation & IoT - Smart Door Locks: Yale, Godrej, Qubo, Samsung.
+Home Automation & IoT - Smart Irrigation Systems: Rachio, Orbit B-hyve, Rain Bird.
+Home Automation & IoT - Smart Energy Monitors: Shelly, Emporia, Sense.
+Home Automation & IoT - IoT Sensors: Aqara, Sonoff, Bosch, Xiaomi.
+Home Automation & IoT - Automation Controllers: Raspberry Pi, Arduino, Home Assistant hardware.
+Home Automation & IoT - Smart Relays: Sonoff, Shelly, Aqara.
+Home Automation & IoT - IoT Development Kits: Arduino, ESP32, Raspberry Pi, Seeed Studio.
+
+35. Electronic Toys & Gadgets
+Electronic Toys & Gadgets - Remote Control Cars: Hot Wheels RC, Nikko, MJX, Rastar.
+Electronic Toys & Gadgets - RC Helicopters: Syma, WLtoys, Blade.
+Electronic Toys & Gadgets - RC Boats: Traxxas, Volantex, Pro Boat.
+Electronic Toys & Gadgets - Educational Electronic Toys: LEGO Education, Clementoni, Thames & Kosmos.
+Electronic Toys & Gadgets - Coding Toys: Sphero, Botley, Makeblock, LEGO.
+Electronic Toys & Gadgets - Smart Robots for Kids: LEGO, UBTECH, Makeblock, Sphero.
+Electronic Toys & Gadgets - Electronic Learning Devices: LeapFrog, VTech, Osmo.
+Electronic Toys & Gadgets - Digital Gadgets: Digital Clocks, Mini Projectors, Portable Fans, USB Gadgets.
+Electronic Toys & Gadgets - Science Kits: Arduino Starter Kits, Snap Circuits, ELEGOO Kits.
+Electronic Toys & Gadgets - Toy Accessories: Batteries, Chargers, Replacement Controllers, Motors.
+
+36. Office & Productivity Electronics
+Office & Productivity Electronics - Digital Voice Recorders: Sony, Olympus, Philips, Zoom.
+Office & Productivity Electronics - Dictation Devices: Philips SpeechMike, Olympus, Sony.
+Office & Productivity Electronics - Presentation Remotes: Logitech Spotlight, Kensington, Targus.
+Office & Productivity Electronics - Document Cameras: IPEVO, Epson, AVer, Lumens.
+Office & Productivity Electronics - Conference Speakers: Jabra Speak, Poly Sync, Anker PowerConf.
+Office & Productivity Electronics - Video Conferencing Systems: Logitech Rally, Poly Studio, Yealink, Cisco.
+Office & Productivity Electronics - Interactive Displays: BenQ, ViewSonic, Samsung Flip, LG CreateBoard.
+Office & Productivity Electronics - Digital Signage Displays: Samsung, LG, Sony, Philips.
+Office & Productivity Electronics - Smart Whiteboards: Samsung Flip, BenQ Board, ViewSonic ViewBoard.
+Office & Productivity Electronics - Office Accessories: USB Hubs, Docking Stations, Webcam Covers, Cable Organizers.
+
+37. Automotive Electronics
+Automotive Electronics - OBD Scanners: Bosch, Autel, Launch, Ancel.
+Automotive Electronics - Car Diagnostic Tools: Bosch, Launch, Autel, Foxwell.
+Automotive Electronics - GPS Trackers for Vehicles: JioThings, MapmyIndia, Teltonika, Queclink.
+Automotive Electronics - EV Chargers: Tata Power, Exicom, ABB, Delta, Statiq.
+Automotive Electronics - Portable EV Chargers: Tata Power, Exicom, Bolt.Earth, ChargeZone.
+Automotive Electronics - Tyre Inflators: Xiaomi, 70mai, Michelin, Portronics.
+Automotive Electronics - Jump Starters: NOCO, Bosch, Michelin, 70mai.
+Automotive Electronics - Car Battery Chargers: Bosch, NOCO, CTEK, Amaron.
+Automotive Electronics - TPMS Devices: Garmin, Steelmate, 70mai, Blaupunkt.
+Automotive Electronics - Automotive Sensors: Bosch, Denso, Delphi, Continental.
+
+38. Professional Audio & Video Equipment
+Professional Audio & Video Equipment - PA Systems: JBL Professional, Yamaha, Bose, QSC, Electro-Voice.
+Professional Audio & Video Equipment - Professional Speakers: JBL Professional, Yamaha, Mackie, QSC, RCF.
+Professional Audio & Video Equipment - Mixing Consoles: Yamaha, Allen & Heath, Behringer, Mackie, Soundcraft.
+Professional Audio & Video Equipment - Wireless Microphones: Shure, Sennheiser, Rode, Audio-Technica.
+Professional Audio & Video Equipment - Studio Microphones: Neumann, Rode, Shure, AKG, Audio-Technica.
+Professional Audio & Video Equipment - Audio Processors: dbx, Behringer, Yamaha, BSS.
+Professional Audio & Video Equipment - Video Switchers: Blackmagic Design, Roland, ATEM.
+Professional Audio & Video Equipment - Broadcast Cameras: Sony, Panasonic, Blackmagic Design, Canon.
+Professional Audio & Video Equipment - Video Production Monitors: Atomos, Blackmagic Design, SmallHD.
+Professional Audio & Video Equipment - Professional Lighting: Aputure, Godox, Nanlite, ARRI.
+
+39. Electronic Accessories & Replacement Parts
+Electronic Accessories & Replacement Parts - Smartphone Replacement Parts: Displays, Batteries, Charging Ports, Camera Modules.
+Electronic Accessories & Replacement Parts - Laptop Replacement Parts: Keyboards, Batteries, Screens, Hinges, Cooling Fans.
+Electronic Accessories & Replacement Parts - Tablet Replacement Parts: Displays, Batteries, Charging Flex Cables.
+Electronic Accessories & Replacement Parts - Camera Replacement Parts: Batteries, LCD Screens, Buttons, Lens Caps.
+Electronic Accessories & Replacement Parts - TV Replacement Parts: Remote Controls, Power Boards, LED Backlights, Main Boards.
+Electronic Accessories & Replacement Parts - Audio Replacement Parts: Speaker Drivers, Ear Pads, Ear Tips, Audio Cables.
+Electronic Accessories & Replacement Parts - Gaming Console Parts: Controllers, Cooling Fans, Power Supplies, Replacement Joysticks.
+Electronic Accessories & Replacement Parts - Chargers & Power Adapters: Dell, HP, Lenovo, ASUS, Apple, Samsung.
+Electronic Accessories & Replacement Parts - Remote Controls: Samsung, LG, Sony, Panasonic, universal remotes.
+Electronic Accessories & Replacement Parts - Repair Tools: iFixit, Jakemy, Proskit, Engineer, Wiha.
+
+40. Industrial Electronics
+Industrial Electronics - PLC Controllers: Siemens, Schneider Electric, Mitsubishi Electric, Allen-Bradley.
+Industrial Electronics - Industrial Sensors: Omron, Sick, IFM, Keyence, Pepperl+Fuchs.
+Industrial Electronics - Control Panels: Schneider Electric, Siemens, ABB, L&T.
+Industrial Electronics - Industrial Power Supplies: Mean Well, Siemens, Phoenix Contact, Delta.
+Industrial Electronics - Variable Frequency Drives: ABB, Siemens, Danfoss, Schneider Electric, Delta.
+Industrial Electronics - Servo Motors & Drives: Mitsubishi Electric, Yaskawa, Siemens, Delta.
+Industrial Electronics - Industrial Relays: Omron, Schneider Electric, Finder, ABB.
+Industrial Electronics - Industrial Switches: Siemens, Schneider Electric, Honeywell, Omron.
+Industrial Electronics - Measurement Instruments: Fluke, Keysight, Tektronix, Hioki.
+Industrial Electronics - Industrial Communication Devices: Moxa, Siemens, Advantech, Phoenix Contact.
+
+41. Renewable Energy Electronics
+Renewable Energy Electronics - Solar Panels: Waaree, Adani Solar, Tata Power Solar, Vikram Solar.
+Renewable Energy Electronics - Solar Inverters: Growatt, Sungrow, Solis, GoodWe, Huawei.
+Renewable Energy Electronics - Hybrid Inverters: Luminous, Growatt, Deye, GoodWe.
+Renewable Energy Electronics - Solar Batteries: Exide, Amaron, Luminous, Livguard.
+Renewable Energy Electronics - Solar Charge Controllers: Victron Energy, EPEVER, Morningstar.
+Renewable Energy Electronics - Solar Monitoring Systems: SolarEdge, Enphase, Huawei, Growatt.
+Renewable Energy Electronics - Wind Energy Controllers: ABB, Siemens Gamesa, Schneider Electric.
+Renewable Energy Electronics - Portable Solar Generators: EcoFlow, Bluetti, Jackery.
+Renewable Energy Electronics - Solar Accessories: MC4 Connectors, Solar Cables, Mounting Structures, Junction Boxes.
+Renewable Energy Electronics - Energy Storage Systems: Tesla Powerwall, BYD Battery-Box, Sungrow, Huawei.
+
+42. Electronic Measurement & Testing Equipment
+Electronic Measurement & Testing Equipment - Digital Multimeters: Fluke, UNI-T, Mastech, Keysight.
+Electronic Measurement & Testing Equipment - Oscilloscopes: Tektronix, Rigol, Keysight, Siglent.
+Electronic Measurement & Testing Equipment - Function Generators: Rigol, Keysight, Siglent, FeelTech.
+Electronic Measurement & Testing Equipment - Spectrum Analyzers: Rohde & Schwarz, Keysight, Anritsu, Rigol.
+Electronic Measurement & Testing Equipment - Logic Analyzers: Saleae, Digilent, Kingst.
+Electronic Measurement & Testing Equipment - Power Supplies: Keysight, Rigol, Siglent, GW Instek.
+Electronic Measurement & Testing Equipment - LCR Meters: Keysight, Hioki, UNI-T, GW Instek.
+Electronic Measurement & Testing Equipment - Network Cable Testers: Fluke Networks, Klein Tools, TREND Networks.
+Electronic Measurement & Testing Equipment - Thermal Cameras: FLIR, Hikmicro, Testo, UNI-T.
+Electronic Measurement & Testing Equipment - Calibration Equipment: Fluke Calibration, Keysight, WIKA, Druck.
+
+43. Telecom & Communication Devices
+Telecom & Communication Devices - VoIP Phones: Cisco, Yealink, Grandstream, Poly.
+Telecom & Communication Devices - IP PBX Systems: Grandstream, Panasonic, Yeastar, Avaya.
+Telecom & Communication Devices - Conference Phones: Poly, Jabra, Yealink, Cisco.
+Telecom & Communication Devices - Two-Way Radios: Motorola, Kenwood, Hytera, Icom.
+Telecom & Communication Devices - Walkie-Talkies: Motorola, Baofeng, Kenwood, Hytera.
+Telecom & Communication Devices - Fiber Optic Equipment: Ubiquiti, D-Link, TP-Link, FS.com.
+Telecom & Communication Devices - Optical Network Terminals: Nokia, Huawei, ZTE, Syrotech.
+Telecom & Communication Devices - Telecom Modems: Huawei, ZTE, Nokia, TP-Link.
+Telecom & Communication Devices - Signal Boosters: Cel-Fi, SureCall, WilsonPro.
+Telecom & Communication Devices - Communication Accessories: Fiber Patch Cords, Antennas, Connectors, Radio Batteries.
+
+44. Digital Lifestyle & Entertainment Gadgets
+Digital Lifestyle & Entertainment Gadgets - E-Readers: Amazon Kindle, Kobo, PocketBook.
+Digital Lifestyle & Entertainment Gadgets - Digital Photo Frames: Aura, Nixplay, Kodak, Frameo.
+Digital Lifestyle & Entertainment Gadgets - Portable Media Players: Sony Walkman, FiiO, Astell&Kern.
+Digital Lifestyle & Entertainment Gadgets - VR Headsets: Meta Quest, HTC Vive, PlayStation VR2.
+Digital Lifestyle & Entertainment Gadgets - AR Glasses: XREAL, VITURE, Rokid.
+Digital Lifestyle & Entertainment Gadgets - Mini Projectors: XGIMI, Anker Nebula, Wanbo, Epson.
+Digital Lifestyle & Entertainment Gadgets - Portable Gaming Devices: Steam Deck, ASUS ROG Ally, Lenovo Legion Go.
+Digital Lifestyle & Entertainment Gadgets - Smart Photo Printers: Canon SELPHY, HP Sprocket, Fujifilm Instax Link.
+Digital Lifestyle & Entertainment Gadgets - Digital Clocks & Displays: Lenovo Smart Clock, Amazon Echo Show, Google Nest Hub.
+Digital Lifestyle & Entertainment Gadgets - Entertainment Accessories: Streaming Remotes, VR Controllers, Media Player Remotes.
+
+45. Other Electronics
+Other Electronics - Electronic Calculators: Casio, Canon, Sharp, Texas Instruments.
+Other Electronics - Digital Clocks: Casio, Seiko, Philips, Lenovo.
+Other Electronics - Electronic Dictionaries: Franklin, Casio, ECTACO.
+Other Electronics - Electronic Organizers: Casio, Sharp, electronic planners.
+Other Electronics - GPS Devices: Garmin, TomTom, MapmyIndia.
+Other Electronics - Digital Notepads: reMarkable, Kindle Scribe, Boox Note Air.
+Other Electronics - Electronic Locks: Yale, Godrej, Samsung, Qubo.
+Other Electronics - Electronic Accessories: Adapters, Cables, Batteries, Connectors, Chargers.
+Other Electronics - Specialty Electronics: RFID Readers, NFC Devices, Thermal Printers, Digital Signage Controllers.
+Other Electronics - Miscellaneous Gadgets: USB Gadgets, Mini Fans, Digital Timers, Portable Electronics.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-11-26T01:56:34+05:30.
+
+The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:
+
+@[c:\Users\user\OneDrive\Desktop\techkart] is a [Directory]:
+c:\Users\user\OneDrive\Desktop\techkart
+@[c:\Users\user\OneDrive\Desktop\techkart_buddy] is a [Directory]:
+c:\Users\user\OneDrive\Desktop\techkart_buddy
+@[c:\Users\user\OneDrive\Desktop\techkart_backend] is a [Directory]:
+c:\Users\user\OneDrive\Desktop\techkart_backend
+</ADDITIONAL_METADATA>

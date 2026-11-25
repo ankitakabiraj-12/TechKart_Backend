@@ -68,6 +68,7 @@ class CustomerCartController
         $customerId = $this->resolveCustomerId($request);
 
         $productId = (int)$request->get('product_id', 0);
+        $variantId = $request->get('variant_id') ? (int)$request->get('variant_id') : null;
         $quantity = (int)$request->get('quantity', 1);
 
         if ($productId <= 0) {
@@ -105,20 +106,36 @@ class CustomerCartController
             }
 
             $currentStock = (int)$product['stock_quantity'];
+
+            // If variant is provided, check variant stock
+            $listingId = null;
+            if ($variantId !== null) {
+                $splStmt = $pdo->prepare('SELECT id, selling_price, mrp, stock_quantity FROM seller_product_listings WHERE variant_id = :vid AND listing_status = "active" LIMIT 1');
+                $splStmt->execute(['vid' => $variantId]);
+                $listing = $splStmt->fetch(PDO::FETCH_ASSOC);
+                if ($listing) {
+                    $listingId = (int)$listing['id'];
+                    $currentStock = (int)$listing['stock_quantity'];
+                }
+            }
+
             if ($currentStock <= 0) {
                 Response::error('Product is currently out of stock.', 400, [
                     'available_stock' => 0
                 ]);
             }
 
-            // 2. Check if product is already in customer's cart
-            $existingStmt = $pdo->prepare(
-                'SELECT id, quantity FROM cart_items WHERE customer_id = :customer_id AND product_id = :product_id LIMIT 1'
-            );
-            $existingStmt->execute([
+            // 2. Check if product (and variant) is already in customer's cart
+            $existingSql = 'SELECT id, quantity FROM cart_items WHERE customer_id = :customer_id AND product_id = :product_id AND ' . ($variantId !== null ? 'variant_id = :variant_id' : '(variant_id IS NULL OR variant_id = 0)') . ' LIMIT 1';
+            $existingStmt = $pdo->prepare($existingSql);
+            $binds = [
                 'customer_id' => $customerId,
                 'product_id'  => $productId,
-            ]);
+            ];
+            if ($variantId !== null) {
+                $binds['variant_id'] = $variantId;
+            }
+            $existingStmt->execute($binds);
             $existingItem = $existingStmt->fetch(PDO::FETCH_ASSOC);
 
             $newQuantity = $quantity;
@@ -139,7 +156,7 @@ class CustomerCartController
                 ]);
             }
 
-            // 3. Upsert cart item (prevents duplicate rows via UNIQUE constraint)
+            // 3. Upsert cart item
             if ($existingItem) {
                 $updateStmt = $pdo->prepare(
                     'UPDATE cart_items SET quantity = :quantity, updated_at = CURRENT_TIMESTAMP WHERE id = :id'
@@ -150,11 +167,13 @@ class CustomerCartController
                 ]);
             } else {
                 $insertStmt = $pdo->prepare(
-                    'INSERT INTO cart_items (customer_id, product_id, quantity) VALUES (:customer_id, :product_id, :quantity)'
+                    'INSERT INTO cart_items (customer_id, product_id, variant_id, listing_id, quantity) VALUES (:customer_id, :product_id, :variant_id, :listing_id, :quantity)'
                 );
                 $insertStmt->execute([
                     'customer_id' => $customerId,
                     'product_id'  => $productId,
+                    'variant_id'  => $variantId,
+                    'listing_id'  => $listingId,
                     'quantity'    => $newQuantity,
                 ]);
             }
@@ -323,6 +342,8 @@ class CustomerCartController
         $sql = "SELECT
                     ci.id AS cart_item_id,
                     ci.quantity,
+                    ci.variant_id,
+                    ci.listing_id,
                     ci.created_at AS added_at,
                     ci.updated_at AS last_updated_at,
                     p.id AS product_id,
@@ -336,12 +357,22 @@ class CustomerCartController
                     c.name AS category_name,
                     sp.store_name AS seller_store_name,
                     u.is_active AS seller_active,
-                    (SELECT image_url FROM product_images WHERE product_id = p.id AND is_primary = 1 LIMIT 1) AS primary_image_url
+                    pv.variant_name,
+                    pv.sku AS variant_sku,
+                    pv.colour AS variant_colour,
+                    pv.storage AS variant_storage,
+                    pv.ram AS variant_ram,
+                    spl.selling_price AS variant_price,
+                    spl.mrp AS variant_mrp,
+                    spl.stock_quantity AS variant_stock,
+                    (SELECT image_url FROM product_images WHERE product_id = p.id AND (variant_id = ci.variant_id OR is_primary = 1) ORDER BY (variant_id = ci.variant_id) DESC, is_primary DESC LIMIT 1) AS primary_image_url
                 FROM cart_items ci
                 JOIN products p ON ci.product_id = p.id
                 JOIN users u ON p.seller_id = u.id
                 LEFT JOIN categories c ON p.category_id = c.id
                 LEFT JOIN seller_profiles sp ON p.seller_id = sp.user_id
+                LEFT JOIN product_variants pv ON ci.variant_id = pv.id
+                LEFT JOIN seller_product_listings spl ON ci.variant_id = spl.variant_id AND spl.listing_status = 'active'
                 WHERE ci.customer_id = :customer_id
                 ORDER BY ci.created_at DESC, ci.id DESC";
 
@@ -357,9 +388,9 @@ class CustomerCartController
 
         foreach ($rows as $row) {
             $qty = (int)$row['quantity'];
-            $unitPrice = (float)$row['unit_price'];
-            $mrp = $row['mrp'] !== null ? (float)$row['mrp'] : $unitPrice;
-            $stock = (int)$row['stock_quantity'];
+            $unitPrice = $row['variant_price'] !== null ? (float)$row['variant_price'] : (float)$row['unit_price'];
+            $mrp = $row['variant_mrp'] !== null ? (float)$row['variant_mrp'] : ($row['mrp'] !== null ? (float)$row['mrp'] : $unitPrice);
+            $stock = $row['variant_stock'] !== null ? (int)$row['variant_stock'] : (int)$row['stock_quantity'];
             $isAvailable = ($row['product_status'] === 'published') && ((int)$row['seller_active'] === 1) && ($stock > 0);
             $isQuantityAvailable = $isAvailable && ($stock >= $qty);
 
@@ -377,14 +408,21 @@ class CustomerCartController
             $items[] = [
                 'cart_item_id'          => (int)$row['cart_item_id'],
                 'product_id'            => (int)$row['product_id'],
+                'variant_id'            => $row['variant_id'] ? (int)$row['variant_id'] : null,
+                'listing_id'            => $row['listing_id'] ? (int)$row['listing_id'] : null,
+                'variant_name'          => $row['variant_name'],
+                'variant_sku'           => $row['variant_sku'],
+                'variant_colour'        => $row['variant_colour'],
+                'variant_storage'       => $row['variant_storage'],
+                'variant_ram'           => $row['variant_ram'],
                 'seller_id'             => (int)$row['seller_id'],
                 'seller_store_name'     => $row['seller_store_name'] ?? 'Authorized Seller',
                 'category_name'         => $row['category_name'],
-                'title'                 => $row['product_title'],
+                'title'                 => $row['product_title'] . (!empty($row['variant_name']) && $row['variant_name'] !== 'Standard Edition' ? ' (' . $row['variant_name'] . ')' : ''),
                 'slug'                  => $row['product_slug'],
                 'primary_image_url'     => $row['primary_image_url'],
                 'unit_price'            => $unitPrice,
-                'mrp'                   => $row['mrp'] !== null ? (float)$row['mrp'] : null,
+                'mrp'                   => $mrp,
                 'quantity'              => $qty,
                 'line_total'            => $lineTotal,
                 'stock_quantity'        => $stock,

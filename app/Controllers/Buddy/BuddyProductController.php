@@ -261,6 +261,12 @@ class BuddyProductController
         $title          = trim((string)$request->get('title', ''));
         $categoryId     = $request->get('category_id') ? (int)$request->get('category_id') : null;
         $subcategoryId  = $request->get('subcategory_id') ? (int)$request->get('subcategory_id') : null;
+        $brandId        = $request->get('brand_id') ? (int)$request->get('brand_id') : null;
+        $productTypeId  = $request->get('product_type_id') ? (int)$request->get('product_type_id') : null;
+        $productFamily  = $request->get('product_family') ? trim((string)$request->get('product_family')) : null;
+        $productSeries  = $request->get('product_series') ? trim((string)$request->get('product_series')) : null;
+        $modelNumber    = $request->get('model_number') ? trim((string)$request->get('model_number')) : null;
+        $variantsInput  = $request->get('variants');
         $description    = $request->get('description') !== null ? trim((string)$request->get('description')) : null;
         $specifications = $request->get('specifications');
         $price          = $request->get('price');
@@ -365,14 +371,146 @@ class BuddyProductController
             // If submitted directly as published or approved, automatically record published_at
             $publishedAt = in_array($status, ['published', 'approved'], true) ? date('Y-m-d H:i:s') : null;
 
+            // 1. Create or Match Master Catalog Product
+            $masterStmt = $pdo->prepare(
+                'INSERT INTO master_products (brand_id, category_id, subcategory_id, product_type_id, product_family, product_series, product_name, product_slug, model_number, product_description, product_status)
+                 VALUES (:brand_id, :cat_id, :sub_id, :ptype_id, :family, :series, :name, :slug, :model, :desc, "active")
+                 ON DUPLICATE KEY UPDATE model_number = VALUES(model_number), product_description = VALUES(product_description)'
+            );
+            $masterStmt->execute([
+                'brand_id' => $brandId,
+                'cat_id'   => $categoryId ?? 1,
+                'sub_id'   => $subcategoryId,
+                'ptype_id' => $productTypeId,
+                'family'   => $productFamily,
+                'series'   => $productSeries,
+                'name'     => $title,
+                'slug'     => $slug,
+                'model'    => $modelNumber,
+                'desc'     => $description,
+            ]);
+            $masterProductId = (int)$pdo->lastInsertId();
+            if ($masterProductId === 0) {
+                $mpChk = $pdo->prepare('SELECT id FROM master_products WHERE product_slug = :slug LIMIT 1');
+                $mpChk->execute(['slug' => $slug]);
+                $masterProductId = (int)$mpChk->fetchColumn();
+            }
+
+            // 2. Handle Variants & Seller Product Listings
+            $primaryVariantId = null;
+            $createdVariants = [];
+
+            if (is_array($variantsInput) && !empty($variantsInput)) {
+                $vInsert = $pdo->prepare(
+                    'INSERT INTO product_variants (product_id, variant_name, sku, colour, storage, ram, configuration, variant_status)
+                     VALUES (:pid, :name, :sku, :colour, :storage, :ram, :config, "active")
+                     ON DUPLICATE KEY UPDATE variant_name = VALUES(variant_name), colour = VALUES(colour), storage = VALUES(storage), ram = VALUES(ram)'
+                );
+                $splInsert = $pdo->prepare(
+                    'INSERT INTO seller_product_listings (seller_id, product_id, variant_id, seller_sku, mrp, selling_price, stock_quantity, listing_status, published_at)
+                     VALUES (:seller_id, :pid, :vid, :sku, :mrp, :price, :stock, "active", NOW())
+                     ON DUPLICATE KEY UPDATE mrp = VALUES(mrp), selling_price = VALUES(selling_price), stock_quantity = VALUES(stock_quantity), listing_status = "active"'
+                );
+
+                foreach ($variantsInput as $vIdx => $v) {
+                    $vName = $v['name'] ?? $v['variant_name'] ?? 'Standard';
+                    $vSku = $v['sku'] ?? ($slug . '-' . bin2hex(random_bytes(3)));
+                    $vColour = $v['colour'] ?? $v['color'] ?? null;
+                    $vStorage = $v['storage'] ?? null;
+                    $vRam = $v['ram'] ?? null;
+                    $vPrice = isset($v['selling_price']) ? (float)$v['selling_price'] : (isset($v['price']) ? (float)$v['price'] : (float)$price);
+                    $vMrp = isset($v['mrp']) ? (float)$v['mrp'] : $mrp;
+                    $vStock = isset($v['stock_quantity']) ? (int)$v['stock_quantity'] : (isset($v['stock']) ? (int)$v['stock'] : $stockQuantity);
+
+                    $vInsert->execute([
+                        'pid'     => $masterProductId,
+                        'name'    => $vName,
+                        'sku'     => $vSku,
+                        'colour'  => $vColour,
+                        'storage' => $vStorage,
+                        'ram'     => $vRam,
+                        'config'  => $vName,
+                    ]);
+                    $vId = (int)$pdo->lastInsertId();
+                    if ($vId === 0) {
+                        $chkVar = $pdo->prepare('SELECT id FROM product_variants WHERE sku = :sku LIMIT 1');
+                        $chkVar->execute(['sku' => $vSku]);
+                        $vId = (int)$chkVar->fetchColumn();
+                    }
+
+                    if ($vIdx === 0) {
+                        $primaryVariantId = $vId;
+                    }
+
+                    $splInsert->execute([
+                        'seller_id' => $sellerId,
+                        'pid'       => $masterProductId,
+                        'vid'       => $vId,
+                        'sku'       => $vSku,
+                        'mrp'       => $vMrp ?? $vPrice,
+                        'price'     => $vPrice,
+                        'stock'     => $vStock,
+                    ]);
+
+                    $createdVariants[] = [
+                        'id'           => $vId,
+                        'variant_name' => $vName,
+                        'sku'          => $vSku,
+                        'price'        => $vPrice,
+                        'mrp'          => $vMrp,
+                        'stock'        => $vStock,
+                    ];
+                }
+            } else {
+                // Create single default variant
+                $defaultSku = strtoupper($slug . '-STD');
+                $vInsert = $pdo->prepare(
+                    'INSERT INTO product_variants (product_id, variant_name, sku, configuration, variant_status)
+                     VALUES (:pid, "Standard Edition", :sku, "Standard Edition", "active")
+                     ON DUPLICATE KEY UPDATE variant_name = VALUES(variant_name)'
+                );
+                $vInsert->execute([
+                    'pid' => $masterProductId,
+                    'sku' => $defaultSku,
+                ]);
+                $primaryVariantId = (int)$pdo->lastInsertId();
+                if ($primaryVariantId === 0) {
+                    $chkVar = $pdo->prepare('SELECT id FROM product_variants WHERE sku = :sku LIMIT 1');
+                    $chkVar->execute(['sku' => $defaultSku]);
+                    $primaryVariantId = (int)$chkVar->fetchColumn();
+                }
+
+                $splInsert = $pdo->prepare(
+                    'INSERT INTO seller_product_listings (seller_id, product_id, variant_id, seller_sku, mrp, selling_price, stock_quantity, listing_status, published_at)
+                     VALUES (:seller_id, :pid, :vid, :sku, :mrp, :price, :stock, "active", NOW())
+                     ON DUPLICATE KEY UPDATE mrp = VALUES(mrp), selling_price = VALUES(selling_price), stock_quantity = VALUES(stock_quantity), listing_status = "active"'
+                );
+                $splInsert->execute([
+                    'seller_id' => $sellerId,
+                    'pid'       => $masterProductId,
+                    'vid'       => $primaryVariantId,
+                    'sku'       => $defaultSku,
+                    'mrp'       => $mrp ?? (float)$price,
+                    'price'     => (float)$price,
+                    'stock'     => $stockQuantity,
+                ]);
+            }
+
+            // 3. Insert Bridge Products record
             $stmt = $pdo->prepare(
-                'INSERT INTO products (seller_id, category_id, subcategory_id, title, slug, description, specifications, price, mrp, stock_quantity, low_stock_threshold, status, published_at)
-                 VALUES (:seller_id, :category_id, :subcategory_id, :title, :slug, :description, :specifications, :price, :mrp, :stock_quantity, :low_stock_threshold, :status, :published_at)'
+                'INSERT INTO products (seller_id, category_id, subcategory_id, master_product_id, variant_id, brand_id, product_type_id, product_family, product_series, title, slug, description, specifications, price, mrp, stock_quantity, low_stock_threshold, status, published_at)
+                 VALUES (:seller_id, :category_id, :subcategory_id, :mpid, :vid, :bid, :ptype_id, :family, :series, :title, :slug, :description, :specifications, :price, :mrp, :stock_quantity, :low_stock_threshold, :status, :published_at)'
             );
             $stmt->execute([
                 'seller_id'           => $sellerId,
                 'category_id'         => $categoryId,
                 'subcategory_id'      => $subcategoryId,
+                'mpid'                => $masterProductId,
+                'vid'                 => $primaryVariantId,
+                'bid'                 => $brandId,
+                'ptype_id'            => $productTypeId,
+                'family'              => $productFamily,
+                'series'              => $productSeries,
                 'title'               => $title,
                 'slug'                => $slug,
                 'description'         => $description,

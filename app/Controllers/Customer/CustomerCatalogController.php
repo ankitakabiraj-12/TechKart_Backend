@@ -139,18 +139,111 @@ class CustomerCatalogController
     }
 
     /**
-     * List all verified Brands
+     * List all verified Brands (optionally filtered by subcategory_id or category_id)
      * GET /api/v1/customer/brands
      */
     public function brands(Request $request): void
     {
         try {
             $pdo = Database::getConnection();
+            $subcategoryId = $request->getQuery('subcategory_id');
+            $categoryId    = $request->getQuery('category_id');
+
+            if ($subcategoryId !== null && $subcategoryId !== '') {
+                $stmt = $pdo->prepare(
+                    'SELECT b.id, b.brand_name, b.brand_slug, b.official_website, b.brand_logo, b.verification_status,
+                            scb.product_families
+                     FROM brands b
+                     JOIN subcategory_brands scb ON scb.brand_id = b.id
+                     WHERE scb.subcategory_id = :sub_id AND b.verification_status = "verified"
+                     ORDER BY b.brand_name ASC'
+                );
+                $stmt->execute(['sub_id' => (int)$subcategoryId]);
+                $brands = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                Response::json($brands, 200, 'Subcategory brands retrieved successfully');
+                return;
+            }
+
+            if ($categoryId !== null && $categoryId !== '') {
+                $stmt = $pdo->prepare(
+                    'SELECT DISTINCT b.id, b.brand_name, b.brand_slug, b.official_website, b.brand_logo, b.verification_status
+                     FROM brands b
+                     JOIN subcategory_brands scb ON scb.brand_id = b.id
+                     JOIN categories c ON scb.subcategory_id = c.id
+                     WHERE c.parent_id = :cat_id AND b.verification_status = "verified"
+                     ORDER BY b.brand_name ASC'
+                );
+                $stmt->execute(['cat_id' => (int)$categoryId]);
+                $brands = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                Response::json($brands, 200, 'Category brands retrieved successfully');
+                return;
+            }
+
             $stmt = $pdo->query('SELECT id, brand_name, brand_slug, official_website, brand_logo, verification_status FROM brands WHERE verification_status = "verified" ORDER BY brand_name ASC');
             $brands = $stmt->fetchAll(PDO::FETCH_ASSOC);
             Response::json($brands, 200, 'Brands retrieved successfully');
         } catch (Throwable $e) {
             Response::error('Failed to retrieve brands: ' . $e->getMessage(), 500);
+        }
+    }
+
+    /**
+     * Get brands relevant to a specific subcategory
+     * GET /api/v1/customer/subcategories/{id}/brands
+     */
+    public function subcategoryBrands(Request $request, array $params = []): void
+    {
+        $subId = (int)($params['id'] ?? $request->getQuery('subcategory_id', 0));
+        if ($subId <= 0) {
+            Response::error('Valid subcategory ID required', 400);
+            return;
+        }
+
+        try {
+            $pdo = Database::getConnection();
+            $stmt = $pdo->prepare(
+                'SELECT b.id, b.brand_name, b.brand_slug, b.official_website, b.brand_logo, b.verification_status,
+                        scb.product_families
+                 FROM brands b
+                 JOIN subcategory_brands scb ON scb.brand_id = b.id
+                 WHERE scb.subcategory_id = :sub_id AND b.verification_status = "verified"
+                 ORDER BY b.brand_name ASC'
+            );
+            $stmt->execute(['sub_id' => $subId]);
+            $brands = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            Response::json($brands, 200, 'Subcategory brands retrieved successfully');
+        } catch (Throwable $e) {
+            Response::error('Failed to retrieve subcategory brands: ' . $e->getMessage(), 500);
+        }
+    }
+
+    /**
+     * Get product types / verticals for a specific subcategory
+     * GET /api/v1/customer/subcategories/{id}/product-types
+     */
+    public function subcategoryProductTypes(Request $request, array $params = []): void
+    {
+        $subId = (int)($params['id'] ?? $request->getQuery('subcategory_id', 0));
+        if ($subId <= 0) {
+            Response::error('Valid subcategory ID required', 400);
+            return;
+        }
+
+        try {
+            $pdo = Database::getConnection();
+            $stmt = $pdo->prepare(
+                'SELECT id, subcategory_id, type_name, type_slug
+                 FROM product_types
+                 WHERE subcategory_id = :sub_id
+                 ORDER BY type_name ASC'
+            );
+            $stmt->execute(['sub_id' => $subId]);
+            $types = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            Response::json($types, 200, 'Subcategory product types retrieved successfully');
+        } catch (Throwable $e) {
+            Response::error('Failed to retrieve product types: ' . $e->getMessage(), 500);
         }
     }
 
@@ -167,6 +260,7 @@ class CustomerCatalogController
             $categoryId      = $request->getQuery('category_id');
             $subcategoryId   = $request->getQuery('subcategory_id');
             $brandId         = $request->getQuery('brand_id');
+            $productTypeId   = $request->getQuery('product_type_id');
             $brandSlug       = trim((string)$request->getQuery('brand', ''));
             $categorySlug    = trim((string)$request->getQuery('category', ''));
             $subcategorySlug = trim((string)$request->getQuery('subcategory', ''));
@@ -198,6 +292,12 @@ class CustomerCatalogController
             if ($subcategoryId !== null && $subcategoryId !== '') {
                 $conditions[] = 'p.subcategory_id = :subcategory_id';
                 $params['subcategory_id'] = (int)$subcategoryId;
+            }
+
+            if ($productTypeId !== null && $productTypeId !== '') {
+                $conditions[] = '(p.product_type_id = :product_type_id OR mp.product_type_id = :product_type_id_mp)';
+                $params['product_type_id'] = (int)$productTypeId;
+                $params['product_type_id_mp'] = (int)$productTypeId;
             }
 
             if ($brandId !== null && $brandId !== '') {

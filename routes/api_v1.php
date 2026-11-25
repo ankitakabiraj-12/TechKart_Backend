@@ -35,6 +35,8 @@ $router->post('/api/v1/customer/auth/logout', [CustomerAuthController::class, 'l
 // Public Customer Catalog & Category Routes
 $router->get('/api/v1/customer/categories', [\App\Controllers\Customer\CustomerCatalogController::class, 'categories']);
 $router->get('/api/v1/customer/categories/{id}/subcategories', [\App\Controllers\Customer\CustomerCatalogController::class, 'subcategories']);
+$router->get('/api/v1/customer/subcategories/{id}/brands', [\App\Controllers\Customer\CustomerCatalogController::class, 'subcategoryBrands']);
+$router->get('/api/v1/customer/subcategories/{id}/product-types', [\App\Controllers\Customer\CustomerCatalogController::class, 'subcategoryProductTypes']);
 $router->get('/api/v1/customer/brands', [\App\Controllers\Customer\CustomerCatalogController::class, 'brands']);
 $router->get('/api/v1/customer/products/compare', [\App\Controllers\Customer\CustomerCatalogController::class, 'compare']);
 $router->get('/api/v1/customer/products', [\App\Controllers\Customer\CustomerCatalogController::class, 'index']);
@@ -115,6 +117,9 @@ $sellerAuthGuard = new AuthMiddleware(['seller', 'admin']);
 $router->get('/api/v1/buddy/categories', [\App\Controllers\Buddy\BuddyCategoryController::class, 'index'], [$sellerAuthGuard]);
 $router->get('/api/v1/buddy/categories/{id}', [\App\Controllers\Buddy\BuddyCategoryController::class, 'show'], [$sellerAuthGuard]);
 $router->get('/api/v1/buddy/categories/{id}/subcategories', [\App\Controllers\Buddy\BuddyCategoryController::class, 'subcategories'], [$sellerAuthGuard]);
+$router->get('/api/v1/buddy/subcategories/{id}/brands', [\App\Controllers\Customer\CustomerCatalogController::class, 'subcategoryBrands'], [$sellerAuthGuard]);
+$router->get('/api/v1/buddy/subcategories/{id}/product-types', [\App\Controllers\Customer\CustomerCatalogController::class, 'subcategoryProductTypes'], [$sellerAuthGuard]);
+$router->get('/api/v1/buddy/brands', [\App\Controllers\Customer\CustomerCatalogController::class, 'brands'], [$sellerAuthGuard]);
 $router->get('/api/v1/buddy/categories/{id}/specifications', [\App\Controllers\Buddy\BuddyCategoryController::class, 'specifications'], [$sellerAuthGuard]);
 
 // Master Catalog Search & Listing (Method A)

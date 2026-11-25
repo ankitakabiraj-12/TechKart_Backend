@@ -222,13 +222,17 @@ class CustomerOrderController
             } else {
                 // Pull from active cart_items
                 $cartStmt = $pdo->prepare(
-                    'SELECT ci.id AS cart_item_id, ci.product_id, ci.quantity,
+                    'SELECT ci.id AS cart_item_id, ci.product_id, ci.variant_id, ci.listing_id, ci.quantity,
                             p.seller_id, p.title, p.price, p.mrp, p.stock_quantity, p.status,
+                            pv.variant_name, pv.sku AS variant_sku,
+                            spl.selling_price AS variant_price, spl.stock_quantity AS variant_stock,
                             u.is_active AS seller_active, sp.store_name
                      FROM cart_items ci
                      JOIN products p ON ci.product_id = p.id
                      JOIN users u ON p.seller_id = u.id
                      LEFT JOIN seller_profiles sp ON p.seller_id = sp.user_id
+                     LEFT JOIN product_variants pv ON ci.variant_id = pv.id
+                     LEFT JOIN seller_product_listings spl ON ci.variant_id = spl.variant_id AND spl.listing_status = "active"
                      WHERE ci.customer_id = :customer_id
                      FOR UPDATE'
                 );
@@ -241,7 +245,7 @@ class CustomerOrderController
                 }
 
                 foreach ($cartRows as $row) {
-                    $stock = (int)$row['stock_quantity'];
+                    $stock = $row['variant_stock'] !== null ? (int)$row['variant_stock'] : (int)$row['stock_quantity'];
                     $qty = (int)$row['quantity'];
                     $pid = (int)$row['product_id'];
 
@@ -259,15 +263,19 @@ class CustomerOrderController
                         ]);
                     }
 
-                    $unitPrice = (float)$row['price'];
+                    $unitPrice = $row['variant_price'] !== null ? (float)$row['variant_price'] : (float)$row['price'];
                     $subtotal = round($unitPrice * $qty, 2);
                     $totalAmount += $subtotal;
                     $totalQuantity += $qty;
 
+                    $titleWithVariant = $row['title'] . (!empty($row['variant_name']) && $row['variant_name'] !== 'Standard Edition' ? ' (' . $row['variant_name'] . ')' : '');
+
                     $orderItems[] = [
                         'product_id'  => $pid,
+                        'variant_id'  => $row['variant_id'] ? (int)$row['variant_id'] : null,
+                        'listing_id'  => $row['listing_id'] ? (int)$row['listing_id'] : null,
                         'seller_id'   => (int)$row['seller_id'],
-                        'title'       => $row['title'],
+                        'title'       => $titleWithVariant,
                         'unit_price'  => $unitPrice,
                         'quantity'    => $qty,
                         'subtotal'    => $subtotal,
@@ -333,11 +341,14 @@ class CustomerOrderController
 
             // 2. Insert order items and deduct product stock
             $itemInsertStmt = $pdo->prepare(
-                'INSERT INTO order_items (order_id, seller_id, product_id, unit_price, quantity, subtotal, item_status)
-                 VALUES (:order_id, :seller_id, :product_id, :unit_price, :quantity, :subtotal, :item_status)'
+                'INSERT INTO order_items (order_id, seller_id, product_id, variant_id, listing_id, unit_price, quantity, subtotal, item_status)
+                 VALUES (:order_id, :seller_id, :product_id, :variant_id, :listing_id, :unit_price, :quantity, :subtotal, :item_status)'
             );
             $decrementStockStmt = $pdo->prepare(
-                'UPDATE products SET stock_quantity = stock_quantity - :qty WHERE id = :id'
+                'UPDATE products SET stock_quantity = GREATEST(0, stock_quantity - :qty) WHERE id = :id'
+            );
+            $decrementVariantStockStmt = $pdo->prepare(
+                'UPDATE seller_product_listings SET stock_quantity = GREATEST(0, stock_quantity - :qty) WHERE variant_id = :vid AND seller_id = :sid'
             );
 
             foreach ($orderItems as $item) {
@@ -345,6 +356,8 @@ class CustomerOrderController
                     'order_id'    => $orderId,
                     'seller_id'   => $item['seller_id'],
                     'product_id'  => $item['product_id'],
+                    'variant_id'  => $item['variant_id'] ?? null,
+                    'listing_id'  => $item['listing_id'] ?? null,
                     'unit_price'  => $item['unit_price'],
                     'quantity'    => $item['quantity'],
                     'subtotal'    => $item['subtotal'],
@@ -355,6 +368,14 @@ class CustomerOrderController
                     'qty' => $item['quantity'],
                     'id'  => $item['product_id'],
                 ]);
+
+                if (!empty($item['variant_id'])) {
+                    $decrementVariantStockStmt->execute([
+                        'qty' => $item['quantity'],
+                        'vid' => $item['variant_id'],
+                        'sid' => $item['seller_id'],
+                    ]);
+                }
             }
 
             // 3. Create initial Payment record

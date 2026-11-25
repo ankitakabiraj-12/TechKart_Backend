@@ -11,16 +11,13 @@ use PDO;
 use Throwable;
 
 /**
- * Controller handling public Customer Catalog (Products & Categories)
+ * Controller handling public Customer Catalog (Products, Master Catalog, Categories, Brands, Variants & Specs)
  */
 class CustomerCatalogController
 {
     /**
      * List active categories (hierarchical or flat)
      * GET /api/v1/customer/categories
-     * Query Params:
-     * - parent_id: int | 'root' | 'null' (optional)
-     * - nested: 1 or true (optional - returns root categories with nested subcategories)
      */
     public function categories(Request $request): void
     {
@@ -30,7 +27,6 @@ class CustomerCatalogController
             $nested = $request->getQuery('nested');
 
             if ($nested === '1' || $nested === 'true') {
-                // Fetch roots and children in nested tree
                 $rootStmt = $pdo->prepare(
                     'SELECT id, parent_id, name, slug, image_url, display_order, created_at
                      FROM categories
@@ -123,10 +119,11 @@ class CustomerCatalogController
             }
 
             $stmt = $pdo->prepare(
-                'SELECT id, parent_id, name, slug, image_url, display_order, created_at
-                 FROM categories
-                 WHERE parent_id = :pid AND is_active = 1
-                 ORDER BY display_order ASC, id ASC'
+                'SELECT c.id, c.parent_id, c.name, c.slug, c.image_url, c.display_order, c.created_at,
+                        (SELECT COUNT(*) FROM products p WHERE p.subcategory_id = c.id AND (p.status = \'published\' OR p.status = \'approved\')) AS product_count
+                 FROM categories c
+                 WHERE c.parent_id = :pid AND c.is_active = 1
+                 ORDER BY c.display_order ASC, c.id ASC'
             );
             $stmt->execute(['pid' => (int)$parent['id']]);
             $subcategories = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -142,44 +139,55 @@ class CustomerCatalogController
     }
 
     /**
+     * List all verified Brands
+     * GET /api/v1/customer/brands
+     */
+    public function brands(Request $request): void
+    {
+        try {
+            $pdo = Database::getConnection();
+            $stmt = $pdo->query('SELECT id, brand_name, brand_slug, official_website, brand_logo, verification_status FROM brands WHERE verification_status = "verified" ORDER BY brand_name ASC');
+            $brands = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            Response::json($brands, 200, 'Brands retrieved successfully');
+        } catch (Throwable $e) {
+            Response::error('Failed to retrieve brands: ' . $e->getMessage(), 500);
+        }
+    }
+
+    /**
      * List published products with filtering, search, sorting, and pagination
      * GET /api/v1/customer/products
-     * Query Params:
-     * - search: string
-     * - category_id: int
-     * - min_price: float
-     * - max_price: float
-     * - sort_by: price_asc | price_desc | latest | oldest | title_asc | title_desc
-     * - in_stock: 1 or 0
-     * - page: int (default 1)
-     * - limit: int (default 20, max 100)
      */
     public function index(Request $request): void
     {
         try {
             $pdo = Database::getConnection();
 
-            $search         = trim((string)$request->getQuery('search', ''));
-            $categoryId     = $request->getQuery('category_id');
-            $subcategoryId  = $request->getQuery('subcategory_id');
-            $categorySlug   = trim((string)$request->getQuery('category', ''));
+            $search          = trim((string)$request->getQuery('search', ''));
+            $categoryId      = $request->getQuery('category_id');
+            $subcategoryId   = $request->getQuery('subcategory_id');
+            $brandId         = $request->getQuery('brand_id');
+            $brandSlug       = trim((string)$request->getQuery('brand', ''));
+            $categorySlug    = trim((string)$request->getQuery('category', ''));
             $subcategorySlug = trim((string)$request->getQuery('subcategory', ''));
-            $minPrice       = $request->getQuery('min_price');
-            $maxPrice       = $request->getQuery('max_price');
-            $inStock        = $request->getQuery('in_stock');
-            $sortBy         = (string)$request->getQuery('sort_by', 'latest');
+            $minPrice        = $request->getQuery('min_price');
+            $maxPrice        = $request->getQuery('max_price');
+            $inStock         = $request->getQuery('in_stock');
+            $sortBy          = (string)$request->getQuery('sort_by', 'latest');
 
             $page  = max(1, (int)$request->getQuery('page', 1));
             $limit = min(100, max(1, (int)$request->getQuery('limit', 20)));
             $offset = ($page - 1) * $limit;
 
-            $conditions = ["p.status = 'published'", "u.is_active = 1"];
+            $conditions = ["(p.status = 'published' OR p.status = 'approved')", "u.is_active = 1"];
             $params = [];
 
             if ($search !== '') {
-                $conditions[] = '(p.title LIKE :search OR p.description LIKE :search_desc)';
+                $conditions[] = '(p.title LIKE :search OR p.description LIKE :search_desc OR b.brand_name LIKE :search_brand OR mp.model_number LIKE :search_model)';
                 $params['search'] = '%' . $search . '%';
                 $params['search_desc'] = '%' . $search . '%';
+                $params['search_brand'] = '%' . $search . '%';
+                $params['search_model'] = '%' . $search . '%';
             }
 
             if ($categoryId !== null && $categoryId !== '') {
@@ -190,6 +198,16 @@ class CustomerCatalogController
             if ($subcategoryId !== null && $subcategoryId !== '') {
                 $conditions[] = 'p.subcategory_id = :subcategory_id';
                 $params['subcategory_id'] = (int)$subcategoryId;
+            }
+
+            if ($brandId !== null && $brandId !== '') {
+                $conditions[] = 'p.brand_id = :brand_id';
+                $params['brand_id'] = (int)$brandId;
+            }
+
+            if ($brandSlug !== '') {
+                $conditions[] = 'b.brand_slug = :brand_slug';
+                $params['brand_slug'] = $brandSlug;
             }
 
             if ($categorySlug !== '') {
@@ -218,33 +236,35 @@ class CustomerCatalogController
 
             $whereSql = implode(' AND ', $conditions);
 
-            // Sorting order map
             $orderBy = match ($sortBy) {
                 'price_asc'  => 'p.price ASC, p.id DESC',
                 'price_desc' => 'p.price DESC, p.id DESC',
                 'title_asc'  => 'p.title ASC',
                 'title_desc' => 'p.title DESC',
-                'oldest'     => 'p.created_at ASC, p.id ASC',
-                default      => 'p.created_at DESC, p.id DESC',
+                'oldest'     => 'COALESCE(p.published_at, p.created_at) ASC, p.id ASC',
+                default      => 'COALESCE(p.published_at, p.created_at) DESC, p.id DESC',
             };
 
-            // 1. Count total matching products
             $countSql = "SELECT COUNT(p.id) AS total
                          FROM products p
                          JOIN users u ON p.seller_id = u.id
                          LEFT JOIN categories c ON p.category_id = c.id
                          LEFT JOIN categories sub ON p.subcategory_id = sub.id
+                         LEFT JOIN brands b ON p.brand_id = b.id
+                         LEFT JOIN master_products mp ON p.master_product_id = mp.id
                          WHERE {$whereSql}";
             $countStmt = $pdo->prepare($countSql);
             $countStmt->execute($params);
             $total = (int)$countStmt->fetchColumn();
 
-            // 2. Fetch page results
             $sql = "SELECT
                         p.id,
                         p.seller_id,
                         p.category_id,
                         p.subcategory_id,
+                        p.master_product_id,
+                        p.variant_id,
+                        p.brand_id,
                         p.title,
                         p.slug,
                         p.description,
@@ -252,8 +272,14 @@ class CustomerCatalogController
                         p.mrp,
                         p.stock_quantity,
                         p.status,
+                        p.published_at,
                         p.created_at,
                         p.updated_at,
+                        b.brand_name,
+                        b.brand_slug,
+                        mp.model_number,
+                        mp.warranty_information,
+                        mp.country_of_origin,
                         c.name AS category_name,
                         c.slug AS category_slug,
                         sub.name AS subcategory_name,
@@ -264,6 +290,8 @@ class CustomerCatalogController
                     JOIN users u ON p.seller_id = u.id
                     LEFT JOIN categories c ON p.category_id = c.id
                     LEFT JOIN categories sub ON p.subcategory_id = sub.id
+                    LEFT JOIN brands b ON p.brand_id = b.id
+                    LEFT JOIN master_products mp ON p.master_product_id = mp.id
                     LEFT JOIN seller_profiles sp ON p.seller_id = sp.user_id
                     WHERE {$whereSql}
                     ORDER BY {$orderBy}
@@ -278,7 +306,6 @@ class CustomerCatalogController
             $stmt->execute();
             $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            // Fetch secondary images for returned products
             if (!empty($products)) {
                 $productIds = array_column($products, 'id');
                 $inQuery = implode(',', array_map('intval', $productIds));
@@ -324,7 +351,8 @@ class CustomerCatalogController
     }
 
     /**
-     * Get single published product details with full image gallery, category, and seller info
+     * Get single published product details with full image gallery, category, seller,
+     * available variants, and category-specific dynamic specifications
      * GET /api/v1/customer/products/{id}
      */
     public function show(Request $request, array $params): void
@@ -344,6 +372,9 @@ class CustomerCatalogController
                         p.seller_id,
                         p.category_id,
                         p.subcategory_id,
+                        p.master_product_id,
+                        p.variant_id,
+                        p.brand_id,
                         p.title,
                         p.slug,
                         p.description,
@@ -351,8 +382,18 @@ class CustomerCatalogController
                         p.mrp,
                         p.stock_quantity,
                         p.status,
+                        p.published_at,
                         p.created_at,
                         p.updated_at,
+                        b.brand_name,
+                        b.brand_slug,
+                        b.official_website AS brand_website,
+                        b.brand_logo,
+                        mp.model_number,
+                        mp.manufacturer,
+                        mp.country_of_origin,
+                        mp.warranty_information,
+                        mp.gtin_upc_ean,
                         c.name AS category_name,
                         c.slug AS category_slug,
                         sub.name AS subcategory_name,
@@ -365,9 +406,11 @@ class CustomerCatalogController
                     JOIN users u ON p.seller_id = u.id
                     LEFT JOIN categories c ON p.category_id = c.id
                     LEFT JOIN categories sub ON p.subcategory_id = sub.id
+                    LEFT JOIN brands b ON p.brand_id = b.id
+                    LEFT JOIN master_products mp ON p.master_product_id = mp.id
                     LEFT JOIN seller_profiles sp ON p.seller_id = sp.user_id
                     WHERE " . ($isNumeric ? '(p.id = :id OR p.slug = :slug)' : 'p.slug = :slug') . "
-                      AND p.status = 'published' AND u.is_active = 1
+                      AND (p.status = 'published' OR p.status = 'approved') AND u.is_active = 1
                     LIMIT 1";
 
             $stmt = $pdo->prepare($sql);
@@ -383,16 +426,56 @@ class CustomerCatalogController
             }
 
             $id = (int)$product['id'];
+            $masterId = $product['master_product_id'] ? (int)$product['master_product_id'] : null;
 
             // Fetch product images
             $imgStmt = $pdo->prepare(
-                'SELECT id, image_url, is_primary, sort_order
+                'SELECT id, variant_id, image_url, is_primary, sort_order, image_type
                  FROM product_images
                  WHERE product_id = :product_id
                  ORDER BY is_primary DESC, sort_order ASC, id ASC'
             );
             $imgStmt->execute(['product_id' => $id]);
             $images = $imgStmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Fetch real variants if master_product_id exists
+            $variants = [];
+            if ($masterId !== null) {
+                $varStmt = $pdo->prepare(
+                    'SELECT pv.id, pv.product_id, pv.variant_name, pv.sku, pv.colour, pv.ram, pv.storage, pv.configuration, pv.variant_attributes,
+                            spl.id AS listing_id, spl.mrp, spl.selling_price, spl.stock_quantity, spl.dispatch_information, spl.shipping_information, spl.listing_status
+                     FROM product_variants pv
+                     LEFT JOIN seller_product_listings spl ON spl.variant_id = pv.id AND spl.listing_status = "active"
+                     WHERE pv.product_id = :mpid AND pv.variant_status = "active"
+                     ORDER BY pv.id ASC'
+                );
+                $varStmt->execute(['mpid' => $masterId]);
+                $variants = $varStmt->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($variants as &$v) {
+                    $v['id'] = (int)$v['id'];
+                    $v['mrp'] = $v['mrp'] !== null ? (float)$v['mrp'] : null;
+                    $v['selling_price'] = $v['selling_price'] !== null ? (float)$v['selling_price'] : null;
+                    $v['stock_quantity'] = (int)($v['stock_quantity'] ?? 0);
+                    if (!empty($v['variant_attributes']) && is_string($v['variant_attributes'])) {
+                        $v['variant_attributes'] = json_decode($v['variant_attributes'], true);
+                    }
+                }
+                unset($v);
+            }
+
+            // Fetch category-specific dynamic specifications
+            $specs = [];
+            if ($masterId !== null) {
+                $specStmt = $pdo->prepare(
+                    'SELECT ca.attribute_name, ca.attribute_key, ca.unit, ps.attribute_value
+                     FROM product_specifications ps
+                     JOIN category_attributes ca ON ps.attribute_id = ca.id
+                     WHERE ps.product_id = :mpid
+                     ORDER BY ca.display_order ASC'
+                );
+                $specStmt->execute(['mpid' => $masterId]);
+                $specs = $specStmt->fetchAll(PDO::FETCH_ASSOC);
+            }
 
             $product['price'] = (float)$product['price'];
             $product['mrp'] = $product['mrp'] !== null ? (float)$product['mrp'] : null;
@@ -401,16 +484,61 @@ class CustomerCatalogController
             $product['images'] = array_map(function ($img) {
                 return [
                     'id'         => (int)$img['id'],
+                    'variant_id' => $img['variant_id'] ? (int)$img['variant_id'] : null,
                     'image_url'  => $img['image_url'],
                     'is_primary' => (int)$img['is_primary'] === 1,
                     'sort_order' => (int)$img['sort_order'],
+                    'image_type' => $img['image_type'] ?? 'front',
                 ];
             }, $images);
+
+            $product['variants'] = $variants;
+            $product['specifications'] = $specs;
 
             Response::json($product, 200, 'Product details retrieved successfully');
 
         } catch (Throwable $e) {
             Response::error('Failed to retrieve product details: ' . $e->getMessage(), 500);
+        }
+    }
+
+    /**
+     * Get product comparison data for 2-4 products
+     * GET /api/v1/customer/products/compare?ids=12,19,101
+     */
+    public function compare(Request $request): void
+    {
+        $rawIds = trim((string)$request->getQuery('ids', ''));
+        if ($rawIds === '') {
+            Response::error('Product IDs parameter `ids` is required (e.g. ?ids=12,19)', 400);
+            return;
+        }
+
+        $ids = array_filter(array_map('intval', explode(',', $rawIds)));
+        if (empty($ids)) {
+            Response::error('Valid numeric product IDs required', 400);
+            return;
+        }
+
+        try {
+            $pdo = Database::getConnection();
+            $inQuery = implode(',', $ids);
+
+            $stmt = $pdo->query(
+                "SELECT p.id, p.title, p.price, p.mrp, p.stock_quantity, b.brand_name, mp.model_number,
+                        mp.warranty_information, mp.country_of_origin, c.name AS category_name,
+                        (SELECT image_url FROM product_images WHERE product_id = p.id AND is_primary = 1 LIMIT 1) AS primary_image_url
+                 FROM products p
+                 LEFT JOIN brands b ON p.brand_id = b.id
+                 LEFT JOIN master_products mp ON p.master_product_id = mp.id
+                 LEFT JOIN categories c ON p.category_id = c.id
+                 WHERE p.id IN ({$inQuery})"
+            );
+            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            Response::json($products, 200, 'Comparison data retrieved successfully');
+        } catch (Throwable $e) {
+            Response::error('Failed to compare products: ' . $e->getMessage(), 500);
         }
     }
 }

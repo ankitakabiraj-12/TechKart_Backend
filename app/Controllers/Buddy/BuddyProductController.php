@@ -362,9 +362,12 @@ class BuddyProductController
                 }
             }
 
+            // If submitted directly as published or approved, automatically record published_at
+            $publishedAt = in_array($status, ['published', 'approved'], true) ? date('Y-m-d H:i:s') : null;
+
             $stmt = $pdo->prepare(
-                'INSERT INTO products (seller_id, category_id, subcategory_id, title, slug, description, specifications, price, mrp, stock_quantity, low_stock_threshold, status)
-                 VALUES (:seller_id, :category_id, :subcategory_id, :title, :slug, :description, :specifications, :price, :mrp, :stock_quantity, :low_stock_threshold, :status)'
+                'INSERT INTO products (seller_id, category_id, subcategory_id, title, slug, description, specifications, price, mrp, stock_quantity, low_stock_threshold, status, published_at)
+                 VALUES (:seller_id, :category_id, :subcategory_id, :title, :slug, :description, :specifications, :price, :mrp, :stock_quantity, :low_stock_threshold, :status, :published_at)'
             );
             $stmt->execute([
                 'seller_id'           => $sellerId,
@@ -379,6 +382,7 @@ class BuddyProductController
                 'stock_quantity'      => $stockQuantity,
                 'low_stock_threshold' => $threshold,
                 'status'              => $status,
+                'published_at'        => $publishedAt,
             ]);
 
             $productId = (int)$pdo->lastInsertId();
@@ -614,6 +618,9 @@ class BuddyProductController
             if ($status !== null) {
                 $updates[] = 'status = :status';
                 $binds['status'] = $status;
+                if (in_array($status, ['published', 'approved'], true)) {
+                    $updates[] = 'published_at = COALESCE(published_at, NOW())';
+                }
             }
 
             $pdo->beginTransaction();
@@ -1030,6 +1037,161 @@ class BuddyProductController
                 $pdo->rollBack();
             }
             Response::error('Failed to review product: ' . $e->getMessage(), 500);
+        }
+    }
+
+    /**
+     * Search master catalog products to list against an existing genuine catalog item (Method A)
+     * GET /api/v1/buddy/catalog/search
+     * Query: query, category_id, subcategory_id
+     */
+    public function searchMasterCatalog(Request $request): void
+    {
+        $query         = trim((string)$request->getQuery('query', ''));
+        $categoryId    = $request->getQuery('category_id');
+        $subcategoryId = $request->getQuery('subcategory_id');
+
+        try {
+            $pdo = Database::getConnection();
+
+            $conditions = ["mp.product_status = 'active'"];
+            $params = [];
+
+            if ($query !== '') {
+                $conditions[] = '(mp.product_name LIKE :query OR mp.model_number LIKE :q_model OR b.brand_name LIKE :q_brand OR mp.gtin_upc_ean LIKE :q_gtin)';
+                $params['query']   = '%' . $query . '%';
+                $params['q_model'] = '%' . $query . '%';
+                $params['q_brand'] = '%' . $query . '%';
+                $params['q_gtin']  = '%' . $query . '%';
+            }
+
+            if ($categoryId !== null && $categoryId !== '') {
+                $conditions[] = 'mp.category_id = :category_id';
+                $params['category_id'] = (int)$categoryId;
+            }
+
+            if ($subcategoryId !== null && $subcategoryId !== '') {
+                $conditions[] = 'mp.subcategory_id = :subcategory_id';
+                $params['subcategory_id'] = (int)$subcategoryId;
+            }
+
+            $whereSql = implode(' AND ', $conditions);
+
+            $sql = "SELECT mp.id, mp.brand_id, mp.category_id, mp.subcategory_id, mp.product_name, mp.product_slug,
+                           mp.model_number, mp.manufacturer, mp.product_description, mp.country_of_origin,
+                           mp.warranty_information, mp.gtin_upc_ean,
+                           b.brand_name, b.brand_logo,
+                           c.name AS category_name, sub.name AS subcategory_name
+                    FROM master_products mp
+                    LEFT JOIN brands b ON mp.brand_id = b.id
+                    LEFT JOIN categories c ON mp.category_id = c.id
+                    LEFT JOIN categories sub ON mp.subcategory_id = sub.id
+                    WHERE {$whereSql}
+                    ORDER BY mp.id DESC LIMIT 30";
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute($params);
+            $masterProducts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if (!empty($masterProducts)) {
+                $masterIds = array_column($masterProducts, 'id');
+                $inQuery = implode(',', array_map('intval', $masterIds));
+
+                // Fetch variants for these master products
+                $varStmt = $pdo->query("SELECT id, product_id, variant_name, sku, colour, ram, storage, configuration, variant_attributes FROM product_variants WHERE product_id IN ({$inQuery}) AND variant_status = 'active'");
+                $variants = $varStmt->fetchAll(PDO::FETCH_ASSOC);
+                $varsByProduct = [];
+                foreach ($variants as $v) {
+                    $varsByProduct[$v['product_id']][] = $v;
+                }
+
+                foreach ($masterProducts as &$mp) {
+                    $mp['variants'] = $varsByProduct[$mp['id']] ?? [];
+                }
+                unset($mp);
+            }
+
+            Response::json($masterProducts, 200, 'Master catalog products retrieved successfully');
+
+        } catch (Throwable $e) {
+            Response::error('Failed to search master catalog: ' . $e->getMessage(), 500);
+        }
+    }
+
+    /**
+     * Seller lists against an existing catalog product & variant (Method A)
+     * POST /api/v1/buddy/listings
+     */
+    public function createListing(Request $request): void
+    {
+        $sellerId = $this->resolveSellerId($request);
+        $user = $request->getUser();
+
+        $productId   = (int)$request->get('product_id', 0);
+        $variantId   = (int)$request->get('variant_id', 0);
+        $sellerSku   = trim((string)$request->get('seller_sku', ''));
+        $mrp         = (float)$request->get('mrp', 0);
+        $price       = (float)$request->get('selling_price', $request->get('price', 0));
+        $stock       = (int)$request->get('stock_quantity', 0);
+        $dispatch    = trim((string)$request->get('dispatch_information', 'Dispatched in 24 hours via TechKart Express'));
+        $shipping    = trim((string)$request->get('shipping_information', 'Free Express Delivery across India'));
+
+        $errors = [];
+        if ($productId <= 0) $errors['product_id'] = 'Valid master product_id is required.';
+        if ($variantId <= 0) $errors['variant_id'] = 'Valid variant_id is required.';
+        if ($sellerSku === '') $errors['seller_sku'] = 'Seller SKU is required.';
+        if ($price <= 0) $errors['selling_price'] = 'Selling price must be greater than zero.';
+        if ($mrp > 0 && $price > $mrp) $errors['selling_price'] = 'Selling price cannot exceed MRP.';
+        if ($stock < 0) $errors['stock_quantity'] = 'Stock cannot be negative.';
+
+        if (!empty($errors)) {
+            Response::error('Validation failed', 422, $errors);
+        }
+
+        try {
+            $pdo = Database::getConnection();
+
+            // Verify variant belongs to product
+            $vCheck = $pdo->prepare('SELECT id, product_id, variant_name FROM product_variants WHERE id = :vid AND product_id = :pid LIMIT 1');
+            $vCheck->execute(['vid' => $variantId, 'pid' => $productId]);
+            $variant = $vCheck->fetch(PDO::FETCH_ASSOC);
+            if (!$variant) {
+                Response::error('Specified variant does not belong to the master product.', 422);
+            }
+
+            $stmt = $pdo->prepare(
+                'INSERT INTO seller_product_listings (seller_id, product_id, variant_id, seller_sku, mrp, selling_price, stock_quantity, listing_status, dispatch_information, shipping_information, published_at)
+                 VALUES (:seller_id, :product_id, :variant_id, :seller_sku, :mrp, :selling_price, :stock_quantity, "active", :dispatch, :shipping, NOW())
+                 ON DUPLICATE KEY UPDATE seller_sku = VALUES(seller_sku), mrp = VALUES(mrp), selling_price = VALUES(selling_price), stock_quantity = VALUES(stock_quantity), listing_status = "active", updated_at = NOW()'
+            );
+            $stmt->execute([
+                'seller_id'     => $sellerId,
+                'product_id'    => $productId,
+                'variant_id'    => $variantId,
+                'seller_sku'    => $sellerSku,
+                'mrp'           => $mrp,
+                'selling_price' => $price,
+                'stock_quantity'=> $stock,
+                'dispatch'      => $dispatch,
+                'shipping'      => $shipping,
+            ]);
+
+            $listingId = (int)$pdo->lastInsertId();
+
+            Response::json([
+                'listing_id'    => $listingId,
+                'seller_id'     => $sellerId,
+                'product_id'    => $productId,
+                'variant_id'    => $variantId,
+                'seller_sku'    => $sellerSku,
+                'mrp'           => $mrp,
+                'selling_price' => $price,
+                'stock_quantity'=> $stock,
+                'listing_status'=> 'active',
+            ], 201, 'Seller product listing created successfully');
+
+        } catch (Throwable $e) {
+            Response::error('Failed to create seller listing: ' . $e->getMessage(), 500);
         }
     }
 

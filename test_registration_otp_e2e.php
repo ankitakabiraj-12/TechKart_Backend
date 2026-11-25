@@ -51,11 +51,12 @@ $testPass = 'SecretP@ss123';
 // 1. Initiate registration
 echo "[1] Testing Registration OTP Initiation ($testEmail)...\n";
 $regRes = postJson("$baseUrl/customer/auth/register", [
-    'full_name' => 'Aditi Sen',
-    'email'     => $testEmail,
-    'phone'     => $testPhone,
-    'gender'    => 'female',
-    'password'  => $testPass,
+    'full_name'   => 'Aditi Sen',
+    'email'       => $testEmail,
+    'phone'       => $testPhone,
+    'gender'      => 'female',
+    'password'    => $testPass,
+    'require_otp' => true,
 ]);
 
 if ($regRes['code'] === 200 && ($regRes['data']['data']['requires_otp'] ?? false) === true) {

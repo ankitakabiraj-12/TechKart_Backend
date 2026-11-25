@@ -35,6 +35,8 @@ $router->post('/api/v1/customer/auth/logout', [CustomerAuthController::class, 'l
 // Public Customer Catalog & Category Routes
 $router->get('/api/v1/customer/categories', [\App\Controllers\Customer\CustomerCatalogController::class, 'categories']);
 $router->get('/api/v1/customer/categories/{id}/subcategories', [\App\Controllers\Customer\CustomerCatalogController::class, 'subcategories']);
+$router->get('/api/v1/customer/brands', [\App\Controllers\Customer\CustomerCatalogController::class, 'brands']);
+$router->get('/api/v1/customer/products/compare', [\App\Controllers\Customer\CustomerCatalogController::class, 'compare']);
 $router->get('/api/v1/customer/products', [\App\Controllers\Customer\CustomerCatalogController::class, 'index']);
 $router->get('/api/v1/customer/products/{id}', [\App\Controllers\Customer\CustomerCatalogController::class, 'show']);
 
@@ -114,6 +116,10 @@ $router->get('/api/v1/buddy/categories', [\App\Controllers\Buddy\BuddyCategoryCo
 $router->get('/api/v1/buddy/categories/{id}', [\App\Controllers\Buddy\BuddyCategoryController::class, 'show'], [$sellerAuthGuard]);
 $router->get('/api/v1/buddy/categories/{id}/subcategories', [\App\Controllers\Buddy\BuddyCategoryController::class, 'subcategories'], [$sellerAuthGuard]);
 $router->get('/api/v1/buddy/categories/{id}/specifications', [\App\Controllers\Buddy\BuddyCategoryController::class, 'specifications'], [$sellerAuthGuard]);
+
+// Master Catalog Search & Listing (Method A)
+$router->get('/api/v1/buddy/catalog/search', [\App\Controllers\Buddy\BuddyProductController::class, 'searchMasterCatalog'], [$sellerAuthGuard]);
+$router->post('/api/v1/buddy/listings', [\App\Controllers\Buddy\BuddyProductController::class, 'createListing'], [$sellerAuthGuard]);
 
 $router->get('/api/v1/buddy/products', [\App\Controllers\Buddy\BuddyProductController::class, 'index'], [$sellerAuthGuard]);
 $router->post('/api/v1/buddy/products', [\App\Controllers\Buddy\BuddyProductController::class, 'store'], [$sellerAuthGuard]);

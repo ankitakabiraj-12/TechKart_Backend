@@ -90,11 +90,12 @@ $custName = "Rohit Verma";
 
 echo "\n[2] Customer Staged Registration, Verification & Zero-State Isolation...\n";
 $reg = request('POST', '/customer/auth/register', [
-    'full_name' => $custName,
-    'email'     => $custEmail,
-    'phone'     => $custPhone,
-    'gender'    => 'male',
-    'password'  => $custPass,
+    'full_name'   => $custName,
+    'email'       => $custEmail,
+    'phone'       => $custPhone,
+    'gender'      => 'male',
+    'password'    => $custPass,
+    'require_otp' => true,
 ]);
 check('Customer registration initiated with OTP', $reg['status'] === 200 && ($reg['data']['data']['requires_otp'] ?? false) === true);
 

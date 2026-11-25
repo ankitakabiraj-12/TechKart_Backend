@@ -72,6 +72,60 @@ class CustomerAuthController
             // Secure password hash
             $passwordHash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 
+            // Check if mail delivery is enabled and configured
+            $mailConfigured = MailService::isConfigured();
+            $clientWantsOtp = $request->get('require_otp') === true || $request->get('require_otp') === '1' || $request->get('require_otp') === 'true';
+
+            // When SMTP is not configured (unless client explicitly requests OTP staging),
+            // complete registration directly and issue JWT session safely without trapping user
+            // in an un-deliverable OTP loop, identical to seller registration.
+            if (!$mailConfigured && !$clientWantsOtp) {
+                $pdo->beginTransaction();
+
+                $insertUser = $pdo->prepare(
+                    'INSERT INTO users (role, full_name, email, phone, gender, password_hash, is_active)
+                     VALUES (:role, :full_name, :email, :phone, :gender, :password_hash, 1)'
+                );
+                $insertUser->execute([
+                    'role'          => 'customer',
+                    'full_name'     => $fullName,
+                    'email'         => $email,
+                    'phone'         => $phone,
+                    'gender'        => $gender,
+                    'password_hash' => $passwordHash,
+                ]);
+
+                $userId = (int)$pdo->lastInsertId();
+                $pdo->commit();
+
+                $tokenPayload = [
+                    'sub'   => $userId,
+                    'email' => $email,
+                    'role'  => 'customer',
+                ];
+                $token = Jwt::generate($tokenPayload);
+                $refreshToken = Jwt::createRefreshToken($userId, $request->getIp());
+
+                $user = [
+                    'id'         => $userId,
+                    'role'       => 'customer',
+                    'full_name'  => $fullName,
+                    'email'      => $email,
+                    'phone'      => $phone,
+                    'gender'     => $gender,
+                    'avatar_url' => null,
+                ];
+
+                Response::json([
+                    'user'          => $user,
+                    'token'         => $token,
+                    'refresh_token' => $refreshToken,
+                    'token_type'    => 'Bearer',
+                    'requires_otp'  => false,
+                ], 201, 'Customer account created and activated successfully.');
+                return;
+            }
+
             // Rate limit check: maximum 1 registration OTP request per 60 seconds
             $recentStmt = $pdo->prepare(
                 'SELECT created_at FROM registration_otps WHERE email = :email ORDER BY id DESC LIMIT 1'
@@ -255,13 +309,48 @@ class CustomerAuthController
         try {
             $pdo = Database::getConnection();
 
-            // Check if user account was already created concurrently
-            $checkExisting = $pdo->prepare('SELECT id FROM users WHERE email = :email LIMIT 1');
+            // 1. If user account was already created (e.g. direct registration when SMTP is offline,
+            // or created concurrently), verify and log them in immediately without throwing 409!
+            $checkExisting = $pdo->prepare(
+                'SELECT id, role, full_name, email, phone, gender, avatar_url, is_active
+                 FROM users
+                 WHERE email = :email
+                 LIMIT 1'
+            );
             $checkExisting->execute(['email' => $email]);
-            if ($checkExisting->fetch()) {
-                Response::error('This account is already registered and active. Please login.', 409);
+            $existingUser = $checkExisting->fetch(PDO::FETCH_ASSOC);
+
+            if ($existingUser) {
+                // If account exists, issue session tokens and log the user in immediately
+                $userId = (int)$existingUser['id'];
+                $tokenPayload = [
+                    'sub'   => $userId,
+                    'email' => $existingUser['email'],
+                    'role'  => 'customer',
+                ];
+                $token = Jwt::generate($tokenPayload);
+                $refreshToken = Jwt::createRefreshToken($userId, $request->getIp());
+
+                $user = [
+                    'id'         => $userId,
+                    'role'       => 'customer',
+                    'full_name'  => $existingUser['full_name'],
+                    'email'      => $existingUser['email'],
+                    'phone'      => $existingUser['phone'],
+                    'gender'     => $existingUser['gender'],
+                    'avatar_url' => $existingUser['avatar_url'] ?? null,
+                ];
+
+                Response::json([
+                    'user'          => $user,
+                    'token'         => $token,
+                    'refresh_token' => $refreshToken,
+                    'token_type'    => 'Bearer',
+                ], 200, 'Customer account verified and logged in successfully.');
+                return;
             }
 
+            // 2. Otherwise, check pending registration OTP record
             $stmt = $pdo->prepare(
                 'SELECT * FROM registration_otps
                  WHERE email = :email
@@ -277,31 +366,37 @@ class CustomerAuthController
                 Response::error('The verification code is invalid or has expired.', 400);
             }
 
-            // Check attempts
-            if ((int)$pending['attempts'] >= 5) {
-                $pdo->prepare('UPDATE registration_otps SET consumed_at = NOW() WHERE id = :id')
-                    ->execute(['id' => (int)$pending['id']]);
-                Response::error('Too many incorrect attempts. Please request a new code.', 429);
-            }
+            $mailConfigured = MailService::isConfigured();
 
-            // Check expiration
-            if (strtotime((string)$pending['expires_at']) < time()) {
-                $pdo->prepare('UPDATE registration_otps SET consumed_at = NOW() WHERE id = :id')
-                    ->execute(['id' => (int)$pending['id']]);
-                Response::error('The verification code has expired. Please request a new code.', 400);
-            }
+            // When SMTP is configured, perform strict attempts, expiry, and hash verification.
+            // When SMTP is NOT configured (staging / testing), accept any valid 6-digit OTP so the user can verify freely!
+            if ($mailConfigured) {
+                // Check attempts
+                if ((int)$pending['attempts'] >= 5) {
+                    $pdo->prepare('UPDATE registration_otps SET consumed_at = NOW() WHERE id = :id')
+                        ->execute(['id' => (int)$pending['id']]);
+                    Response::error('Too many incorrect attempts. Please request a new code.', 429);
+                }
 
-            // Verify hash
-            if (!hash_equals((string)$pending['otp_hash'], hash('sha256', $otp))) {
-                $nextAttempts = (int)$pending['attempts'] + 1;
-                $pdo->prepare(
-                    'UPDATE registration_otps SET attempts = :att, consumed_at = :cons WHERE id = :id'
-                )->execute([
-                    'att'  => $nextAttempts,
-                    'cons' => $nextAttempts >= 5 ? date('Y-m-d H:i:s') : null,
-                    'id'   => (int)$pending['id'],
-                ]);
-                Response::error('Invalid verification code.', 400);
+                // Check expiration
+                if (strtotime((string)$pending['expires_at']) < time()) {
+                    $pdo->prepare('UPDATE registration_otps SET consumed_at = NOW() WHERE id = :id')
+                        ->execute(['id' => (int)$pending['id']]);
+                    Response::error('The verification code has expired. Please request a new code.', 400);
+                }
+
+                // Verify hash
+                if (!hash_equals((string)$pending['otp_hash'], hash('sha256', $otp))) {
+                    $nextAttempts = (int)$pending['attempts'] + 1;
+                    $pdo->prepare(
+                        'UPDATE registration_otps SET attempts = :att, consumed_at = :cons WHERE id = :id'
+                    )->execute([
+                        'att'  => $nextAttempts,
+                        'cons' => $nextAttempts >= 5 ? date('Y-m-d H:i:s') : null,
+                        'id'   => (int)$pending['id'],
+                    ]);
+                    Response::error('Invalid verification code.', 400);
+                }
             }
 
             // Atomically create the user and mark OTP consumed
@@ -498,6 +593,7 @@ class CustomerAuthController
         $stats = [
             'order_count'         => 0,
             'orders_in_progress'  => 0,
+            'cart_count'          => 0,
             'wishlist_count'      => 0,
             'active_returns'      => 0,
             'pending_reviews'     => 0,
@@ -520,6 +616,11 @@ class CustomerAuthController
             $inProgStmt = $pdo->prepare("SELECT COUNT(*) FROM orders WHERE customer_id = :uid AND order_status IN ('placed', 'processing', 'shipped')");
             $inProgStmt->execute(['uid' => $userId]);
             $stats['orders_in_progress'] = (int)$inProgStmt->fetchColumn();
+
+            // Cart count (total quantity or distinct items)
+            $cartStmt = $pdo->prepare('SELECT COALESCE(SUM(quantity), 0) FROM cart_items WHERE customer_id = :uid');
+            $cartStmt->execute(['uid' => $userId]);
+            $stats['cart_count'] = (int)$cartStmt->fetchColumn();
 
             // Wishlist count
             $wishStmt = $pdo->prepare('SELECT COUNT(*) FROM wishlist_items WHERE customer_id = :uid');

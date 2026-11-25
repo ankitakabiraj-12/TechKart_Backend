@@ -47,9 +47,10 @@ if ($invalidEmailRes['code'] === 422) {
 // 2. Test customer registration with exact user-provided email & OTP verification
 echo "\n[2] Registering customer with exact email: {$testEmail}...\n";
 $registerRes = makeRequest('POST', "$baseUrl/customer/auth/register", [], [
-    'full_name' => $testName,
-    'email' => $testEmail,
-    'password' => $testPassword
+    'full_name'   => $testName,
+    'email'       => $testEmail,
+    'password'    => $testPassword,
+    'require_otp' => true,
 ]);
 
 if ($registerRes['code'] !== 200 || !($registerRes['body']['data']['requires_otp'] ?? false)) {

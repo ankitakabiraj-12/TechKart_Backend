@@ -1,0 +1,7066 @@
+[
+  {
+    "parent_id": 1,
+    "parent_name": "Mobiles & Smartphones",
+    "name": "Smartphones",
+    "slug": "smartphones",
+    "order": 1,
+    "filename": "01_smartphones.jpg"
+  },
+  {
+    "parent_id": 1,
+    "parent_name": "Mobiles & Smartphones",
+    "name": "Feature Phones",
+    "slug": "feature-phones",
+    "order": 2,
+    "filename": "01_feature-phones.jpg"
+  },
+  {
+    "parent_id": 1,
+    "parent_name": "Mobiles & Smartphones",
+    "name": "5G Smartphones",
+    "slug": "5g-smartphones",
+    "order": 3,
+    "filename": "01_5g-smartphones.jpg"
+  },
+  {
+    "parent_id": 1,
+    "parent_name": "Mobiles & Smartphones",
+    "name": "Gaming Phones",
+    "slug": "gaming-phones",
+    "order": 4,
+    "filename": "01_gaming-phones.jpg"
+  },
+  {
+    "parent_id": 1,
+    "parent_name": "Mobiles & Smartphones",
+    "name": "Foldable Phones",
+    "slug": "foldable-phones",
+    "order": 5,
+    "filename": "01_foldable-phones.jpg"
+  },
+  {
+    "parent_id": 1,
+    "parent_name": "Mobiles & Smartphones",
+    "name": "Rugged Phones",
+    "slug": "rugged-phones",
+    "order": 6,
+    "filename": "01_rugged-phones.jpg"
+  },
+  {
+    "parent_id": 1,
+    "parent_name": "Mobiles & Smartphones",
+    "name": "Camera Phones",
+    "slug": "camera-phones",
+    "order": 7,
+    "filename": "01_camera-phones.jpg"
+  },
+  {
+    "parent_id": 1,
+    "parent_name": "Mobiles & Smartphones",
+    "name": "Budget Smartphones",
+    "slug": "budget-smartphones",
+    "order": 8,
+    "filename": "01_budget-smartphones.jpg"
+  },
+  {
+    "parent_id": 1,
+    "parent_name": "Mobiles & Smartphones",
+    "name": "Refurbished Smartphones",
+    "slug": "refurbished-smartphones",
+    "order": 9,
+    "filename": "01_refurbished-smartphones.jpg"
+  },
+  {
+    "parent_id": 1,
+    "parent_name": "Mobiles & Smartphones",
+    "name": "Mobile Accessories",
+    "slug": "mobile-accessories",
+    "order": 10,
+    "filename": "01_mobile-accessories.jpg"
+  },
+  {
+    "parent_id": 1,
+    "parent_name": "Mobiles & Smartphones",
+    "name": "Phone Cases & Covers",
+    "slug": "phone-cases-covers",
+    "order": 11,
+    "filename": "01_phone-cases-covers.jpg"
+  },
+  {
+    "parent_id": 1,
+    "parent_name": "Mobiles & Smartphones",
+    "name": "Screen Protectors",
+    "slug": "screen-protectors",
+    "order": 12,
+    "filename": "01_screen-protectors.jpg"
+  },
+  {
+    "parent_id": 1,
+    "parent_name": "Mobiles & Smartphones",
+    "name": "Mobile Stands & Holders",
+    "slug": "mobile-stands-holders",
+    "order": 13,
+    "filename": "01_mobile-stands-holders.jpg"
+  },
+  {
+    "parent_id": 1,
+    "parent_name": "Mobiles & Smartphones",
+    "name": "Selfie Sticks",
+    "slug": "selfie-sticks",
+    "order": 14,
+    "filename": "01_selfie-sticks.jpg"
+  },
+  {
+    "parent_id": 1,
+    "parent_name": "Mobiles & Smartphones",
+    "name": "Mobile Gimbals",
+    "slug": "mobile-gimbals",
+    "order": 15,
+    "filename": "01_mobile-gimbals.jpg"
+  },
+  {
+    "parent_id": 1,
+    "parent_name": "Mobiles & Smartphones",
+    "name": "Mobile Cooling Fans",
+    "slug": "mobile-cooling-fans",
+    "order": 16,
+    "filename": "01_mobile-cooling-fans.jpg"
+  },
+  {
+    "parent_id": 1,
+    "parent_name": "Mobiles & Smartphones",
+    "name": "Mobile Replacement Parts",
+    "slug": "mobile-replacement-parts",
+    "order": 17,
+    "filename": "01_mobile-replacement-parts.jpg"
+  },
+  {
+    "parent_id": 2,
+    "parent_name": "Laptops & Notebooks",
+    "name": "Laptops",
+    "slug": "laptops",
+    "order": 1,
+    "filename": "02_laptops.jpg"
+  },
+  {
+    "parent_id": 2,
+    "parent_name": "Laptops & Notebooks",
+    "name": "Gaming Laptops",
+    "slug": "gaming-laptops",
+    "order": 2,
+    "filename": "02_gaming-laptops.jpg"
+  },
+  {
+    "parent_id": 2,
+    "parent_name": "Laptops & Notebooks",
+    "name": "Business Laptops",
+    "slug": "business-laptops",
+    "order": 3,
+    "filename": "02_business-laptops.jpg"
+  },
+  {
+    "parent_id": 2,
+    "parent_name": "Laptops & Notebooks",
+    "name": "Student Laptops",
+    "slug": "student-laptops",
+    "order": 4,
+    "filename": "02_student-laptops.jpg"
+  },
+  {
+    "parent_id": 2,
+    "parent_name": "Laptops & Notebooks",
+    "name": "Ultrabooks",
+    "slug": "ultrabooks",
+    "order": 5,
+    "filename": "02_ultrabooks.jpg"
+  },
+  {
+    "parent_id": 2,
+    "parent_name": "Laptops & Notebooks",
+    "name": "2-in-1 Laptops",
+    "slug": "2-in-1-laptops",
+    "order": 6,
+    "filename": "02_2-in-1-laptops.jpg"
+  },
+  {
+    "parent_id": 2,
+    "parent_name": "Laptops & Notebooks",
+    "name": "Convertible Laptops",
+    "slug": "convertible-laptops",
+    "order": 7,
+    "filename": "02_convertible-laptops.jpg"
+  },
+  {
+    "parent_id": 2,
+    "parent_name": "Laptops & Notebooks",
+    "name": "Chromebook",
+    "slug": "chromebook",
+    "order": 8,
+    "filename": "02_chromebook.jpg"
+  },
+  {
+    "parent_id": 2,
+    "parent_name": "Laptops & Notebooks",
+    "name": "MacBooks",
+    "slug": "macbooks",
+    "order": 9,
+    "filename": "02_macbooks.jpg"
+  },
+  {
+    "parent_id": 2,
+    "parent_name": "Laptops & Notebooks",
+    "name": "Workstation Laptops",
+    "slug": "workstation-laptops",
+    "order": 10,
+    "filename": "02_workstation-laptops.jpg"
+  },
+  {
+    "parent_id": 2,
+    "parent_name": "Laptops & Notebooks",
+    "name": "Rugged Laptops",
+    "slug": "rugged-laptops",
+    "order": 11,
+    "filename": "02_rugged-laptops.jpg"
+  },
+  {
+    "parent_id": 2,
+    "parent_name": "Laptops & Notebooks",
+    "name": "Refurbished Laptops",
+    "slug": "refurbished-laptops",
+    "order": 12,
+    "filename": "02_refurbished-laptops.jpg"
+  },
+  {
+    "parent_id": 2,
+    "parent_name": "Laptops & Notebooks",
+    "name": "Laptop Bags & Sleeves",
+    "slug": "laptop-bags-sleeves",
+    "order": 13,
+    "filename": "02_laptop-bags-sleeves.jpg"
+  },
+  {
+    "parent_id": 2,
+    "parent_name": "Laptops & Notebooks",
+    "name": "Laptop Stands",
+    "slug": "laptop-stands",
+    "order": 14,
+    "filename": "02_laptop-stands.jpg"
+  },
+  {
+    "parent_id": 2,
+    "parent_name": "Laptops & Notebooks",
+    "name": "Laptop Cooling Pads",
+    "slug": "laptop-cooling-pads",
+    "order": 15,
+    "filename": "02_laptop-cooling-pads.jpg"
+  },
+  {
+    "parent_id": 2,
+    "parent_name": "Laptops & Notebooks",
+    "name": "Laptop Chargers",
+    "slug": "laptop-chargers",
+    "order": 16,
+    "filename": "02_laptop-chargers.jpg"
+  },
+  {
+    "parent_id": 2,
+    "parent_name": "Laptops & Notebooks",
+    "name": "Laptop Docks",
+    "slug": "laptop-docks",
+    "order": 17,
+    "filename": "02_laptop-docks.jpg"
+  },
+  {
+    "parent_id": 2,
+    "parent_name": "Laptops & Notebooks",
+    "name": "Laptop Replacement Parts",
+    "slug": "laptop-replacement-parts",
+    "order": 18,
+    "filename": "02_laptop-replacement-parts.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "Desktop Computers",
+    "slug": "desktop-computers",
+    "order": 1,
+    "filename": "03_desktop-computers.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "Gaming PCs",
+    "slug": "gaming-pcs",
+    "order": 2,
+    "filename": "03_gaming-pcs.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "All-in-One PCs",
+    "slug": "all-in-one-pcs",
+    "order": 3,
+    "filename": "03_all-in-one-pcs.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "Mini PCs",
+    "slug": "mini-pcs",
+    "order": 4,
+    "filename": "03_mini-pcs.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "Workstations",
+    "slug": "workstations",
+    "order": 5,
+    "filename": "03_workstations.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "Business PCs",
+    "slug": "business-pcs",
+    "order": 6,
+    "filename": "03_business-pcs.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "Home PCs",
+    "slug": "home-pcs",
+    "order": 7,
+    "filename": "03_home-pcs.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "Refurbished PCs",
+    "slug": "refurbished-pcs",
+    "order": 8,
+    "filename": "03_refurbished-pcs.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "PC Cases",
+    "slug": "pc-cases",
+    "order": 9,
+    "filename": "03_pc-cases.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "Processors / CPUs",
+    "slug": "processors-cpus",
+    "order": 10,
+    "filename": "03_processors-cpus.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "Motherboards",
+    "slug": "motherboards",
+    "order": 11,
+    "filename": "03_motherboards.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "Graphics Cards",
+    "slug": "graphics-cards",
+    "order": 12,
+    "filename": "03_graphics-cards.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "RAM",
+    "slug": "ram",
+    "order": 13,
+    "filename": "03_ram.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "CPU Coolers",
+    "slug": "cpu-coolers",
+    "order": 14,
+    "filename": "03_cpu-coolers.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "PC Power Supplies",
+    "slug": "pc-power-supplies",
+    "order": 15,
+    "filename": "03_pc-power-supplies.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "PC Fans",
+    "slug": "pc-fans",
+    "order": 16,
+    "filename": "03_pc-fans.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "Thermal Paste",
+    "slug": "thermal-paste",
+    "order": 17,
+    "filename": "03_thermal-paste.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "PC Components",
+    "slug": "pc-components",
+    "order": 18,
+    "filename": "03_pc-components.jpg"
+  },
+  {
+    "parent_id": 3,
+    "parent_name": "Computers & Desktops",
+    "name": "PC Upgrade Kits",
+    "slug": "pc-upgrade-kits",
+    "order": 19,
+    "filename": "03_pc-upgrade-kits.jpg"
+  },
+  {
+    "parent_id": 4,
+    "parent_name": "Monitors & Displays",
+    "name": "LED Monitors",
+    "slug": "led-monitors",
+    "order": 1,
+    "filename": "04_led-monitors.jpg"
+  },
+  {
+    "parent_id": 4,
+    "parent_name": "Monitors & Displays",
+    "name": "LCD Monitors",
+    "slug": "lcd-monitors",
+    "order": 2,
+    "filename": "04_lcd-monitors.jpg"
+  },
+  {
+    "parent_id": 4,
+    "parent_name": "Monitors & Displays",
+    "name": "Gaming Monitors",
+    "slug": "gaming-monitors",
+    "order": 3,
+    "filename": "04_gaming-monitors.jpg"
+  },
+  {
+    "parent_id": 4,
+    "parent_name": "Monitors & Displays",
+    "name": "4K Monitors",
+    "slug": "4k-monitors",
+    "order": 4,
+    "filename": "04_4k-monitors.jpg"
+  },
+  {
+    "parent_id": 4,
+    "parent_name": "Monitors & Displays",
+    "name": "5K / 6K / 8K Monitors",
+    "slug": "5k-6k-8k-monitors",
+    "order": 5,
+    "filename": "04_5k-6k-8k-monitors.jpg"
+  },
+  {
+    "parent_id": 4,
+    "parent_name": "Monitors & Displays",
+    "name": "Curved Monitors",
+    "slug": "curved-monitors",
+    "order": 6,
+    "filename": "04_curved-monitors.jpg"
+  },
+  {
+    "parent_id": 4,
+    "parent_name": "Monitors & Displays",
+    "name": "Ultrawide Monitors",
+    "slug": "ultrawide-monitors",
+    "order": 7,
+    "filename": "04_ultrawide-monitors.jpg"
+  },
+  {
+    "parent_id": 4,
+    "parent_name": "Monitors & Displays",
+    "name": "Portable Monitors",
+    "slug": "portable-monitors",
+    "order": 8,
+    "filename": "04_portable-monitors.jpg"
+  },
+  {
+    "parent_id": 4,
+    "parent_name": "Monitors & Displays",
+    "name": "Touchscreen Monitors",
+    "slug": "touchscreen-monitors",
+    "order": 9,
+    "filename": "04_touchscreen-monitors.jpg"
+  },
+  {
+    "parent_id": 4,
+    "parent_name": "Monitors & Displays",
+    "name": "Professional Monitors",
+    "slug": "professional-monitors",
+    "order": 10,
+    "filename": "04_professional-monitors.jpg"
+  },
+  {
+    "parent_id": 4,
+    "parent_name": "Monitors & Displays",
+    "name": "Color-Accurate Monitors",
+    "slug": "color-accurate-monitors",
+    "order": 11,
+    "filename": "04_color-accurate-monitors.jpg"
+  },
+  {
+    "parent_id": 4,
+    "parent_name": "Monitors & Displays",
+    "name": "Monitor Arms",
+    "slug": "monitor-arms",
+    "order": 12,
+    "filename": "04_monitor-arms.jpg"
+  },
+  {
+    "parent_id": 4,
+    "parent_name": "Monitors & Displays",
+    "name": "Monitor Stands",
+    "slug": "monitor-stands",
+    "order": 13,
+    "filename": "04_monitor-stands.jpg"
+  },
+  {
+    "parent_id": 4,
+    "parent_name": "Monitors & Displays",
+    "name": "Monitor Mounts",
+    "slug": "monitor-mounts",
+    "order": 14,
+    "filename": "04_monitor-mounts.jpg"
+  },
+  {
+    "parent_id": 4,
+    "parent_name": "Monitors & Displays",
+    "name": "Display Adapters",
+    "slug": "display-adapters",
+    "order": 15,
+    "filename": "04_display-adapters.jpg"
+  },
+  {
+    "parent_id": 4,
+    "parent_name": "Monitors & Displays",
+    "name": "Display Calibration Tools",
+    "slug": "display-calibration-tools",
+    "order": 16,
+    "filename": "04_display-calibration-tools.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "Keyboards",
+    "slug": "keyboards",
+    "order": 1,
+    "filename": "05_keyboards.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "Mechanical Keyboards",
+    "slug": "mechanical-keyboards",
+    "order": 2,
+    "filename": "05_mechanical-keyboards.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "Membrane Keyboards",
+    "slug": "membrane-keyboards",
+    "order": 3,
+    "filename": "05_membrane-keyboards.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "Wireless Keyboards",
+    "slug": "wireless-keyboards",
+    "order": 4,
+    "filename": "05_wireless-keyboards.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "Gaming Keyboards",
+    "slug": "gaming-keyboards",
+    "order": 5,
+    "filename": "05_gaming-keyboards.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "Ergonomic Keyboards",
+    "slug": "ergonomic-keyboards",
+    "order": 6,
+    "filename": "05_ergonomic-keyboards.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "Mouse",
+    "slug": "mouse",
+    "order": 7,
+    "filename": "05_mouse.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "Gaming Mouse",
+    "slug": "gaming-mouse",
+    "order": 8,
+    "filename": "05_gaming-mouse.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "Wireless Mouse",
+    "slug": "wireless-mouse",
+    "order": 9,
+    "filename": "05_wireless-mouse.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "Ergonomic Mouse",
+    "slug": "ergonomic-mouse",
+    "order": 10,
+    "filename": "05_ergonomic-mouse.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "Trackballs",
+    "slug": "trackballs",
+    "order": 11,
+    "filename": "05_trackballs.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "Mouse Pads",
+    "slug": "mouse-pads",
+    "order": 12,
+    "filename": "05_mouse-pads.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "Gaming Mouse Pads",
+    "slug": "gaming-mouse-pads",
+    "order": 13,
+    "filename": "05_gaming-mouse-pads.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "Webcams",
+    "slug": "webcams",
+    "order": 14,
+    "filename": "05_webcams.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "USB Hubs",
+    "slug": "usb-hubs",
+    "order": 15,
+    "filename": "05_usb-hubs.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "Card Readers",
+    "slug": "card-readers",
+    "order": 16,
+    "filename": "05_card-readers.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "KVM Switches",
+    "slug": "kvm-switches",
+    "order": 17,
+    "filename": "05_kvm-switches.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "Laptop Stands",
+    "slug": "laptop-stands",
+    "order": 18,
+    "filename": "05_laptop-stands.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "Cable Management",
+    "slug": "cable-management",
+    "order": 19,
+    "filename": "05_cable-management.jpg"
+  },
+  {
+    "parent_id": 5,
+    "parent_name": "Computer Accessories",
+    "name": "Computer Accessories Kits",
+    "slug": "computer-accessories-kits",
+    "order": 20,
+    "filename": "05_computer-accessories-kits.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "TWS Earbuds",
+    "slug": "tws-earbuds",
+    "order": 1,
+    "filename": "06_tws-earbuds.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Wireless Earbuds",
+    "slug": "wireless-earbuds",
+    "order": 2,
+    "filename": "06_wireless-earbuds.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Wired Earphones",
+    "slug": "wired-earphones",
+    "order": 3,
+    "filename": "06_wired-earphones.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Neckband Earphones",
+    "slug": "neckband-earphones",
+    "order": 4,
+    "filename": "06_neckband-earphones.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Over-Ear Headphones",
+    "slug": "over-ear-headphones",
+    "order": 5,
+    "filename": "06_over-ear-headphones.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "On-Ear Headphones",
+    "slug": "on-ear-headphones",
+    "order": 6,
+    "filename": "06_on-ear-headphones.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Wireless Headphones",
+    "slug": "wireless-headphones",
+    "order": 7,
+    "filename": "06_wireless-headphones.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Noise Cancelling Headphones",
+    "slug": "noise-cancelling-headphones",
+    "order": 8,
+    "filename": "06_noise-cancelling-headphones.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Gaming Headsets",
+    "slug": "gaming-headsets",
+    "order": 9,
+    "filename": "06_gaming-headsets.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Bluetooth Headsets",
+    "slug": "bluetooth-headsets",
+    "order": 10,
+    "filename": "06_bluetooth-headsets.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Speakers",
+    "slug": "speakers",
+    "order": 11,
+    "filename": "06_speakers.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Bluetooth Speakers",
+    "slug": "bluetooth-speakers",
+    "order": 12,
+    "filename": "06_bluetooth-speakers.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Portable Speakers",
+    "slug": "portable-speakers",
+    "order": 13,
+    "filename": "06_portable-speakers.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Computer Speakers",
+    "slug": "computer-speakers",
+    "order": 14,
+    "filename": "06_computer-speakers.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Soundbars",
+    "slug": "soundbars",
+    "order": 15,
+    "filename": "06_soundbars.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Home Theater Systems",
+    "slug": "home-theater-systems",
+    "order": 16,
+    "filename": "06_home-theater-systems.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Amplifiers",
+    "slug": "amplifiers",
+    "order": 17,
+    "filename": "06_amplifiers.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "AV Receivers",
+    "slug": "av-receivers",
+    "order": 18,
+    "filename": "06_av-receivers.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Subwoofers",
+    "slug": "subwoofers",
+    "order": 19,
+    "filename": "06_subwoofers.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Microphones",
+    "slug": "microphones",
+    "order": 20,
+    "filename": "06_microphones.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Wireless Microphones",
+    "slug": "wireless-microphones",
+    "order": 21,
+    "filename": "06_wireless-microphones.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "DACs",
+    "slug": "dacs",
+    "order": 22,
+    "filename": "06_dacs.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Audio Players",
+    "slug": "audio-players",
+    "order": 23,
+    "filename": "06_audio-players.jpg"
+  },
+  {
+    "parent_id": 6,
+    "parent_name": "Audio & Headphones",
+    "name": "Portable Music Players",
+    "slug": "portable-music-players",
+    "order": 24,
+    "filename": "06_portable-music-players.jpg"
+  },
+  {
+    "parent_id": 7,
+    "parent_name": "Wearables",
+    "name": "Smartwatches",
+    "slug": "smartwatches",
+    "order": 1,
+    "filename": "07_smartwatches.jpg"
+  },
+  {
+    "parent_id": 7,
+    "parent_name": "Wearables",
+    "name": "Fitness Bands",
+    "slug": "fitness-bands",
+    "order": 2,
+    "filename": "07_fitness-bands.jpg"
+  },
+  {
+    "parent_id": 7,
+    "parent_name": "Wearables",
+    "name": "Fitness Trackers",
+    "slug": "fitness-trackers",
+    "order": 3,
+    "filename": "07_fitness-trackers.jpg"
+  },
+  {
+    "parent_id": 7,
+    "parent_name": "Wearables",
+    "name": "Smart Rings",
+    "slug": "smart-rings",
+    "order": 4,
+    "filename": "07_smart-rings.jpg"
+  },
+  {
+    "parent_id": 7,
+    "parent_name": "Wearables",
+    "name": "Smart Glasses",
+    "slug": "smart-glasses",
+    "order": 5,
+    "filename": "07_smart-glasses.jpg"
+  },
+  {
+    "parent_id": 7,
+    "parent_name": "Wearables",
+    "name": "Kids Smartwatches",
+    "slug": "kids-smartwatches",
+    "order": 6,
+    "filename": "07_kids-smartwatches.jpg"
+  },
+  {
+    "parent_id": 7,
+    "parent_name": "Wearables",
+    "name": "Sports Wearables",
+    "slug": "sports-wearables",
+    "order": 7,
+    "filename": "07_sports-wearables.jpg"
+  },
+  {
+    "parent_id": 7,
+    "parent_name": "Wearables",
+    "name": "GPS Watches",
+    "slug": "gps-watches",
+    "order": 8,
+    "filename": "07_gps-watches.jpg"
+  },
+  {
+    "parent_id": 7,
+    "parent_name": "Wearables",
+    "name": "Health Trackers",
+    "slug": "health-trackers",
+    "order": 9,
+    "filename": "07_health-trackers.jpg"
+  },
+  {
+    "parent_id": 7,
+    "parent_name": "Wearables",
+    "name": "Smartwatch Straps",
+    "slug": "smartwatch-straps",
+    "order": 10,
+    "filename": "07_smartwatch-straps.jpg"
+  },
+  {
+    "parent_id": 7,
+    "parent_name": "Wearables",
+    "name": "Smartwatch Cases",
+    "slug": "smartwatch-cases",
+    "order": 11,
+    "filename": "07_smartwatch-cases.jpg"
+  },
+  {
+    "parent_id": 7,
+    "parent_name": "Wearables",
+    "name": "Smartwatch Screen Protectors",
+    "slug": "smartwatch-screen-protectors",
+    "order": 12,
+    "filename": "07_smartwatch-screen-protectors.jpg"
+  },
+  {
+    "parent_id": 7,
+    "parent_name": "Wearables",
+    "name": "Smartwatch Chargers",
+    "slug": "smartwatch-chargers",
+    "order": 13,
+    "filename": "07_smartwatch-chargers.jpg"
+  },
+  {
+    "parent_id": 7,
+    "parent_name": "Wearables",
+    "name": "Wearable Accessories",
+    "slug": "wearable-accessories",
+    "order": 14,
+    "filename": "07_wearable-accessories.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "LED TVs",
+    "slug": "led-tvs",
+    "order": 1,
+    "filename": "08_led-tvs.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "LCD TVs",
+    "slug": "lcd-tvs",
+    "order": 2,
+    "filename": "08_lcd-tvs.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "OLED TVs",
+    "slug": "oled-tvs",
+    "order": 3,
+    "filename": "08_oled-tvs.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "QLED TVs",
+    "slug": "qled-tvs",
+    "order": 4,
+    "filename": "08_qled-tvs.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "Mini LED TVs",
+    "slug": "mini-led-tvs",
+    "order": 5,
+    "filename": "08_mini-led-tvs.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "4K TVs",
+    "slug": "4k-tvs",
+    "order": 6,
+    "filename": "08_4k-tvs.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "8K TVs",
+    "slug": "8k-tvs",
+    "order": 7,
+    "filename": "08_8k-tvs.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "Smart TVs",
+    "slug": "smart-tvs",
+    "order": 8,
+    "filename": "08_smart-tvs.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "Android TVs",
+    "slug": "android-tvs",
+    "order": 9,
+    "filename": "08_android-tvs.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "Google TVs",
+    "slug": "google-tvs",
+    "order": 10,
+    "filename": "08_google-tvs.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "Projectors",
+    "slug": "projectors",
+    "order": 11,
+    "filename": "08_projectors.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "Projector Screens",
+    "slug": "projector-screens",
+    "order": 12,
+    "filename": "08_projector-screens.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "Streaming Devices",
+    "slug": "streaming-devices",
+    "order": 13,
+    "filename": "08_streaming-devices.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "Android TV Boxes",
+    "slug": "android-tv-boxes",
+    "order": 14,
+    "filename": "08_android-tv-boxes.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "Media Players",
+    "slug": "media-players",
+    "order": 15,
+    "filename": "08_media-players.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "Blu-ray Players",
+    "slug": "blu-ray-players",
+    "order": 16,
+    "filename": "08_blu-ray-players.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "DVD Players",
+    "slug": "dvd-players",
+    "order": 17,
+    "filename": "08_dvd-players.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "TV Wall Mounts",
+    "slug": "tv-wall-mounts",
+    "order": 18,
+    "filename": "08_tv-wall-mounts.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "TV Stands",
+    "slug": "tv-stands",
+    "order": 19,
+    "filename": "08_tv-stands.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "TV Accessories",
+    "slug": "tv-accessories",
+    "order": 20,
+    "filename": "08_tv-accessories.jpg"
+  },
+  {
+    "parent_id": 8,
+    "parent_name": "TV & Home Entertainment",
+    "name": "Remote Controls",
+    "slug": "remote-controls",
+    "order": 21,
+    "filename": "08_remote-controls.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "Gaming Consoles",
+    "slug": "gaming-consoles",
+    "order": 1,
+    "filename": "09_gaming-consoles.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "PlayStation",
+    "slug": "playstation",
+    "order": 2,
+    "filename": "09_playstation.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "Xbox",
+    "slug": "xbox",
+    "order": 3,
+    "filename": "09_xbox.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "Nintendo",
+    "slug": "nintendo",
+    "order": 4,
+    "filename": "09_nintendo.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "Handheld Gaming Consoles",
+    "slug": "handheld-gaming-consoles",
+    "order": 5,
+    "filename": "09_handheld-gaming-consoles.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "Gaming PCs",
+    "slug": "gaming-pcs",
+    "order": 6,
+    "filename": "09_gaming-pcs.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "Gaming Laptops",
+    "slug": "gaming-laptops",
+    "order": 7,
+    "filename": "09_gaming-laptops.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "Gaming Monitors",
+    "slug": "gaming-monitors",
+    "order": 8,
+    "filename": "09_gaming-monitors.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "Gaming Keyboards",
+    "slug": "gaming-keyboards",
+    "order": 9,
+    "filename": "09_gaming-keyboards.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "Gaming Mouse",
+    "slug": "gaming-mouse",
+    "order": 10,
+    "filename": "09_gaming-mouse.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "Gaming Headsets",
+    "slug": "gaming-headsets",
+    "order": 11,
+    "filename": "09_gaming-headsets.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "Gaming Controllers",
+    "slug": "gaming-controllers",
+    "order": 12,
+    "filename": "09_gaming-controllers.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "Racing Wheels",
+    "slug": "racing-wheels",
+    "order": 13,
+    "filename": "09_racing-wheels.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "Arcade Controllers",
+    "slug": "arcade-controllers",
+    "order": 14,
+    "filename": "09_arcade-controllers.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "VR Gaming",
+    "slug": "vr-gaming",
+    "order": 15,
+    "filename": "09_vr-gaming.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "Capture Cards",
+    "slug": "capture-cards",
+    "order": 16,
+    "filename": "09_capture-cards.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "Gaming Chairs",
+    "slug": "gaming-chairs",
+    "order": 17,
+    "filename": "09_gaming-chairs.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "Gaming Desks",
+    "slug": "gaming-desks",
+    "order": 18,
+    "filename": "09_gaming-desks.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "Console Accessories",
+    "slug": "console-accessories",
+    "order": 19,
+    "filename": "09_console-accessories.jpg"
+  },
+  {
+    "parent_id": 9,
+    "parent_name": "Gaming",
+    "name": "Gaming Accessories",
+    "slug": "gaming-accessories",
+    "order": 20,
+    "filename": "09_gaming-accessories.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "DSLR Cameras",
+    "slug": "dslr-cameras",
+    "order": 1,
+    "filename": "10_dslr-cameras.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Mirrorless Cameras",
+    "slug": "mirrorless-cameras",
+    "order": 2,
+    "filename": "10_mirrorless-cameras.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Compact Cameras",
+    "slug": "compact-cameras",
+    "order": 3,
+    "filename": "10_compact-cameras.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Digital Cameras",
+    "slug": "digital-cameras",
+    "order": 4,
+    "filename": "10_digital-cameras.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Instant Cameras",
+    "slug": "instant-cameras",
+    "order": 5,
+    "filename": "10_instant-cameras.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Film Cameras",
+    "slug": "film-cameras",
+    "order": 6,
+    "filename": "10_film-cameras.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Camcorders",
+    "slug": "camcorders",
+    "order": 7,
+    "filename": "10_camcorders.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Action Cameras",
+    "slug": "action-cameras",
+    "order": 8,
+    "filename": "10_action-cameras.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Professional Cameras",
+    "slug": "professional-cameras",
+    "order": 9,
+    "filename": "10_professional-cameras.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Camera Lenses",
+    "slug": "camera-lenses",
+    "order": 10,
+    "filename": "10_camera-lenses.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Prime Lenses",
+    "slug": "prime-lenses",
+    "order": 11,
+    "filename": "10_prime-lenses.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Zoom Lenses",
+    "slug": "zoom-lenses",
+    "order": 12,
+    "filename": "10_zoom-lenses.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Telephoto Lenses",
+    "slug": "telephoto-lenses",
+    "order": 13,
+    "filename": "10_telephoto-lenses.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Wide-Angle Lenses",
+    "slug": "wide-angle-lenses",
+    "order": 14,
+    "filename": "10_wide-angle-lenses.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Macro Lenses",
+    "slug": "macro-lenses",
+    "order": 15,
+    "filename": "10_macro-lenses.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Camera Flash",
+    "slug": "camera-flash",
+    "order": 16,
+    "filename": "10_camera-flash.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Camera Batteries",
+    "slug": "camera-batteries",
+    "order": 17,
+    "filename": "10_camera-batteries.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Camera Chargers",
+    "slug": "camera-chargers",
+    "order": 18,
+    "filename": "10_camera-chargers.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Camera Bags",
+    "slug": "camera-bags",
+    "order": 19,
+    "filename": "10_camera-bags.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Camera Straps",
+    "slug": "camera-straps",
+    "order": 20,
+    "filename": "10_camera-straps.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Camera Filters",
+    "slug": "camera-filters",
+    "order": 21,
+    "filename": "10_camera-filters.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Tripods",
+    "slug": "tripods",
+    "order": 22,
+    "filename": "10_tripods.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Monopods",
+    "slug": "monopods",
+    "order": 23,
+    "filename": "10_monopods.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Gimbals",
+    "slug": "gimbals",
+    "order": 24,
+    "filename": "10_gimbals.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Memory Cards",
+    "slug": "memory-cards",
+    "order": 25,
+    "filename": "10_memory-cards.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Photography Lighting",
+    "slug": "photography-lighting",
+    "order": 26,
+    "filename": "10_photography-lighting.jpg"
+  },
+  {
+    "parent_id": 10,
+    "parent_name": "Cameras & Photography",
+    "name": "Camera Cleaning Kits",
+    "slug": "camera-cleaning-kits",
+    "order": 27,
+    "filename": "10_camera-cleaning-kits.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "Camera Drones",
+    "slug": "camera-drones",
+    "order": 1,
+    "filename": "11_camera-drones.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "Mini Drones",
+    "slug": "mini-drones",
+    "order": 2,
+    "filename": "11_mini-drones.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "Professional Drones",
+    "slug": "professional-drones",
+    "order": 3,
+    "filename": "11_professional-drones.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "FPV Drones",
+    "slug": "fpv-drones",
+    "order": 4,
+    "filename": "11_fpv-drones.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "Racing Drones",
+    "slug": "racing-drones",
+    "order": 5,
+    "filename": "11_racing-drones.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "Agricultural Drones",
+    "slug": "agricultural-drones",
+    "order": 6,
+    "filename": "11_agricultural-drones.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "Industrial Drones",
+    "slug": "industrial-drones",
+    "order": 7,
+    "filename": "11_industrial-drones.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "Surveying Drones",
+    "slug": "surveying-drones",
+    "order": 8,
+    "filename": "11_surveying-drones.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "Delivery Drones",
+    "slug": "delivery-drones",
+    "order": 9,
+    "filename": "11_delivery-drones.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "Beginner Drones",
+    "slug": "beginner-drones",
+    "order": 10,
+    "filename": "11_beginner-drones.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "Drone Controllers",
+    "slug": "drone-controllers",
+    "order": 11,
+    "filename": "11_drone-controllers.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "Drone Batteries",
+    "slug": "drone-batteries",
+    "order": 12,
+    "filename": "11_drone-batteries.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "Drone Chargers",
+    "slug": "drone-chargers",
+    "order": 13,
+    "filename": "11_drone-chargers.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "Propellers",
+    "slug": "propellers",
+    "order": 14,
+    "filename": "11_propellers.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "Drone Motors",
+    "slug": "drone-motors",
+    "order": 15,
+    "filename": "11_drone-motors.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "Drone Frames",
+    "slug": "drone-frames",
+    "order": 16,
+    "filename": "11_drone-frames.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "Drone Cases",
+    "slug": "drone-cases",
+    "order": 17,
+    "filename": "11_drone-cases.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "Drone Landing Pads",
+    "slug": "drone-landing-pads",
+    "order": 18,
+    "filename": "11_drone-landing-pads.jpg"
+  },
+  {
+    "parent_id": 11,
+    "parent_name": "Drones",
+    "name": "Drone Accessories",
+    "slug": "drone-accessories",
+    "order": 19,
+    "filename": "11_drone-accessories.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "Mobile Chargers",
+    "slug": "mobile-chargers",
+    "order": 1,
+    "filename": "12_mobile-chargers.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "Fast Chargers",
+    "slug": "fast-chargers",
+    "order": 2,
+    "filename": "12_fast-chargers.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "Super Fast Chargers",
+    "slug": "super-fast-chargers",
+    "order": 3,
+    "filename": "12_super-fast-chargers.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "GaN Chargers",
+    "slug": "gan-chargers",
+    "order": 4,
+    "filename": "12_gan-chargers.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "Wireless Chargers",
+    "slug": "wireless-chargers",
+    "order": 5,
+    "filename": "12_wireless-chargers.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "MagSafe Chargers",
+    "slug": "magsafe-chargers",
+    "order": 6,
+    "filename": "12_magsafe-chargers.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "Car Chargers",
+    "slug": "car-chargers",
+    "order": 7,
+    "filename": "12_car-chargers.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "Laptop Chargers",
+    "slug": "laptop-chargers",
+    "order": 8,
+    "filename": "12_laptop-chargers.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "USB Chargers",
+    "slug": "usb-chargers",
+    "order": 9,
+    "filename": "12_usb-chargers.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "Multi-Port Chargers",
+    "slug": "multi-port-chargers",
+    "order": 10,
+    "filename": "12_multi-port-chargers.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "Charging Stations",
+    "slug": "charging-stations",
+    "order": 11,
+    "filename": "12_charging-stations.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "Charging Docks",
+    "slug": "charging-docks",
+    "order": 12,
+    "filename": "12_charging-docks.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "USB-C Chargers",
+    "slug": "usb-c-chargers",
+    "order": 13,
+    "filename": "12_usb-c-chargers.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "Charging Cables",
+    "slug": "charging-cables",
+    "order": 14,
+    "filename": "12_charging-cables.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "USB-C Cables",
+    "slug": "usb-c-cables",
+    "order": 15,
+    "filename": "12_usb-c-cables.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "Lightning Cables",
+    "slug": "lightning-cables",
+    "order": 16,
+    "filename": "12_lightning-cables.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "Micro USB Cables",
+    "slug": "micro-usb-cables",
+    "order": 17,
+    "filename": "12_micro-usb-cables.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "Magnetic Charging Cables",
+    "slug": "magnetic-charging-cables",
+    "order": 18,
+    "filename": "12_magnetic-charging-cables.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "Travel Chargers",
+    "slug": "travel-chargers",
+    "order": 19,
+    "filename": "12_travel-chargers.jpg"
+  },
+  {
+    "parent_id": 12,
+    "parent_name": "Chargers & Power",
+    "name": "Charger Adapters",
+    "slug": "charger-adapters",
+    "order": 20,
+    "filename": "12_charger-adapters.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "Power Banks",
+    "slug": "power-banks",
+    "order": 1,
+    "filename": "13_power-banks.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "Fast-Charging Power Banks",
+    "slug": "fast-charging-power-banks",
+    "order": 2,
+    "filename": "13_fast-charging-power-banks.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "Magnetic Power Banks",
+    "slug": "magnetic-power-banks",
+    "order": 3,
+    "filename": "13_magnetic-power-banks.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "Wireless Power Banks",
+    "slug": "wireless-power-banks",
+    "order": 4,
+    "filename": "13_wireless-power-banks.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "Solar Power Banks",
+    "slug": "solar-power-banks",
+    "order": 5,
+    "filename": "13_solar-power-banks.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "Laptop Power Banks",
+    "slug": "laptop-power-banks",
+    "order": 6,
+    "filename": "13_laptop-power-banks.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "Mini Power Banks",
+    "slug": "mini-power-banks",
+    "order": 7,
+    "filename": "13_mini-power-banks.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "AA Batteries",
+    "slug": "aa-batteries",
+    "order": 8,
+    "filename": "13_aa-batteries.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "AAA Batteries",
+    "slug": "aaa-batteries",
+    "order": 9,
+    "filename": "13_aaa-batteries.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "C Batteries",
+    "slug": "c-batteries",
+    "order": 10,
+    "filename": "13_c-batteries.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "D Batteries",
+    "slug": "d-batteries",
+    "order": 11,
+    "filename": "13_d-batteries.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "9V Batteries",
+    "slug": "9v-batteries",
+    "order": 12,
+    "filename": "13_9v-batteries.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "Rechargeable Batteries",
+    "slug": "rechargeable-batteries",
+    "order": 13,
+    "filename": "13_rechargeable-batteries.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "Lithium Batteries",
+    "slug": "lithium-batteries",
+    "order": 14,
+    "filename": "13_lithium-batteries.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "Li-ion Batteries",
+    "slug": "li-ion-batteries",
+    "order": 15,
+    "filename": "13_li-ion-batteries.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "Li-Po Batteries",
+    "slug": "li-po-batteries",
+    "order": 16,
+    "filename": "13_li-po-batteries.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "Button Cell Batteries",
+    "slug": "button-cell-batteries",
+    "order": 17,
+    "filename": "13_button-cell-batteries.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "Coin Cell Batteries",
+    "slug": "coin-cell-batteries",
+    "order": 18,
+    "filename": "13_coin-cell-batteries.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "Battery Chargers",
+    "slug": "battery-chargers",
+    "order": 19,
+    "filename": "13_battery-chargers.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "Battery Packs",
+    "slug": "battery-packs",
+    "order": 20,
+    "filename": "13_battery-packs.jpg"
+  },
+  {
+    "parent_id": 13,
+    "parent_name": "Power Banks & Batteries",
+    "name": "Replacement Batteries",
+    "slug": "replacement-batteries",
+    "order": 21,
+    "filename": "13_replacement-batteries.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Extension Boards",
+    "slug": "extension-boards",
+    "order": 1,
+    "filename": "14_extension-boards.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Power Strips",
+    "slug": "power-strips",
+    "order": 2,
+    "filename": "14_power-strips.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Surge Protectors",
+    "slug": "surge-protectors",
+    "order": 3,
+    "filename": "14_surge-protectors.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Voltage Stabilizers",
+    "slug": "voltage-stabilizers",
+    "order": 4,
+    "filename": "14_voltage-stabilizers.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "UPS",
+    "slug": "ups",
+    "order": 5,
+    "filename": "14_ups.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Online UPS",
+    "slug": "online-ups",
+    "order": 6,
+    "filename": "14_online-ups.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Offline UPS",
+    "slug": "offline-ups",
+    "order": 7,
+    "filename": "14_offline-ups.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Inverters",
+    "slug": "inverters",
+    "order": 8,
+    "filename": "14_inverters.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Home UPS",
+    "slug": "home-ups",
+    "order": 9,
+    "filename": "14_home-ups.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Industrial UPS",
+    "slug": "industrial-ups",
+    "order": 10,
+    "filename": "14_industrial-ups.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Transformers",
+    "slug": "transformers",
+    "order": 11,
+    "filename": "14_transformers.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Voltage Converters",
+    "slug": "voltage-converters",
+    "order": 12,
+    "filename": "14_voltage-converters.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Power Distribution Units",
+    "slug": "power-distribution-units",
+    "order": 13,
+    "filename": "14_power-distribution-units.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Smart Plugs",
+    "slug": "smart-plugs",
+    "order": 14,
+    "filename": "14_smart-plugs.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Smart Switches",
+    "slug": "smart-switches",
+    "order": 15,
+    "filename": "14_smart-switches.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Circuit Breakers",
+    "slug": "circuit-breakers",
+    "order": 16,
+    "filename": "14_circuit-breakers.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Fuses",
+    "slug": "fuses",
+    "order": 17,
+    "filename": "14_fuses.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Electrical Meters",
+    "slug": "electrical-meters",
+    "order": 18,
+    "filename": "14_electrical-meters.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Power Controllers",
+    "slug": "power-controllers",
+    "order": 19,
+    "filename": "14_power-controllers.jpg"
+  },
+  {
+    "parent_id": 14,
+    "parent_name": "Electrical & Power Equipment",
+    "name": "Electrical Accessories",
+    "slug": "electrical-accessories",
+    "order": 20,
+    "filename": "14_electrical-accessories.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Wi-Fi Routers",
+    "slug": "wi-fi-routers",
+    "order": 1,
+    "filename": "15_wi-fi-routers.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "5G Routers",
+    "slug": "5g-routers",
+    "order": 2,
+    "filename": "15_5g-routers.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "4G Routers",
+    "slug": "4g-routers",
+    "order": 3,
+    "filename": "15_4g-routers.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Wi-Fi Extenders",
+    "slug": "wi-fi-extenders",
+    "order": 4,
+    "filename": "15_wi-fi-extenders.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Wi-Fi Repeaters",
+    "slug": "wi-fi-repeaters",
+    "order": 5,
+    "filename": "15_wi-fi-repeaters.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Mesh Wi-Fi Systems",
+    "slug": "mesh-wi-fi-systems",
+    "order": 6,
+    "filename": "15_mesh-wi-fi-systems.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Modems",
+    "slug": "modems",
+    "order": 7,
+    "filename": "15_modems.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Cable Modems",
+    "slug": "cable-modems",
+    "order": 8,
+    "filename": "15_cable-modems.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Network Switches",
+    "slug": "network-switches",
+    "order": 9,
+    "filename": "15_network-switches.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Managed Switches",
+    "slug": "managed-switches",
+    "order": 10,
+    "filename": "15_managed-switches.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Unmanaged Switches",
+    "slug": "unmanaged-switches",
+    "order": 11,
+    "filename": "15_unmanaged-switches.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Network Hubs",
+    "slug": "network-hubs",
+    "order": 12,
+    "filename": "15_network-hubs.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Access Points",
+    "slug": "access-points",
+    "order": 13,
+    "filename": "15_access-points.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Wi-Fi Adapters",
+    "slug": "wi-fi-adapters",
+    "order": 14,
+    "filename": "15_wi-fi-adapters.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Ethernet Adapters",
+    "slug": "ethernet-adapters",
+    "order": 15,
+    "filename": "15_ethernet-adapters.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Network Cards",
+    "slug": "network-cards",
+    "order": 16,
+    "filename": "15_network-cards.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Ethernet Cables",
+    "slug": "ethernet-cables",
+    "order": 17,
+    "filename": "15_ethernet-cables.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Fiber Optic Equipment",
+    "slug": "fiber-optic-equipment",
+    "order": 18,
+    "filename": "15_fiber-optic-equipment.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Network Racks",
+    "slug": "network-racks",
+    "order": 19,
+    "filename": "15_network-racks.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Network Tools",
+    "slug": "network-tools",
+    "order": 20,
+    "filename": "15_network-tools.jpg"
+  },
+  {
+    "parent_id": 15,
+    "parent_name": "Networking",
+    "name": "Network Accessories",
+    "slug": "network-accessories",
+    "order": 21,
+    "filename": "15_network-accessories.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Smart Speakers",
+    "slug": "smart-speakers",
+    "order": 1,
+    "filename": "16_smart-speakers.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Smart Displays",
+    "slug": "smart-displays",
+    "order": 2,
+    "filename": "16_smart-displays.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Smart Lights",
+    "slug": "smart-lights",
+    "order": 3,
+    "filename": "16_smart-lights.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Smart Bulbs",
+    "slug": "smart-bulbs",
+    "order": 4,
+    "filename": "16_smart-bulbs.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Smart LED Strips",
+    "slug": "smart-led-strips",
+    "order": 5,
+    "filename": "16_smart-led-strips.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Smart Plugs",
+    "slug": "smart-plugs",
+    "order": 6,
+    "filename": "16_smart-plugs.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Smart Switches",
+    "slug": "smart-switches",
+    "order": 7,
+    "filename": "16_smart-switches.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Smart Locks",
+    "slug": "smart-locks",
+    "order": 8,
+    "filename": "16_smart-locks.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Smart Doorbells",
+    "slug": "smart-doorbells",
+    "order": 9,
+    "filename": "16_smart-doorbells.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Smart Sensors",
+    "slug": "smart-sensors",
+    "order": 10,
+    "filename": "16_smart-sensors.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Motion Sensors",
+    "slug": "motion-sensors",
+    "order": 11,
+    "filename": "16_motion-sensors.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Temperature Sensors",
+    "slug": "temperature-sensors",
+    "order": 12,
+    "filename": "16_temperature-sensors.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Smart Thermostats",
+    "slug": "smart-thermostats",
+    "order": 13,
+    "filename": "16_smart-thermostats.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Smart Curtains",
+    "slug": "smart-curtains",
+    "order": 14,
+    "filename": "16_smart-curtains.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Smart Hubs",
+    "slug": "smart-hubs",
+    "order": 15,
+    "filename": "16_smart-hubs.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Smart Controllers",
+    "slug": "smart-controllers",
+    "order": 16,
+    "filename": "16_smart-controllers.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Smart IR Remotes",
+    "slug": "smart-ir-remotes",
+    "order": 17,
+    "filename": "16_smart-ir-remotes.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Smart Home Kits",
+    "slug": "smart-home-kits",
+    "order": 18,
+    "filename": "16_smart-home-kits.jpg"
+  },
+  {
+    "parent_id": 16,
+    "parent_name": "Smart Home",
+    "name": "Home Automation Devices",
+    "slug": "home-automation-devices",
+    "order": 19,
+    "filename": "16_home-automation-devices.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "CCTV Cameras",
+    "slug": "cctv-cameras",
+    "order": 1,
+    "filename": "17_cctv-cameras.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "IP Cameras",
+    "slug": "ip-cameras",
+    "order": 2,
+    "filename": "17_ip-cameras.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "Wi-Fi Cameras",
+    "slug": "wi-fi-cameras",
+    "order": 3,
+    "filename": "17_wi-fi-cameras.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "PTZ Cameras",
+    "slug": "ptz-cameras",
+    "order": 4,
+    "filename": "17_ptz-cameras.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "Dome Cameras",
+    "slug": "dome-cameras",
+    "order": 5,
+    "filename": "17_dome-cameras.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "Bullet Cameras",
+    "slug": "bullet-cameras",
+    "order": 6,
+    "filename": "17_bullet-cameras.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "Indoor Cameras",
+    "slug": "indoor-cameras",
+    "order": 7,
+    "filename": "17_indoor-cameras.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "Outdoor Cameras",
+    "slug": "outdoor-cameras",
+    "order": 8,
+    "filename": "17_outdoor-cameras.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "DVR",
+    "slug": "dvr",
+    "order": 9,
+    "filename": "17_dvr.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "NVR",
+    "slug": "nvr",
+    "order": 10,
+    "filename": "17_nvr.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "CCTV Kits",
+    "slug": "cctv-kits",
+    "order": 11,
+    "filename": "17_cctv-kits.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "Video Doorbells",
+    "slug": "video-doorbells",
+    "order": 12,
+    "filename": "17_video-doorbells.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "Smart Locks",
+    "slug": "smart-locks",
+    "order": 13,
+    "filename": "17_smart-locks.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "Biometric Devices",
+    "slug": "biometric-devices",
+    "order": 14,
+    "filename": "17_biometric-devices.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "Fingerprint Devices",
+    "slug": "fingerprint-devices",
+    "order": 15,
+    "filename": "17_fingerprint-devices.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "Face Recognition Devices",
+    "slug": "face-recognition-devices",
+    "order": 16,
+    "filename": "17_face-recognition-devices.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "Access Control Systems",
+    "slug": "access-control-systems",
+    "order": 17,
+    "filename": "17_access-control-systems.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "Alarm Systems",
+    "slug": "alarm-systems",
+    "order": 18,
+    "filename": "17_alarm-systems.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "Motion Sensors",
+    "slug": "motion-sensors",
+    "order": 19,
+    "filename": "17_motion-sensors.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "Security Monitors",
+    "slug": "security-monitors",
+    "order": 20,
+    "filename": "17_security-monitors.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "CCTV Accessories",
+    "slug": "cctv-accessories",
+    "order": 21,
+    "filename": "17_cctv-accessories.jpg"
+  },
+  {
+    "parent_id": 17,
+    "parent_name": "Security & Surveillance",
+    "name": "Surveillance Storage",
+    "slug": "surveillance-storage",
+    "order": 22,
+    "filename": "17_surveillance-storage.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Refrigerators",
+    "slug": "refrigerators",
+    "order": 1,
+    "filename": "18_refrigerators.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Washing Machines",
+    "slug": "washing-machines",
+    "order": 2,
+    "filename": "18_washing-machines.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Dishwashers",
+    "slug": "dishwashers",
+    "order": 3,
+    "filename": "18_dishwashers.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Air Conditioners",
+    "slug": "air-conditioners",
+    "order": 4,
+    "filename": "18_air-conditioners.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Air Coolers",
+    "slug": "air-coolers",
+    "order": 5,
+    "filename": "18_air-coolers.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Air Purifiers",
+    "slug": "air-purifiers",
+    "order": 6,
+    "filename": "18_air-purifiers.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Water Purifiers",
+    "slug": "water-purifiers",
+    "order": 7,
+    "filename": "18_water-purifiers.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Vacuum Cleaners",
+    "slug": "vacuum-cleaners",
+    "order": 8,
+    "filename": "18_vacuum-cleaners.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Robot Vacuum Cleaners",
+    "slug": "robot-vacuum-cleaners",
+    "order": 9,
+    "filename": "18_robot-vacuum-cleaners.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Room Heaters",
+    "slug": "room-heaters",
+    "order": 10,
+    "filename": "18_room-heaters.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Electric Fans",
+    "slug": "electric-fans",
+    "order": 11,
+    "filename": "18_electric-fans.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Ceiling Fans",
+    "slug": "ceiling-fans",
+    "order": 12,
+    "filename": "18_ceiling-fans.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Table Fans",
+    "slug": "table-fans",
+    "order": 13,
+    "filename": "18_table-fans.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Tower Fans",
+    "slug": "tower-fans",
+    "order": 14,
+    "filename": "18_tower-fans.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Dehumidifiers",
+    "slug": "dehumidifiers",
+    "order": 15,
+    "filename": "18_dehumidifiers.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Humidifiers",
+    "slug": "humidifiers",
+    "order": 16,
+    "filename": "18_humidifiers.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Water Heaters",
+    "slug": "water-heaters",
+    "order": 17,
+    "filename": "18_water-heaters.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Geysers",
+    "slug": "geysers",
+    "order": 18,
+    "filename": "18_geysers.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Electric Blankets",
+    "slug": "electric-blankets",
+    "order": 19,
+    "filename": "18_electric-blankets.jpg"
+  },
+  {
+    "parent_id": 18,
+    "parent_name": "Home Appliances",
+    "name": "Home Appliance Accessories",
+    "slug": "home-appliance-accessories",
+    "order": 20,
+    "filename": "18_home-appliance-accessories.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Microwave Ovens",
+    "slug": "microwave-ovens",
+    "order": 1,
+    "filename": "19_microwave-ovens.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Electric Ovens",
+    "slug": "electric-ovens",
+    "order": 2,
+    "filename": "19_electric-ovens.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "OTG Ovens",
+    "slug": "otg-ovens",
+    "order": 3,
+    "filename": "19_otg-ovens.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Induction Cooktops",
+    "slug": "induction-cooktops",
+    "order": 4,
+    "filename": "19_induction-cooktops.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Electric Stoves",
+    "slug": "electric-stoves",
+    "order": 5,
+    "filename": "19_electric-stoves.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Electric Kettles",
+    "slug": "electric-kettles",
+    "order": 6,
+    "filename": "19_electric-kettles.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Coffee Machines",
+    "slug": "coffee-machines",
+    "order": 7,
+    "filename": "19_coffee-machines.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Coffee Makers",
+    "slug": "coffee-makers",
+    "order": 8,
+    "filename": "19_coffee-makers.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Espresso Machines",
+    "slug": "espresso-machines",
+    "order": 9,
+    "filename": "19_espresso-machines.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Air Fryers",
+    "slug": "air-fryers",
+    "order": 10,
+    "filename": "19_air-fryers.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Toasters",
+    "slug": "toasters",
+    "order": 11,
+    "filename": "19_toasters.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Sandwich Makers",
+    "slug": "sandwich-makers",
+    "order": 12,
+    "filename": "19_sandwich-makers.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Electric Grills",
+    "slug": "electric-grills",
+    "order": 13,
+    "filename": "19_electric-grills.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Blenders",
+    "slug": "blenders",
+    "order": 14,
+    "filename": "19_blenders.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Juicers",
+    "slug": "juicers",
+    "order": 15,
+    "filename": "19_juicers.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Mixers",
+    "slug": "mixers",
+    "order": 16,
+    "filename": "19_mixers.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Food Processors",
+    "slug": "food-processors",
+    "order": 17,
+    "filename": "19_food-processors.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Rice Cookers",
+    "slug": "rice-cookers",
+    "order": 18,
+    "filename": "19_rice-cookers.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Electric Choppers",
+    "slug": "electric-choppers",
+    "order": 19,
+    "filename": "19_electric-choppers.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Kitchen Scales",
+    "slug": "kitchen-scales",
+    "order": 20,
+    "filename": "19_kitchen-scales.jpg"
+  },
+  {
+    "parent_id": 19,
+    "parent_name": "Kitchen Appliances",
+    "name": "Kitchen Appliance Accessories",
+    "slug": "kitchen-appliance-accessories",
+    "order": 21,
+    "filename": "19_kitchen-appliance-accessories.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "Car Stereo",
+    "slug": "car-stereo",
+    "order": 1,
+    "filename": "20_car-stereo.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "Car Audio Systems",
+    "slug": "car-audio-systems",
+    "order": 2,
+    "filename": "20_car-audio-systems.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "Car Speakers",
+    "slug": "car-speakers",
+    "order": 3,
+    "filename": "20_car-speakers.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "Car Subwoofers",
+    "slug": "car-subwoofers",
+    "order": 4,
+    "filename": "20_car-subwoofers.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "Car Amplifiers",
+    "slug": "car-amplifiers",
+    "order": 5,
+    "filename": "20_car-amplifiers.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "Android Car Players",
+    "slug": "android-car-players",
+    "order": 6,
+    "filename": "20_android-car-players.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "Apple CarPlay Devices",
+    "slug": "apple-carplay-devices",
+    "order": 7,
+    "filename": "20_apple-carplay-devices.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "Car Dash Cameras",
+    "slug": "car-dash-cameras",
+    "order": 8,
+    "filename": "20_car-dash-cameras.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "Reverse Cameras",
+    "slug": "reverse-cameras",
+    "order": 9,
+    "filename": "20_reverse-cameras.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "Parking Sensors",
+    "slug": "parking-sensors",
+    "order": 10,
+    "filename": "20_parking-sensors.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "Car GPS",
+    "slug": "car-gps",
+    "order": 11,
+    "filename": "20_car-gps.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "GPS Trackers",
+    "slug": "gps-trackers",
+    "order": 12,
+    "filename": "20_gps-trackers.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "Car Chargers",
+    "slug": "car-chargers",
+    "order": 13,
+    "filename": "20_car-chargers.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "Car Bluetooth Adapters",
+    "slug": "car-bluetooth-adapters",
+    "order": 14,
+    "filename": "20_car-bluetooth-adapters.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "FM Transmitters",
+    "slug": "fm-transmitters",
+    "order": 15,
+    "filename": "20_fm-transmitters.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "TPMS",
+    "slug": "tpms",
+    "order": 16,
+    "filename": "20_tpms.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "Car Security Systems",
+    "slug": "car-security-systems",
+    "order": 17,
+    "filename": "20_car-security-systems.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "Car Alarms",
+    "slug": "car-alarms",
+    "order": 18,
+    "filename": "20_car-alarms.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "Car Vacuum Cleaners",
+    "slug": "car-vacuum-cleaners",
+    "order": 19,
+    "filename": "20_car-vacuum-cleaners.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "OBD Devices",
+    "slug": "obd-devices",
+    "order": 20,
+    "filename": "20_obd-devices.jpg"
+  },
+  {
+    "parent_id": 20,
+    "parent_name": "Automotive Electronics",
+    "name": "Automotive Accessories",
+    "slug": "automotive-accessories",
+    "order": 21,
+    "filename": "20_automotive-accessories.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "Inkjet Printers",
+    "slug": "inkjet-printers",
+    "order": 1,
+    "filename": "21_inkjet-printers.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "Laser Printers",
+    "slug": "laser-printers",
+    "order": 2,
+    "filename": "21_laser-printers.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "All-in-One Printers",
+    "slug": "all-in-one-printers",
+    "order": 3,
+    "filename": "21_all-in-one-printers.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "Photo Printers",
+    "slug": "photo-printers",
+    "order": 4,
+    "filename": "21_photo-printers.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "Thermal Printers",
+    "slug": "thermal-printers",
+    "order": 5,
+    "filename": "21_thermal-printers.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "Label Printers",
+    "slug": "label-printers",
+    "order": 6,
+    "filename": "21_label-printers.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "Barcode Printers",
+    "slug": "barcode-printers",
+    "order": 7,
+    "filename": "21_barcode-printers.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "3D Printers",
+    "slug": "3d-printers",
+    "order": 8,
+    "filename": "21_3d-printers.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "Scanners",
+    "slug": "scanners",
+    "order": 9,
+    "filename": "21_scanners.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "Document Scanners",
+    "slug": "document-scanners",
+    "order": 10,
+    "filename": "21_document-scanners.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "Barcode Scanners",
+    "slug": "barcode-scanners",
+    "order": 11,
+    "filename": "21_barcode-scanners.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "Projectors",
+    "slug": "projectors",
+    "order": 12,
+    "filename": "21_projectors.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "Laminators",
+    "slug": "laminators",
+    "order": 13,
+    "filename": "21_laminators.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "Paper Shredders",
+    "slug": "paper-shredders",
+    "order": 14,
+    "filename": "21_paper-shredders.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "Calculators",
+    "slug": "calculators",
+    "order": 15,
+    "filename": "21_calculators.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "Digital Dictation Devices",
+    "slug": "digital-dictation-devices",
+    "order": 16,
+    "filename": "21_digital-dictation-devices.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "Printer Cartridges",
+    "slug": "printer-cartridges",
+    "order": 17,
+    "filename": "21_printer-cartridges.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "Printer Toners",
+    "slug": "printer-toners",
+    "order": 18,
+    "filename": "21_printer-toners.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "Printer Accessories",
+    "slug": "printer-accessories",
+    "order": 19,
+    "filename": "21_printer-accessories.jpg"
+  },
+  {
+    "parent_id": 21,
+    "parent_name": "Printers & Office Electronics",
+    "name": "Office Electronics",
+    "slug": "office-electronics",
+    "order": 20,
+    "filename": "21_office-electronics.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "Internal SSD",
+    "slug": "internal-ssd",
+    "order": 1,
+    "filename": "22_internal-ssd.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "External SSD",
+    "slug": "external-ssd",
+    "order": 2,
+    "filename": "22_external-ssd.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "NVMe SSD",
+    "slug": "nvme-ssd",
+    "order": 3,
+    "filename": "22_nvme-ssd.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "SATA SSD",
+    "slug": "sata-ssd",
+    "order": 4,
+    "filename": "22_sata-ssd.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "Internal HDD",
+    "slug": "internal-hdd",
+    "order": 5,
+    "filename": "22_internal-hdd.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "External HDD",
+    "slug": "external-hdd",
+    "order": 6,
+    "filename": "22_external-hdd.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "Portable HDD",
+    "slug": "portable-hdd",
+    "order": 7,
+    "filename": "22_portable-hdd.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "USB Flash Drives",
+    "slug": "usb-flash-drives",
+    "order": 8,
+    "filename": "22_usb-flash-drives.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "Memory Cards",
+    "slug": "memory-cards",
+    "order": 9,
+    "filename": "22_memory-cards.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "SD Cards",
+    "slug": "sd-cards",
+    "order": 10,
+    "filename": "22_sd-cards.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "MicroSD Cards",
+    "slug": "microsd-cards",
+    "order": 11,
+    "filename": "22_microsd-cards.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "CompactFlash Cards",
+    "slug": "compactflash-cards",
+    "order": 12,
+    "filename": "22_compactflash-cards.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "NAS Storage",
+    "slug": "nas-storage",
+    "order": 13,
+    "filename": "22_nas-storage.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "NAS Drives",
+    "slug": "nas-drives",
+    "order": 14,
+    "filename": "22_nas-drives.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "Storage Enclosures",
+    "slug": "storage-enclosures",
+    "order": 15,
+    "filename": "22_storage-enclosures.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "SSD Enclosures",
+    "slug": "ssd-enclosures",
+    "order": 16,
+    "filename": "22_ssd-enclosures.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "HDD Enclosures",
+    "slug": "hdd-enclosures",
+    "order": 17,
+    "filename": "22_hdd-enclosures.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "Memory Card Readers",
+    "slug": "memory-card-readers",
+    "order": 18,
+    "filename": "22_memory-card-readers.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "Optical Drives",
+    "slug": "optical-drives",
+    "order": 19,
+    "filename": "22_optical-drives.jpg"
+  },
+  {
+    "parent_id": 22,
+    "parent_name": "Storage & Memory",
+    "name": "Storage Accessories",
+    "slug": "storage-accessories",
+    "order": 20,
+    "filename": "22_storage-accessories.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Soldering Irons",
+    "slug": "soldering-irons",
+    "order": 1,
+    "filename": "23_soldering-irons.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Soldering Stations",
+    "slug": "soldering-stations",
+    "order": 2,
+    "filename": "23_soldering-stations.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Hot Air Stations",
+    "slug": "hot-air-stations",
+    "order": 3,
+    "filename": "23_hot-air-stations.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Desoldering Stations",
+    "slug": "desoldering-stations",
+    "order": 4,
+    "filename": "23_desoldering-stations.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Soldering Kits",
+    "slug": "soldering-kits",
+    "order": 5,
+    "filename": "23_soldering-kits.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Solder Wire",
+    "slug": "solder-wire",
+    "order": 6,
+    "filename": "23_solder-wire.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Flux",
+    "slug": "flux",
+    "order": 7,
+    "filename": "23_flux.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Multimeters",
+    "slug": "multimeters",
+    "order": 8,
+    "filename": "23_multimeters.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Digital Multimeters",
+    "slug": "digital-multimeters",
+    "order": 9,
+    "filename": "23_digital-multimeters.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Oscilloscopes",
+    "slug": "oscilloscopes",
+    "order": 10,
+    "filename": "23_oscilloscopes.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Function Generators",
+    "slug": "function-generators",
+    "order": 11,
+    "filename": "23_function-generators.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "DC Power Supplies",
+    "slug": "dc-power-supplies",
+    "order": 12,
+    "filename": "23_dc-power-supplies.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Logic Analyzers",
+    "slug": "logic-analyzers",
+    "order": 13,
+    "filename": "23_logic-analyzers.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Electronic Testers",
+    "slug": "electronic-testers",
+    "order": 14,
+    "filename": "23_electronic-testers.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Wire Strippers",
+    "slug": "wire-strippers",
+    "order": 15,
+    "filename": "23_wire-strippers.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Wire Cutters",
+    "slug": "wire-cutters",
+    "order": 16,
+    "filename": "23_wire-cutters.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Crimping Tools",
+    "slug": "crimping-tools",
+    "order": 17,
+    "filename": "23_crimping-tools.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Precision Screwdriver Sets",
+    "slug": "precision-screwdriver-sets",
+    "order": 18,
+    "filename": "23_precision-screwdriver-sets.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "PCB Repair Tools",
+    "slug": "pcb-repair-tools",
+    "order": 19,
+    "filename": "23_pcb-repair-tools.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "ESD Equipment",
+    "slug": "esd-equipment",
+    "order": 20,
+    "filename": "23_esd-equipment.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Magnifying Lamps",
+    "slug": "magnifying-lamps",
+    "order": 21,
+    "filename": "23_magnifying-lamps.jpg"
+  },
+  {
+    "parent_id": 23,
+    "parent_name": "Electronics Tools & Repair",
+    "name": "Repair Kits",
+    "slug": "repair-kits",
+    "order": 22,
+    "filename": "23_repair-kits.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "Resistors",
+    "slug": "resistors",
+    "order": 1,
+    "filename": "24_resistors.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "Capacitors",
+    "slug": "capacitors",
+    "order": 2,
+    "filename": "24_capacitors.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "Inductors",
+    "slug": "inductors",
+    "order": 3,
+    "filename": "24_inductors.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "Diodes",
+    "slug": "diodes",
+    "order": 4,
+    "filename": "24_diodes.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "LEDs",
+    "slug": "leds",
+    "order": 5,
+    "filename": "24_leds.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "Transistors",
+    "slug": "transistors",
+    "order": 6,
+    "filename": "24_transistors.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "MOSFETs",
+    "slug": "mosfets",
+    "order": 7,
+    "filename": "24_mosfets.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "ICs",
+    "slug": "ics",
+    "order": 8,
+    "filename": "24_ics.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "Microcontrollers",
+    "slug": "microcontrollers",
+    "order": 9,
+    "filename": "24_microcontrollers.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "Relays",
+    "slug": "relays",
+    "order": 10,
+    "filename": "24_relays.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "Switches",
+    "slug": "switches",
+    "order": 11,
+    "filename": "24_switches.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "Push Buttons",
+    "slug": "push-buttons",
+    "order": 12,
+    "filename": "24_push-buttons.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "Connectors",
+    "slug": "connectors",
+    "order": 13,
+    "filename": "24_connectors.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "Terminals",
+    "slug": "terminals",
+    "order": 14,
+    "filename": "24_terminals.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "Fuses",
+    "slug": "fuses",
+    "order": 15,
+    "filename": "24_fuses.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "Potentiometers",
+    "slug": "potentiometers",
+    "order": 16,
+    "filename": "24_potentiometers.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "Crystals & Oscillators",
+    "slug": "crystals-oscillators",
+    "order": 17,
+    "filename": "24_crystals-oscillators.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "Sensors",
+    "slug": "sensors",
+    "order": 18,
+    "filename": "24_sensors.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "PCBs",
+    "slug": "pcbs",
+    "order": 19,
+    "filename": "24_pcbs.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "Breadboards",
+    "slug": "breadboards",
+    "order": 20,
+    "filename": "24_breadboards.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "Jumper Wires",
+    "slug": "jumper-wires",
+    "order": 21,
+    "filename": "24_jumper-wires.jpg"
+  },
+  {
+    "parent_id": 24,
+    "parent_name": "Electronic Components",
+    "name": "Electronic Component Kits",
+    "slug": "electronic-component-kits",
+    "order": 22,
+    "filename": "24_electronic-component-kits.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "Arduino Boards",
+    "slug": "arduino-boards",
+    "order": 1,
+    "filename": "25_arduino-boards.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "Raspberry Pi",
+    "slug": "raspberry-pi",
+    "order": 2,
+    "filename": "25_raspberry-pi.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "ESP32",
+    "slug": "esp32",
+    "order": 3,
+    "filename": "25_esp32.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "ESP8266",
+    "slug": "esp8266",
+    "order": 4,
+    "filename": "25_esp8266.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "Development Boards",
+    "slug": "development-boards",
+    "order": 5,
+    "filename": "25_development-boards.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "Microcontroller Boards",
+    "slug": "microcontroller-boards",
+    "order": 6,
+    "filename": "25_microcontroller-boards.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "Single Board Computers",
+    "slug": "single-board-computers",
+    "order": 7,
+    "filename": "25_single-board-computers.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "Robotics Kits",
+    "slug": "robotics-kits",
+    "order": 8,
+    "filename": "25_robotics-kits.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "Robot Components",
+    "slug": "robot-components",
+    "order": 9,
+    "filename": "25_robot-components.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "Robot Chassis",
+    "slug": "robot-chassis",
+    "order": 10,
+    "filename": "25_robot-chassis.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "DC Motors",
+    "slug": "dc-motors",
+    "order": 11,
+    "filename": "25_dc-motors.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "Servo Motors",
+    "slug": "servo-motors",
+    "order": 12,
+    "filename": "25_servo-motors.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "Stepper Motors",
+    "slug": "stepper-motors",
+    "order": 13,
+    "filename": "25_stepper-motors.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "Motor Drivers",
+    "slug": "motor-drivers",
+    "order": 14,
+    "filename": "25_motor-drivers.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "Robotics Sensors",
+    "slug": "robotics-sensors",
+    "order": 15,
+    "filename": "25_robotics-sensors.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "Ultrasonic Sensors",
+    "slug": "ultrasonic-sensors",
+    "order": 16,
+    "filename": "25_ultrasonic-sensors.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "IoT Modules",
+    "slug": "iot-modules",
+    "order": 17,
+    "filename": "25_iot-modules.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "Wi-Fi Modules",
+    "slug": "wi-fi-modules",
+    "order": 18,
+    "filename": "25_wi-fi-modules.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "Bluetooth Modules",
+    "slug": "bluetooth-modules",
+    "order": 19,
+    "filename": "25_bluetooth-modules.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "Development Accessories",
+    "slug": "development-accessories",
+    "order": 20,
+    "filename": "25_development-accessories.jpg"
+  },
+  {
+    "parent_id": 25,
+    "parent_name": "Robotics & Development",
+    "name": "Educational Kits",
+    "slug": "educational-kits",
+    "order": 21,
+    "filename": "25_educational-kits.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Digital Multimeters",
+    "slug": "digital-multimeters",
+    "order": 1,
+    "filename": "26_digital-multimeters.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Oscilloscopes",
+    "slug": "oscilloscopes",
+    "order": 2,
+    "filename": "26_oscilloscopes.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Signal Generators",
+    "slug": "signal-generators",
+    "order": 3,
+    "filename": "26_signal-generators.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Function Generators",
+    "slug": "function-generators",
+    "order": 4,
+    "filename": "26_function-generators.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Frequency Counters",
+    "slug": "frequency-counters",
+    "order": 5,
+    "filename": "26_frequency-counters.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Logic Analyzers",
+    "slug": "logic-analyzers",
+    "order": 6,
+    "filename": "26_logic-analyzers.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Power Meters",
+    "slug": "power-meters",
+    "order": 7,
+    "filename": "26_power-meters.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "LCR Meters",
+    "slug": "lcr-meters",
+    "order": 8,
+    "filename": "26_lcr-meters.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Thermal Cameras",
+    "slug": "thermal-cameras",
+    "order": 9,
+    "filename": "26_thermal-cameras.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Infrared Thermometers",
+    "slug": "infrared-thermometers",
+    "order": 10,
+    "filename": "26_infrared-thermometers.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Digital Thermometers",
+    "slug": "digital-thermometers",
+    "order": 11,
+    "filename": "26_digital-thermometers.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Light Meters",
+    "slug": "light-meters",
+    "order": 12,
+    "filename": "26_light-meters.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Sound Level Meters",
+    "slug": "sound-level-meters",
+    "order": 13,
+    "filename": "26_sound-level-meters.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Environmental Sensors",
+    "slug": "environmental-sensors",
+    "order": 14,
+    "filename": "26_environmental-sensors.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Temperature Sensors",
+    "slug": "temperature-sensors",
+    "order": 15,
+    "filename": "26_temperature-sensors.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Humidity Meters",
+    "slug": "humidity-meters",
+    "order": 16,
+    "filename": "26_humidity-meters.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Pressure Meters",
+    "slug": "pressure-meters",
+    "order": 17,
+    "filename": "26_pressure-meters.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Laboratory Power Supplies",
+    "slug": "laboratory-power-supplies",
+    "order": 18,
+    "filename": "26_laboratory-power-supplies.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Electronic Test Equipment",
+    "slug": "electronic-test-equipment",
+    "order": 19,
+    "filename": "26_electronic-test-equipment.jpg"
+  },
+  {
+    "parent_id": 26,
+    "parent_name": "Scientific & Measurement Electronics",
+    "name": "Measurement Accessories",
+    "slug": "measurement-accessories",
+    "order": 20,
+    "filename": "26_measurement-accessories.jpg"
+  },
+  {
+    "parent_id": 27,
+    "parent_name": "Solar & Renewable Energy",
+    "name": "Solar Panels",
+    "slug": "solar-panels",
+    "order": 1,
+    "filename": "27_solar-panels.jpg"
+  },
+  {
+    "parent_id": 27,
+    "parent_name": "Solar & Renewable Energy",
+    "name": "Monocrystalline Solar Panels",
+    "slug": "monocrystalline-solar-panels",
+    "order": 2,
+    "filename": "27_monocrystalline-solar-panels.jpg"
+  },
+  {
+    "parent_id": 27,
+    "parent_name": "Solar & Renewable Energy",
+    "name": "Polycrystalline Solar Panels",
+    "slug": "polycrystalline-solar-panels",
+    "order": 3,
+    "filename": "27_polycrystalline-solar-panels.jpg"
+  },
+  {
+    "parent_id": 27,
+    "parent_name": "Solar & Renewable Energy",
+    "name": "Flexible Solar Panels",
+    "slug": "flexible-solar-panels",
+    "order": 4,
+    "filename": "27_flexible-solar-panels.jpg"
+  },
+  {
+    "parent_id": 27,
+    "parent_name": "Solar & Renewable Energy",
+    "name": "Solar Inverters",
+    "slug": "solar-inverters",
+    "order": 5,
+    "filename": "27_solar-inverters.jpg"
+  },
+  {
+    "parent_id": 27,
+    "parent_name": "Solar & Renewable Energy",
+    "name": "Solar Batteries",
+    "slug": "solar-batteries",
+    "order": 6,
+    "filename": "27_solar-batteries.jpg"
+  },
+  {
+    "parent_id": 27,
+    "parent_name": "Solar & Renewable Energy",
+    "name": "Solar Charge Controllers",
+    "slug": "solar-charge-controllers",
+    "order": 7,
+    "filename": "27_solar-charge-controllers.jpg"
+  },
+  {
+    "parent_id": 27,
+    "parent_name": "Solar & Renewable Energy",
+    "name": "MPPT Controllers",
+    "slug": "mppt-controllers",
+    "order": 8,
+    "filename": "27_mppt-controllers.jpg"
+  },
+  {
+    "parent_id": 27,
+    "parent_name": "Solar & Renewable Energy",
+    "name": "PWM Controllers",
+    "slug": "pwm-controllers",
+    "order": 9,
+    "filename": "27_pwm-controllers.jpg"
+  },
+  {
+    "parent_id": 27,
+    "parent_name": "Solar & Renewable Energy",
+    "name": "Solar Lights",
+    "slug": "solar-lights",
+    "order": 10,
+    "filename": "27_solar-lights.jpg"
+  },
+  {
+    "parent_id": 27,
+    "parent_name": "Solar & Renewable Energy",
+    "name": "Solar Street Lights",
+    "slug": "solar-street-lights",
+    "order": 11,
+    "filename": "27_solar-street-lights.jpg"
+  },
+  {
+    "parent_id": 27,
+    "parent_name": "Solar & Renewable Energy",
+    "name": "Solar Garden Lights",
+    "slug": "solar-garden-lights",
+    "order": 12,
+    "filename": "27_solar-garden-lights.jpg"
+  },
+  {
+    "parent_id": 27,
+    "parent_name": "Solar & Renewable Energy",
+    "name": "Solar Power Banks",
+    "slug": "solar-power-banks",
+    "order": 13,
+    "filename": "27_solar-power-banks.jpg"
+  },
+  {
+    "parent_id": 27,
+    "parent_name": "Solar & Renewable Energy",
+    "name": "Portable Power Stations",
+    "slug": "portable-power-stations",
+    "order": 14,
+    "filename": "27_portable-power-stations.jpg"
+  },
+  {
+    "parent_id": 27,
+    "parent_name": "Solar & Renewable Energy",
+    "name": "Solar Generators",
+    "slug": "solar-generators",
+    "order": 15,
+    "filename": "27_solar-generators.jpg"
+  },
+  {
+    "parent_id": 27,
+    "parent_name": "Solar & Renewable Energy",
+    "name": "Solar Water Pumps",
+    "slug": "solar-water-pumps",
+    "order": 16,
+    "filename": "27_solar-water-pumps.jpg"
+  },
+  {
+    "parent_id": 27,
+    "parent_name": "Solar & Renewable Energy",
+    "name": "Solar Accessories",
+    "slug": "solar-accessories",
+    "order": 17,
+    "filename": "27_solar-accessories.jpg"
+  },
+  {
+    "parent_id": 27,
+    "parent_name": "Solar & Renewable Energy",
+    "name": "Solar Installation Equipment",
+    "slug": "solar-installation-equipment",
+    "order": 18,
+    "filename": "27_solar-installation-equipment.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "LED Bulbs",
+    "slug": "led-bulbs",
+    "order": 1,
+    "filename": "28_led-bulbs.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "Smart Bulbs",
+    "slug": "smart-bulbs",
+    "order": 2,
+    "filename": "28_smart-bulbs.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "LED Tubes",
+    "slug": "led-tubes",
+    "order": 3,
+    "filename": "28_led-tubes.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "LED Panels",
+    "slug": "led-panels",
+    "order": 4,
+    "filename": "28_led-panels.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "LED Strips",
+    "slug": "led-strips",
+    "order": 5,
+    "filename": "28_led-strips.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "Smart Lighting",
+    "slug": "smart-lighting",
+    "order": 6,
+    "filename": "28_smart-lighting.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "Emergency Lights",
+    "slug": "emergency-lights",
+    "order": 7,
+    "filename": "28_emergency-lights.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "Flashlights",
+    "slug": "flashlights",
+    "order": 8,
+    "filename": "28_flashlights.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "Torches",
+    "slug": "torches",
+    "order": 9,
+    "filename": "28_torches.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "Searchlights",
+    "slug": "searchlights",
+    "order": 10,
+    "filename": "28_searchlights.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "Flood Lights",
+    "slug": "flood-lights",
+    "order": 11,
+    "filename": "28_flood-lights.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "Spotlights",
+    "slug": "spotlights",
+    "order": 12,
+    "filename": "28_spotlights.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "Outdoor Lights",
+    "slug": "outdoor-lights",
+    "order": 13,
+    "filename": "28_outdoor-lights.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "Garden Lights",
+    "slug": "garden-lights",
+    "order": 14,
+    "filename": "28_garden-lights.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "Decorative Lights",
+    "slug": "decorative-lights",
+    "order": 15,
+    "filename": "28_decorative-lights.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "Ceiling Lights",
+    "slug": "ceiling-lights",
+    "order": 16,
+    "filename": "28_ceiling-lights.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "Wall Lights",
+    "slug": "wall-lights",
+    "order": 17,
+    "filename": "28_wall-lights.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "Studio Lights",
+    "slug": "studio-lights",
+    "order": 18,
+    "filename": "28_studio-lights.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "Photography Lights",
+    "slug": "photography-lights",
+    "order": 19,
+    "filename": "28_photography-lights.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "Stage Lights",
+    "slug": "stage-lights",
+    "order": 20,
+    "filename": "28_stage-lights.jpg"
+  },
+  {
+    "parent_id": 28,
+    "parent_name": "Lighting",
+    "name": "Lighting Accessories",
+    "slug": "lighting-accessories",
+    "order": 21,
+    "filename": "28_lighting-accessories.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "FDM 3D Printers",
+    "slug": "fdm-3d-printers",
+    "order": 1,
+    "filename": "29_fdm-3d-printers.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "Resin 3D Printers",
+    "slug": "resin-3d-printers",
+    "order": 2,
+    "filename": "29_resin-3d-printers.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "Professional 3D Printers",
+    "slug": "professional-3d-printers",
+    "order": 3,
+    "filename": "29_professional-3d-printers.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "3D Printer Filaments",
+    "slug": "3d-printer-filaments",
+    "order": 4,
+    "filename": "29_3d-printer-filaments.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "PLA Filament",
+    "slug": "pla-filament",
+    "order": 5,
+    "filename": "29_pla-filament.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "ABS Filament",
+    "slug": "abs-filament",
+    "order": 6,
+    "filename": "29_abs-filament.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "PETG Filament",
+    "slug": "petg-filament",
+    "order": 7,
+    "filename": "29_petg-filament.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "TPU Filament",
+    "slug": "tpu-filament",
+    "order": 8,
+    "filename": "29_tpu-filament.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "3D Printing Resin",
+    "slug": "3d-printing-resin",
+    "order": 9,
+    "filename": "29_3d-printing-resin.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "3D Printer Parts",
+    "slug": "3d-printer-parts",
+    "order": 10,
+    "filename": "29_3d-printer-parts.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "Nozzles",
+    "slug": "nozzles",
+    "order": 11,
+    "filename": "29_nozzles.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "Build Plates",
+    "slug": "build-plates",
+    "order": 12,
+    "filename": "29_build-plates.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "Extruders",
+    "slug": "extruders",
+    "order": 13,
+    "filename": "29_extruders.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "3D Printer Hotends",
+    "slug": "3d-printer-hotends",
+    "order": 14,
+    "filename": "29_3d-printer-hotends.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "3D Printer Tools",
+    "slug": "3d-printer-tools",
+    "order": 15,
+    "filename": "29_3d-printer-tools.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "3D Scanners",
+    "slug": "3d-scanners",
+    "order": 16,
+    "filename": "29_3d-scanners.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "CNC Machines",
+    "slug": "cnc-machines",
+    "order": 17,
+    "filename": "29_cnc-machines.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "Laser Engravers",
+    "slug": "laser-engravers",
+    "order": 18,
+    "filename": "29_laser-engravers.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "Laser Cutters",
+    "slug": "laser-cutters",
+    "order": 19,
+    "filename": "29_laser-cutters.jpg"
+  },
+  {
+    "parent_id": 29,
+    "parent_name": "3D Printing & Fabrication",
+    "name": "Fabrication Accessories",
+    "slug": "fabrication-accessories",
+    "order": 20,
+    "filename": "29_fabrication-accessories.jpg"
+  },
+  {
+    "parent_id": 30,
+    "parent_name": "VR, AR & Metaverse",
+    "name": "VR Headsets",
+    "slug": "vr-headsets",
+    "order": 1,
+    "filename": "30_vr-headsets.jpg"
+  },
+  {
+    "parent_id": 30,
+    "parent_name": "VR, AR & Metaverse",
+    "name": "AR Glasses",
+    "slug": "ar-glasses",
+    "order": 2,
+    "filename": "30_ar-glasses.jpg"
+  },
+  {
+    "parent_id": 30,
+    "parent_name": "VR, AR & Metaverse",
+    "name": "Mixed Reality Headsets",
+    "slug": "mixed-reality-headsets",
+    "order": 3,
+    "filename": "30_mixed-reality-headsets.jpg"
+  },
+  {
+    "parent_id": 30,
+    "parent_name": "VR, AR & Metaverse",
+    "name": "VR Controllers",
+    "slug": "vr-controllers",
+    "order": 4,
+    "filename": "30_vr-controllers.jpg"
+  },
+  {
+    "parent_id": 30,
+    "parent_name": "VR, AR & Metaverse",
+    "name": "VR Sensors",
+    "slug": "vr-sensors",
+    "order": 5,
+    "filename": "30_vr-sensors.jpg"
+  },
+  {
+    "parent_id": 30,
+    "parent_name": "VR, AR & Metaverse",
+    "name": "VR Gaming Accessories",
+    "slug": "vr-gaming-accessories",
+    "order": 6,
+    "filename": "30_vr-gaming-accessories.jpg"
+  },
+  {
+    "parent_id": 30,
+    "parent_name": "VR, AR & Metaverse",
+    "name": "VR Motion Controllers",
+    "slug": "vr-motion-controllers",
+    "order": 7,
+    "filename": "30_vr-motion-controllers.jpg"
+  },
+  {
+    "parent_id": 30,
+    "parent_name": "VR, AR & Metaverse",
+    "name": "VR Cameras",
+    "slug": "vr-cameras",
+    "order": 8,
+    "filename": "30_vr-cameras.jpg"
+  },
+  {
+    "parent_id": 30,
+    "parent_name": "VR, AR & Metaverse",
+    "name": "VR Treadmills",
+    "slug": "vr-treadmills",
+    "order": 9,
+    "filename": "30_vr-treadmills.jpg"
+  },
+  {
+    "parent_id": 30,
+    "parent_name": "VR, AR & Metaverse",
+    "name": "VR Accessories",
+    "slug": "vr-accessories",
+    "order": 10,
+    "filename": "30_vr-accessories.jpg"
+  },
+  {
+    "parent_id": 30,
+    "parent_name": "VR, AR & Metaverse",
+    "name": "AR Accessories",
+    "slug": "ar-accessories",
+    "order": 11,
+    "filename": "30_ar-accessories.jpg"
+  },
+  {
+    "parent_id": 30,
+    "parent_name": "VR, AR & Metaverse",
+    "name": "Haptic Devices",
+    "slug": "haptic-devices",
+    "order": 12,
+    "filename": "30_haptic-devices.jpg"
+  },
+  {
+    "parent_id": 30,
+    "parent_name": "VR, AR & Metaverse",
+    "name": "Virtual Reality Kits",
+    "slug": "virtual-reality-kits",
+    "order": 13,
+    "filename": "30_virtual-reality-kits.jpg"
+  },
+  {
+    "parent_id": 31,
+    "parent_name": "GPS & Navigation",
+    "name": "GPS Devices",
+    "slug": "gps-devices",
+    "order": 1,
+    "filename": "31_gps-devices.jpg"
+  },
+  {
+    "parent_id": 31,
+    "parent_name": "GPS & Navigation",
+    "name": "Car Navigation Systems",
+    "slug": "car-navigation-systems",
+    "order": 2,
+    "filename": "31_car-navigation-systems.jpg"
+  },
+  {
+    "parent_id": 31,
+    "parent_name": "GPS & Navigation",
+    "name": "GPS Trackers",
+    "slug": "gps-trackers",
+    "order": 3,
+    "filename": "31_gps-trackers.jpg"
+  },
+  {
+    "parent_id": 31,
+    "parent_name": "GPS & Navigation",
+    "name": "Vehicle Trackers",
+    "slug": "vehicle-trackers",
+    "order": 4,
+    "filename": "31_vehicle-trackers.jpg"
+  },
+  {
+    "parent_id": 31,
+    "parent_name": "GPS & Navigation",
+    "name": "Personal Trackers",
+    "slug": "personal-trackers",
+    "order": 5,
+    "filename": "31_personal-trackers.jpg"
+  },
+  {
+    "parent_id": 31,
+    "parent_name": "GPS & Navigation",
+    "name": "Pet Trackers",
+    "slug": "pet-trackers",
+    "order": 6,
+    "filename": "31_pet-trackers.jpg"
+  },
+  {
+    "parent_id": 31,
+    "parent_name": "GPS & Navigation",
+    "name": "Smart Tags",
+    "slug": "smart-tags",
+    "order": 7,
+    "filename": "31_smart-tags.jpg"
+  },
+  {
+    "parent_id": 31,
+    "parent_name": "GPS & Navigation",
+    "name": "Bluetooth Trackers",
+    "slug": "bluetooth-trackers",
+    "order": 8,
+    "filename": "31_bluetooth-trackers.jpg"
+  },
+  {
+    "parent_id": 31,
+    "parent_name": "GPS & Navigation",
+    "name": "Fleet Tracking Devices",
+    "slug": "fleet-tracking-devices",
+    "order": 9,
+    "filename": "31_fleet-tracking-devices.jpg"
+  },
+  {
+    "parent_id": 31,
+    "parent_name": "GPS & Navigation",
+    "name": "Navigation Displays",
+    "slug": "navigation-displays",
+    "order": 10,
+    "filename": "31_navigation-displays.jpg"
+  },
+  {
+    "parent_id": 31,
+    "parent_name": "GPS & Navigation",
+    "name": "GPS Antennas",
+    "slug": "gps-antennas",
+    "order": 11,
+    "filename": "31_gps-antennas.jpg"
+  },
+  {
+    "parent_id": 31,
+    "parent_name": "GPS & Navigation",
+    "name": "GPS Accessories",
+    "slug": "gps-accessories",
+    "order": 12,
+    "filename": "31_gps-accessories.jpg"
+  },
+  {
+    "parent_id": 31,
+    "parent_name": "GPS & Navigation",
+    "name": "Navigation Accessories",
+    "slug": "navigation-accessories",
+    "order": 13,
+    "filename": "31_navigation-accessories.jpg"
+  },
+  {
+    "parent_id": 32,
+    "parent_name": "Communication Equipment",
+    "name": "Walkie Talkies",
+    "slug": "walkie-talkies",
+    "order": 1,
+    "filename": "32_walkie-talkies.jpg"
+  },
+  {
+    "parent_id": 32,
+    "parent_name": "Communication Equipment",
+    "name": "Two-Way Radios",
+    "slug": "two-way-radios",
+    "order": 2,
+    "filename": "32_two-way-radios.jpg"
+  },
+  {
+    "parent_id": 32,
+    "parent_name": "Communication Equipment",
+    "name": "Intercom Systems",
+    "slug": "intercom-systems",
+    "order": 3,
+    "filename": "32_intercom-systems.jpg"
+  },
+  {
+    "parent_id": 32,
+    "parent_name": "Communication Equipment",
+    "name": "Wireless Intercoms",
+    "slug": "wireless-intercoms",
+    "order": 4,
+    "filename": "32_wireless-intercoms.jpg"
+  },
+  {
+    "parent_id": 32,
+    "parent_name": "Communication Equipment",
+    "name": "Radio Transmitters",
+    "slug": "radio-transmitters",
+    "order": 5,
+    "filename": "32_radio-transmitters.jpg"
+  },
+  {
+    "parent_id": 32,
+    "parent_name": "Communication Equipment",
+    "name": "Radio Receivers",
+    "slug": "radio-receivers",
+    "order": 6,
+    "filename": "32_radio-receivers.jpg"
+  },
+  {
+    "parent_id": 32,
+    "parent_name": "Communication Equipment",
+    "name": "RF Modules",
+    "slug": "rf-modules",
+    "order": 7,
+    "filename": "32_rf-modules.jpg"
+  },
+  {
+    "parent_id": 32,
+    "parent_name": "Communication Equipment",
+    "name": "Wireless Transmitters",
+    "slug": "wireless-transmitters",
+    "order": 8,
+    "filename": "32_wireless-transmitters.jpg"
+  },
+  {
+    "parent_id": 32,
+    "parent_name": "Communication Equipment",
+    "name": "Wireless Receivers",
+    "slug": "wireless-receivers",
+    "order": 9,
+    "filename": "32_wireless-receivers.jpg"
+  },
+  {
+    "parent_id": 32,
+    "parent_name": "Communication Equipment",
+    "name": "Antennas",
+    "slug": "antennas",
+    "order": 10,
+    "filename": "32_antennas.jpg"
+  },
+  {
+    "parent_id": 32,
+    "parent_name": "Communication Equipment",
+    "name": "Signal Boosters",
+    "slug": "signal-boosters",
+    "order": 11,
+    "filename": "32_signal-boosters.jpg"
+  },
+  {
+    "parent_id": 32,
+    "parent_name": "Communication Equipment",
+    "name": "RF Amplifiers",
+    "slug": "rf-amplifiers",
+    "order": 12,
+    "filename": "32_rf-amplifiers.jpg"
+  },
+  {
+    "parent_id": 32,
+    "parent_name": "Communication Equipment",
+    "name": "Communication Cables",
+    "slug": "communication-cables",
+    "order": 13,
+    "filename": "32_communication-cables.jpg"
+  },
+  {
+    "parent_id": 32,
+    "parent_name": "Communication Equipment",
+    "name": "Communication Accessories",
+    "slug": "communication-accessories",
+    "order": 14,
+    "filename": "32_communication-accessories.jpg"
+  },
+  {
+    "parent_id": 33,
+    "parent_name": "Industrial Electronics",
+    "name": "PLC",
+    "slug": "plc",
+    "order": 1,
+    "filename": "33_plc.jpg"
+  },
+  {
+    "parent_id": 33,
+    "parent_name": "Industrial Electronics",
+    "name": "HMI",
+    "slug": "hmi",
+    "order": 2,
+    "filename": "33_hmi.jpg"
+  },
+  {
+    "parent_id": 33,
+    "parent_name": "Industrial Electronics",
+    "name": "Industrial Controllers",
+    "slug": "industrial-controllers",
+    "order": 3,
+    "filename": "33_industrial-controllers.jpg"
+  },
+  {
+    "parent_id": 33,
+    "parent_name": "Industrial Electronics",
+    "name": "Industrial Sensors",
+    "slug": "industrial-sensors",
+    "order": 4,
+    "filename": "33_industrial-sensors.jpg"
+  },
+  {
+    "parent_id": 33,
+    "parent_name": "Industrial Electronics",
+    "name": "Automation Equipment",
+    "slug": "automation-equipment",
+    "order": 5,
+    "filename": "33_automation-equipment.jpg"
+  },
+  {
+    "parent_id": 33,
+    "parent_name": "Industrial Electronics",
+    "name": "Motor Controllers",
+    "slug": "motor-controllers",
+    "order": 6,
+    "filename": "33_motor-controllers.jpg"
+  },
+  {
+    "parent_id": 33,
+    "parent_name": "Industrial Electronics",
+    "name": "Industrial Relays",
+    "slug": "industrial-relays",
+    "order": 7,
+    "filename": "33_industrial-relays.jpg"
+  },
+  {
+    "parent_id": 33,
+    "parent_name": "Industrial Electronics",
+    "name": "Contactors",
+    "slug": "contactors",
+    "order": 8,
+    "filename": "33_contactors.jpg"
+  },
+  {
+    "parent_id": 33,
+    "parent_name": "Industrial Electronics",
+    "name": "Industrial Power Supplies",
+    "slug": "industrial-power-supplies",
+    "order": 9,
+    "filename": "33_industrial-power-supplies.jpg"
+  },
+  {
+    "parent_id": 33,
+    "parent_name": "Industrial Electronics",
+    "name": "Control Panels",
+    "slug": "control-panels",
+    "order": 10,
+    "filename": "33_control-panels.jpg"
+  },
+  {
+    "parent_id": 33,
+    "parent_name": "Industrial Electronics",
+    "name": "Industrial Networking",
+    "slug": "industrial-networking",
+    "order": 11,
+    "filename": "33_industrial-networking.jpg"
+  },
+  {
+    "parent_id": 33,
+    "parent_name": "Industrial Electronics",
+    "name": "Industrial Cameras",
+    "slug": "industrial-cameras",
+    "order": 12,
+    "filename": "33_industrial-cameras.jpg"
+  },
+  {
+    "parent_id": 33,
+    "parent_name": "Industrial Electronics",
+    "name": "Industrial Displays",
+    "slug": "industrial-displays",
+    "order": 13,
+    "filename": "33_industrial-displays.jpg"
+  },
+  {
+    "parent_id": 33,
+    "parent_name": "Industrial Electronics",
+    "name": "Variable Frequency Drives",
+    "slug": "variable-frequency-drives",
+    "order": 14,
+    "filename": "33_variable-frequency-drives.jpg"
+  },
+  {
+    "parent_id": 33,
+    "parent_name": "Industrial Electronics",
+    "name": "Servo Drives",
+    "slug": "servo-drives",
+    "order": 15,
+    "filename": "33_servo-drives.jpg"
+  },
+  {
+    "parent_id": 33,
+    "parent_name": "Industrial Electronics",
+    "name": "Industrial Motors",
+    "slug": "industrial-motors",
+    "order": 16,
+    "filename": "33_industrial-motors.jpg"
+  },
+  {
+    "parent_id": 33,
+    "parent_name": "Industrial Electronics",
+    "name": "Automation Accessories",
+    "slug": "automation-accessories",
+    "order": 17,
+    "filename": "33_automation-accessories.jpg"
+  },
+  {
+    "parent_id": 33,
+    "parent_name": "Industrial Electronics",
+    "name": "Industrial IoT Devices",
+    "slug": "industrial-iot-devices",
+    "order": 18,
+    "filename": "33_industrial-iot-devices.jpg"
+  },
+  {
+    "parent_id": 34,
+    "parent_name": "Medical & Healthcare Electronics",
+    "name": "Digital Thermometers",
+    "slug": "digital-thermometers",
+    "order": 1,
+    "filename": "34_digital-thermometers.jpg"
+  },
+  {
+    "parent_id": 34,
+    "parent_name": "Medical & Healthcare Electronics",
+    "name": "Blood Pressure Monitors",
+    "slug": "blood-pressure-monitors",
+    "order": 2,
+    "filename": "34_blood-pressure-monitors.jpg"
+  },
+  {
+    "parent_id": 34,
+    "parent_name": "Medical & Healthcare Electronics",
+    "name": "Pulse Oximeters",
+    "slug": "pulse-oximeters",
+    "order": 3,
+    "filename": "34_pulse-oximeters.jpg"
+  },
+  {
+    "parent_id": 34,
+    "parent_name": "Medical & Healthcare Electronics",
+    "name": "Glucose Monitors",
+    "slug": "glucose-monitors",
+    "order": 4,
+    "filename": "34_glucose-monitors.jpg"
+  },
+  {
+    "parent_id": 34,
+    "parent_name": "Medical & Healthcare Electronics",
+    "name": "Blood Glucose Meters",
+    "slug": "blood-glucose-meters",
+    "order": 5,
+    "filename": "34_blood-glucose-meters.jpg"
+  },
+  {
+    "parent_id": 34,
+    "parent_name": "Medical & Healthcare Electronics",
+    "name": "Digital Weighing Scales",
+    "slug": "digital-weighing-scales",
+    "order": 6,
+    "filename": "34_digital-weighing-scales.jpg"
+  },
+  {
+    "parent_id": 34,
+    "parent_name": "Medical & Healthcare Electronics",
+    "name": "ECG Devices",
+    "slug": "ecg-devices",
+    "order": 7,
+    "filename": "34_ecg-devices.jpg"
+  },
+  {
+    "parent_id": 34,
+    "parent_name": "Medical & Healthcare Electronics",
+    "name": "Patient Monitoring Devices",
+    "slug": "patient-monitoring-devices",
+    "order": 8,
+    "filename": "34_patient-monitoring-devices.jpg"
+  },
+  {
+    "parent_id": 34,
+    "parent_name": "Medical & Healthcare Electronics",
+    "name": "Health Monitoring Devices",
+    "slug": "health-monitoring-devices",
+    "order": 9,
+    "filename": "34_health-monitoring-devices.jpg"
+  },
+  {
+    "parent_id": 34,
+    "parent_name": "Medical & Healthcare Electronics",
+    "name": "Smart Health Wearables",
+    "slug": "smart-health-wearables",
+    "order": 10,
+    "filename": "34_smart-health-wearables.jpg"
+  },
+  {
+    "parent_id": 34,
+    "parent_name": "Medical & Healthcare Electronics",
+    "name": "TENS Devices",
+    "slug": "tens-devices",
+    "order": 11,
+    "filename": "34_tens-devices.jpg"
+  },
+  {
+    "parent_id": 34,
+    "parent_name": "Medical & Healthcare Electronics",
+    "name": "Nebulizers",
+    "slug": "nebulizers",
+    "order": 12,
+    "filename": "34_nebulizers.jpg"
+  },
+  {
+    "parent_id": 34,
+    "parent_name": "Medical & Healthcare Electronics",
+    "name": "Medical Electronics",
+    "slug": "medical-electronics",
+    "order": 13,
+    "filename": "34_medical-electronics.jpg"
+  },
+  {
+    "parent_id": 34,
+    "parent_name": "Medical & Healthcare Electronics",
+    "name": "Medical Sensors",
+    "slug": "medical-sensors",
+    "order": 14,
+    "filename": "34_medical-sensors.jpg"
+  },
+  {
+    "parent_id": 34,
+    "parent_name": "Medical & Healthcare Electronics",
+    "name": "Medical Accessories",
+    "slug": "medical-accessories",
+    "order": 15,
+    "filename": "34_medical-accessories.jpg"
+  },
+  {
+    "parent_id": 34,
+    "parent_name": "Medical & Healthcare Electronics",
+    "name": "Healthcare Monitoring Equipment",
+    "slug": "healthcare-monitoring-equipment",
+    "order": 16,
+    "filename": "34_healthcare-monitoring-equipment.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "POS Machines",
+    "slug": "pos-machines",
+    "order": 1,
+    "filename": "35_pos-machines.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "POS Terminals",
+    "slug": "pos-terminals",
+    "order": 2,
+    "filename": "35_pos-terminals.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "POS Printers",
+    "slug": "pos-printers",
+    "order": 3,
+    "filename": "35_pos-printers.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "Barcode Scanners",
+    "slug": "barcode-scanners",
+    "order": 4,
+    "filename": "35_barcode-scanners.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "Barcode Printers",
+    "slug": "barcode-printers",
+    "order": 5,
+    "filename": "35_barcode-printers.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "Biometric Machines",
+    "slug": "biometric-machines",
+    "order": 6,
+    "filename": "35_biometric-machines.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "Attendance Machines",
+    "slug": "attendance-machines",
+    "order": 7,
+    "filename": "35_attendance-machines.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "Access Control Devices",
+    "slug": "access-control-devices",
+    "order": 8,
+    "filename": "35_access-control-devices.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "Cash Counters",
+    "slug": "cash-counters",
+    "order": 9,
+    "filename": "35_cash-counters.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "Digital Signage",
+    "slug": "digital-signage",
+    "order": 10,
+    "filename": "35_digital-signage.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "Interactive Displays",
+    "slug": "interactive-displays",
+    "order": 11,
+    "filename": "35_interactive-displays.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "Conference Systems",
+    "slug": "conference-systems",
+    "order": 12,
+    "filename": "35_conference-systems.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "Video Conferencing Systems",
+    "slug": "video-conferencing-systems",
+    "order": 13,
+    "filename": "35_video-conferencing-systems.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "Office Phones",
+    "slug": "office-phones",
+    "order": 14,
+    "filename": "35_office-phones.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "Intercoms",
+    "slug": "intercoms",
+    "order": 15,
+    "filename": "35_intercoms.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "Document Cameras",
+    "slug": "document-cameras",
+    "order": 16,
+    "filename": "35_document-cameras.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "Presentation Equipment",
+    "slug": "presentation-equipment",
+    "order": 17,
+    "filename": "35_presentation-equipment.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "Office Networking",
+    "slug": "office-networking",
+    "order": 18,
+    "filename": "35_office-networking.jpg"
+  },
+  {
+    "parent_id": 35,
+    "parent_name": "Office & Business Technology",
+    "name": "Business Electronics",
+    "slug": "business-electronics",
+    "order": 19,
+    "filename": "35_business-electronics.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "Studio Microphones",
+    "slug": "studio-microphones",
+    "order": 1,
+    "filename": "36_studio-microphones.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "Condenser Microphones",
+    "slug": "condenser-microphones",
+    "order": 2,
+    "filename": "36_condenser-microphones.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "Dynamic Microphones",
+    "slug": "dynamic-microphones",
+    "order": 3,
+    "filename": "36_dynamic-microphones.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "Ribbon Microphones",
+    "slug": "ribbon-microphones",
+    "order": 4,
+    "filename": "36_ribbon-microphones.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "Wireless Microphones",
+    "slug": "wireless-microphones",
+    "order": 5,
+    "filename": "36_wireless-microphones.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "Audio Interfaces",
+    "slug": "audio-interfaces",
+    "order": 6,
+    "filename": "36_audio-interfaces.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "Mixers",
+    "slug": "mixers",
+    "order": 7,
+    "filename": "36_mixers.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "Digital Mixers",
+    "slug": "digital-mixers",
+    "order": 8,
+    "filename": "36_digital-mixers.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "Studio Monitors",
+    "slug": "studio-monitors",
+    "order": 9,
+    "filename": "36_studio-monitors.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "Studio Headphones",
+    "slug": "studio-headphones",
+    "order": 10,
+    "filename": "36_studio-headphones.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "Amplifiers",
+    "slug": "amplifiers",
+    "order": 11,
+    "filename": "36_amplifiers.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "Power Amplifiers",
+    "slug": "power-amplifiers",
+    "order": 12,
+    "filename": "36_power-amplifiers.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "Preamps",
+    "slug": "preamps",
+    "order": 13,
+    "filename": "36_preamps.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "MIDI Controllers",
+    "slug": "midi-controllers",
+    "order": 14,
+    "filename": "36_midi-controllers.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "MIDI Keyboards",
+    "slug": "midi-keyboards",
+    "order": 15,
+    "filename": "36_midi-keyboards.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "DJ Controllers",
+    "slug": "dj-controllers",
+    "order": 16,
+    "filename": "36_dj-controllers.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "DJ Mixers",
+    "slug": "dj-mixers",
+    "order": 17,
+    "filename": "36_dj-mixers.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "Audio Processors",
+    "slug": "audio-processors",
+    "order": 18,
+    "filename": "36_audio-processors.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "Recording Equipment",
+    "slug": "recording-equipment",
+    "order": 19,
+    "filename": "36_recording-equipment.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "Audio Cables",
+    "slug": "audio-cables",
+    "order": 20,
+    "filename": "36_audio-cables.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "Studio Accessories",
+    "slug": "studio-accessories",
+    "order": 21,
+    "filename": "36_studio-accessories.jpg"
+  },
+  {
+    "parent_id": 36,
+    "parent_name": "Professional Audio & Studio",
+    "name": "Podcasting Equipment",
+    "slug": "podcasting-equipment",
+    "order": 22,
+    "filename": "36_podcasting-equipment.jpg"
+  },
+  {
+    "parent_id": 37,
+    "parent_name": "Musical Electronics",
+    "name": "Electronic Keyboards",
+    "slug": "electronic-keyboards",
+    "order": 1,
+    "filename": "37_electronic-keyboards.jpg"
+  },
+  {
+    "parent_id": 37,
+    "parent_name": "Musical Electronics",
+    "name": "Digital Pianos",
+    "slug": "digital-pianos",
+    "order": 2,
+    "filename": "37_digital-pianos.jpg"
+  },
+  {
+    "parent_id": 37,
+    "parent_name": "Musical Electronics",
+    "name": "MIDI Keyboards",
+    "slug": "midi-keyboards",
+    "order": 3,
+    "filename": "37_midi-keyboards.jpg"
+  },
+  {
+    "parent_id": 37,
+    "parent_name": "Musical Electronics",
+    "name": "Electronic Drums",
+    "slug": "electronic-drums",
+    "order": 4,
+    "filename": "37_electronic-drums.jpg"
+  },
+  {
+    "parent_id": 37,
+    "parent_name": "Musical Electronics",
+    "name": "Drum Machines",
+    "slug": "drum-machines",
+    "order": 5,
+    "filename": "37_drum-machines.jpg"
+  },
+  {
+    "parent_id": 37,
+    "parent_name": "Musical Electronics",
+    "name": "Synthesizers",
+    "slug": "synthesizers",
+    "order": 6,
+    "filename": "37_synthesizers.jpg"
+  },
+  {
+    "parent_id": 37,
+    "parent_name": "Musical Electronics",
+    "name": "Samplers",
+    "slug": "samplers",
+    "order": 7,
+    "filename": "37_samplers.jpg"
+  },
+  {
+    "parent_id": 37,
+    "parent_name": "Musical Electronics",
+    "name": "Guitar Amplifiers",
+    "slug": "guitar-amplifiers",
+    "order": 8,
+    "filename": "37_guitar-amplifiers.jpg"
+  },
+  {
+    "parent_id": 37,
+    "parent_name": "Musical Electronics",
+    "name": "Bass Amplifiers",
+    "slug": "bass-amplifiers",
+    "order": 9,
+    "filename": "37_bass-amplifiers.jpg"
+  },
+  {
+    "parent_id": 37,
+    "parent_name": "Musical Electronics",
+    "name": "Effects Pedals",
+    "slug": "effects-pedals",
+    "order": 10,
+    "filename": "37_effects-pedals.jpg"
+  },
+  {
+    "parent_id": 37,
+    "parent_name": "Musical Electronics",
+    "name": "Multi-Effects Processors",
+    "slug": "multi-effects-processors",
+    "order": 11,
+    "filename": "37_multi-effects-processors.jpg"
+  },
+  {
+    "parent_id": 37,
+    "parent_name": "Musical Electronics",
+    "name": "Digital Mixers",
+    "slug": "digital-mixers",
+    "order": 12,
+    "filename": "37_digital-mixers.jpg"
+  },
+  {
+    "parent_id": 37,
+    "parent_name": "Musical Electronics",
+    "name": "Audio Interfaces",
+    "slug": "audio-interfaces",
+    "order": 13,
+    "filename": "37_audio-interfaces.jpg"
+  },
+  {
+    "parent_id": 37,
+    "parent_name": "Musical Electronics",
+    "name": "Electronic Metronomes",
+    "slug": "electronic-metronomes",
+    "order": 14,
+    "filename": "37_electronic-metronomes.jpg"
+  },
+  {
+    "parent_id": 37,
+    "parent_name": "Musical Electronics",
+    "name": "Tuners",
+    "slug": "tuners",
+    "order": 15,
+    "filename": "37_tuners.jpg"
+  },
+  {
+    "parent_id": 37,
+    "parent_name": "Musical Electronics",
+    "name": "Electronic Accessories",
+    "slug": "electronic-accessories",
+    "order": 16,
+    "filename": "37_electronic-accessories.jpg"
+  },
+  {
+    "parent_id": 37,
+    "parent_name": "Musical Electronics",
+    "name": "Musical Instrument Cables",
+    "slug": "musical-instrument-cables",
+    "order": 17,
+    "filename": "37_musical-instrument-cables.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "Rack Servers",
+    "slug": "rack-servers",
+    "order": 1,
+    "filename": "38_rack-servers.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "Tower Servers",
+    "slug": "tower-servers",
+    "order": 2,
+    "filename": "38_tower-servers.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "Blade Servers",
+    "slug": "blade-servers",
+    "order": 3,
+    "filename": "38_blade-servers.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "Server CPUs",
+    "slug": "server-cpus",
+    "order": 4,
+    "filename": "38_server-cpus.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "Server Motherboards",
+    "slug": "server-motherboards",
+    "order": 5,
+    "filename": "38_server-motherboards.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "Server RAM",
+    "slug": "server-ram",
+    "order": 6,
+    "filename": "38_server-ram.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "Server SSDs",
+    "slug": "server-ssds",
+    "order": 7,
+    "filename": "38_server-ssds.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "Server HDDs",
+    "slug": "server-hdds",
+    "order": 8,
+    "filename": "38_server-hdds.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "NAS Systems",
+    "slug": "nas-systems",
+    "order": 9,
+    "filename": "38_nas-systems.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "SAN Storage",
+    "slug": "san-storage",
+    "order": 10,
+    "filename": "38_san-storage.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "Server Racks",
+    "slug": "server-racks",
+    "order": 11,
+    "filename": "38_server-racks.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "Server Cabinets",
+    "slug": "server-cabinets",
+    "order": 12,
+    "filename": "38_server-cabinets.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "KVM Switches",
+    "slug": "kvm-switches",
+    "order": 13,
+    "filename": "38_kvm-switches.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "Server UPS",
+    "slug": "server-ups",
+    "order": 14,
+    "filename": "38_server-ups.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "Data Center Networking",
+    "slug": "data-center-networking",
+    "order": 15,
+    "filename": "38_data-center-networking.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "Network Racks",
+    "slug": "network-racks",
+    "order": 16,
+    "filename": "38_network-racks.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "Server Power Supplies",
+    "slug": "server-power-supplies",
+    "order": 17,
+    "filename": "38_server-power-supplies.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "Server Cooling",
+    "slug": "server-cooling",
+    "order": 18,
+    "filename": "38_server-cooling.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "Server Accessories",
+    "slug": "server-accessories",
+    "order": 19,
+    "filename": "38_server-accessories.jpg"
+  },
+  {
+    "parent_id": 38,
+    "parent_name": "Servers & Data Center",
+    "name": "Data Center Equipment",
+    "slug": "data-center-equipment",
+    "order": 20,
+    "filename": "38_data-center-equipment.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "USB Cables",
+    "slug": "usb-cables",
+    "order": 1,
+    "filename": "39_usb-cables.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "USB-C Cables",
+    "slug": "usb-c-cables",
+    "order": 2,
+    "filename": "39_usb-c-cables.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "Micro USB Cables",
+    "slug": "micro-usb-cables",
+    "order": 3,
+    "filename": "39_micro-usb-cables.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "Lightning Cables",
+    "slug": "lightning-cables",
+    "order": 4,
+    "filename": "39_lightning-cables.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "HDMI Cables",
+    "slug": "hdmi-cables",
+    "order": 5,
+    "filename": "39_hdmi-cables.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "DisplayPort Cables",
+    "slug": "displayport-cables",
+    "order": 6,
+    "filename": "39_displayport-cables.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "VGA Cables",
+    "slug": "vga-cables",
+    "order": 7,
+    "filename": "39_vga-cables.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "DVI Cables",
+    "slug": "dvi-cables",
+    "order": 8,
+    "filename": "39_dvi-cables.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "Ethernet Cables",
+    "slug": "ethernet-cables",
+    "order": 9,
+    "filename": "39_ethernet-cables.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "Fiber Optic Cables",
+    "slug": "fiber-optic-cables",
+    "order": 10,
+    "filename": "39_fiber-optic-cables.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "Audio Cables",
+    "slug": "audio-cables",
+    "order": 11,
+    "filename": "39_audio-cables.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "AUX Cables",
+    "slug": "aux-cables",
+    "order": 12,
+    "filename": "39_aux-cables.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "Optical Audio Cables",
+    "slug": "optical-audio-cables",
+    "order": 13,
+    "filename": "39_optical-audio-cables.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "Power Cables",
+    "slug": "power-cables",
+    "order": 14,
+    "filename": "39_power-cables.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "SATA Cables",
+    "slug": "sata-cables",
+    "order": 15,
+    "filename": "39_sata-cables.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "IDE Cables",
+    "slug": "ide-cables",
+    "order": 16,
+    "filename": "39_ide-cables.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "USB Adapters",
+    "slug": "usb-adapters",
+    "order": 17,
+    "filename": "39_usb-adapters.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "HDMI Adapters",
+    "slug": "hdmi-adapters",
+    "order": 18,
+    "filename": "39_hdmi-adapters.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "Display Adapters",
+    "slug": "display-adapters",
+    "order": 19,
+    "filename": "39_display-adapters.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "Audio Adapters",
+    "slug": "audio-adapters",
+    "order": 20,
+    "filename": "39_audio-adapters.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "Power Adapters",
+    "slug": "power-adapters",
+    "order": 21,
+    "filename": "39_power-adapters.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "Connectors",
+    "slug": "connectors",
+    "order": 22,
+    "filename": "39_connectors.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "Cable Splitters",
+    "slug": "cable-splitters",
+    "order": 23,
+    "filename": "39_cable-splitters.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "Cable Converters",
+    "slug": "cable-converters",
+    "order": 24,
+    "filename": "39_cable-converters.jpg"
+  },
+  {
+    "parent_id": 39,
+    "parent_name": "Cables, Connectors & Adapters",
+    "name": "Cable Management",
+    "slug": "cable-management",
+    "order": 25,
+    "filename": "39_cable-management.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Refurbished Smartphones",
+    "slug": "refurbished-smartphones",
+    "order": 1,
+    "filename": "40_refurbished-smartphones.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Refurbished Laptops",
+    "slug": "refurbished-laptops",
+    "order": 2,
+    "filename": "40_refurbished-laptops.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Refurbished Computers",
+    "slug": "refurbished-computers",
+    "order": 3,
+    "filename": "40_refurbished-computers.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Refurbished Tablets",
+    "slug": "refurbished-tablets",
+    "order": 4,
+    "filename": "40_refurbished-tablets.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Refurbished Monitors",
+    "slug": "refurbished-monitors",
+    "order": 5,
+    "filename": "40_refurbished-monitors.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Refurbished TVs",
+    "slug": "refurbished-tvs",
+    "order": 6,
+    "filename": "40_refurbished-tvs.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Refurbished Cameras",
+    "slug": "refurbished-cameras",
+    "order": 7,
+    "filename": "40_refurbished-cameras.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Refurbished Gaming Consoles",
+    "slug": "refurbished-gaming-consoles",
+    "order": 8,
+    "filename": "40_refurbished-gaming-consoles.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Refurbished Audio Devices",
+    "slug": "refurbished-audio-devices",
+    "order": 9,
+    "filename": "40_refurbished-audio-devices.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Used Smartphones",
+    "slug": "used-smartphones",
+    "order": 10,
+    "filename": "40_used-smartphones.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Used Laptops",
+    "slug": "used-laptops",
+    "order": 11,
+    "filename": "40_used-laptops.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Used Computers",
+    "slug": "used-computers",
+    "order": 12,
+    "filename": "40_used-computers.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Used Cameras",
+    "slug": "used-cameras",
+    "order": 13,
+    "filename": "40_used-cameras.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Used Gaming Devices",
+    "slug": "used-gaming-devices",
+    "order": 14,
+    "filename": "40_used-gaming-devices.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Used Electronics",
+    "slug": "used-electronics",
+    "order": 15,
+    "filename": "40_used-electronics.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Open Box Electronics",
+    "slug": "open-box-electronics",
+    "order": 16,
+    "filename": "40_open-box-electronics.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Pre-Owned Accessories",
+    "slug": "pre-owned-accessories",
+    "order": 17,
+    "filename": "40_pre-owned-accessories.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Certified Refurbished",
+    "slug": "certified-refurbished",
+    "order": 18,
+    "filename": "40_certified-refurbished.jpg"
+  },
+  {
+    "parent_id": 40,
+    "parent_name": "Refurbished & Used Electronics",
+    "name": "Clearance Electronics",
+    "slug": "clearance-electronics",
+    "order": 19,
+    "filename": "40_clearance-electronics.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "Smart Sensors",
+    "slug": "smart-sensors",
+    "order": 1,
+    "filename": "41_smart-sensors.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "Smart Plugs",
+    "slug": "smart-plugs",
+    "order": 2,
+    "filename": "41_smart-plugs.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "Smart Switches",
+    "slug": "smart-switches",
+    "order": 3,
+    "filename": "41_smart-switches.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "Smart Bulbs",
+    "slug": "smart-bulbs",
+    "order": 4,
+    "filename": "41_smart-bulbs.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "Smart Cameras",
+    "slug": "smart-cameras",
+    "order": 5,
+    "filename": "41_smart-cameras.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "Smart Doorbells",
+    "slug": "smart-doorbells",
+    "order": 6,
+    "filename": "41_smart-doorbells.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "Smart Locks",
+    "slug": "smart-locks",
+    "order": 7,
+    "filename": "41_smart-locks.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "Smart Thermostats",
+    "slug": "smart-thermostats",
+    "order": 8,
+    "filename": "41_smart-thermostats.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "Smart Hubs",
+    "slug": "smart-hubs",
+    "order": 9,
+    "filename": "41_smart-hubs.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "IoT Development Boards",
+    "slug": "iot-development-boards",
+    "order": 10,
+    "filename": "41_iot-development-boards.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "IoT Modules",
+    "slug": "iot-modules",
+    "order": 11,
+    "filename": "41_iot-modules.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "IoT Gateways",
+    "slug": "iot-gateways",
+    "order": 12,
+    "filename": "41_iot-gateways.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "IoT Controllers",
+    "slug": "iot-controllers",
+    "order": 13,
+    "filename": "41_iot-controllers.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "Smart Energy Meters",
+    "slug": "smart-energy-meters",
+    "order": 14,
+    "filename": "41_smart-energy-meters.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "Smart Agriculture Devices",
+    "slug": "smart-agriculture-devices",
+    "order": 15,
+    "filename": "41_smart-agriculture-devices.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "Smart Monitoring Devices",
+    "slug": "smart-monitoring-devices",
+    "order": 16,
+    "filename": "41_smart-monitoring-devices.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "Industrial IoT",
+    "slug": "industrial-iot",
+    "order": 17,
+    "filename": "41_industrial-iot.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "Home IoT",
+    "slug": "home-iot",
+    "order": 18,
+    "filename": "41_home-iot.jpg"
+  },
+  {
+    "parent_id": 41,
+    "parent_name": "Smart Devices & IoT",
+    "name": "IoT Accessories",
+    "slug": "iot-accessories",
+    "order": 19,
+    "filename": "41_iot-accessories.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Mobile Accessories",
+    "slug": "mobile-accessories",
+    "order": 1,
+    "filename": "42_mobile-accessories.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Laptop Accessories",
+    "slug": "laptop-accessories",
+    "order": 2,
+    "filename": "42_laptop-accessories.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Tablet Accessories",
+    "slug": "tablet-accessories",
+    "order": 3,
+    "filename": "42_tablet-accessories.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Computer Accessories",
+    "slug": "computer-accessories",
+    "order": 4,
+    "filename": "42_computer-accessories.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "TV Accessories",
+    "slug": "tv-accessories",
+    "order": 5,
+    "filename": "42_tv-accessories.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Camera Accessories",
+    "slug": "camera-accessories",
+    "order": 6,
+    "filename": "42_camera-accessories.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Audio Accessories",
+    "slug": "audio-accessories",
+    "order": 7,
+    "filename": "42_audio-accessories.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Gaming Accessories",
+    "slug": "gaming-accessories",
+    "order": 8,
+    "filename": "42_gaming-accessories.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Smartwatch Accessories",
+    "slug": "smartwatch-accessories",
+    "order": 9,
+    "filename": "42_smartwatch-accessories.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Cable Accessories",
+    "slug": "cable-accessories",
+    "order": 10,
+    "filename": "42_cable-accessories.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Chargers & Adapters",
+    "slug": "chargers-adapters",
+    "order": 11,
+    "filename": "42_chargers-adapters.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Stands & Holders",
+    "slug": "stands-holders",
+    "order": 12,
+    "filename": "42_stands-holders.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Mounts",
+    "slug": "mounts",
+    "order": 13,
+    "filename": "42_mounts.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Cases & Covers",
+    "slug": "cases-covers",
+    "order": 14,
+    "filename": "42_cases-covers.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Screen Protectors",
+    "slug": "screen-protectors",
+    "order": 15,
+    "filename": "42_screen-protectors.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Cleaning Kits",
+    "slug": "cleaning-kits",
+    "order": 16,
+    "filename": "42_cleaning-kits.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Replacement Parts",
+    "slug": "replacement-parts",
+    "order": 17,
+    "filename": "42_replacement-parts.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Batteries",
+    "slug": "batteries",
+    "order": 18,
+    "filename": "42_batteries.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Remote Controls",
+    "slug": "remote-controls",
+    "order": 19,
+    "filename": "42_remote-controls.jpg"
+  },
+  {
+    "parent_id": 42,
+    "parent_name": "Electronic Accessories",
+    "name": "Universal Accessories",
+    "slug": "universal-accessories",
+    "order": 20,
+    "filename": "42_universal-accessories.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Gaming Controllers",
+    "slug": "gaming-controllers",
+    "order": 1,
+    "filename": "43_gaming-controllers.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Wireless Controllers",
+    "slug": "wireless-controllers",
+    "order": 2,
+    "filename": "43_wireless-controllers.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Gaming Keyboards",
+    "slug": "gaming-keyboards",
+    "order": 3,
+    "filename": "43_gaming-keyboards.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Gaming Mouse",
+    "slug": "gaming-mouse",
+    "order": 4,
+    "filename": "43_gaming-mouse.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Gaming Headsets",
+    "slug": "gaming-headsets",
+    "order": 5,
+    "filename": "43_gaming-headsets.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Gaming Mouse Pads",
+    "slug": "gaming-mouse-pads",
+    "order": 6,
+    "filename": "43_gaming-mouse-pads.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Gaming Chairs",
+    "slug": "gaming-chairs",
+    "order": 7,
+    "filename": "43_gaming-chairs.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Gaming Desks",
+    "slug": "gaming-desks",
+    "order": 8,
+    "filename": "43_gaming-desks.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Racing Wheels",
+    "slug": "racing-wheels",
+    "order": 9,
+    "filename": "43_racing-wheels.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Flight Sticks",
+    "slug": "flight-sticks",
+    "order": 10,
+    "filename": "43_flight-sticks.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Arcade Controllers",
+    "slug": "arcade-controllers",
+    "order": 11,
+    "filename": "43_arcade-controllers.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "VR Controllers",
+    "slug": "vr-controllers",
+    "order": 12,
+    "filename": "43_vr-controllers.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Console Stands",
+    "slug": "console-stands",
+    "order": 13,
+    "filename": "43_console-stands.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Console Cases",
+    "slug": "console-cases",
+    "order": 14,
+    "filename": "43_console-cases.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Controller Charging Docks",
+    "slug": "controller-charging-docks",
+    "order": 15,
+    "filename": "43_controller-charging-docks.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Gaming Capture Cards",
+    "slug": "gaming-capture-cards",
+    "order": 16,
+    "filename": "43_gaming-capture-cards.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Gaming Microphones",
+    "slug": "gaming-microphones",
+    "order": 17,
+    "filename": "43_gaming-microphones.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Gaming Speakers",
+    "slug": "gaming-speakers",
+    "order": 18,
+    "filename": "43_gaming-speakers.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Gaming Lights",
+    "slug": "gaming-lights",
+    "order": 19,
+    "filename": "43_gaming-lights.jpg"
+  },
+  {
+    "parent_id": 43,
+    "parent_name": "Gaming Accessories",
+    "name": "Gaming Accessories Kits",
+    "slug": "gaming-accessories-kits",
+    "order": 20,
+    "filename": "43_gaming-accessories-kits.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Camera Bags",
+    "slug": "camera-bags",
+    "order": 1,
+    "filename": "44_camera-bags.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Camera Backpacks",
+    "slug": "camera-backpacks",
+    "order": 2,
+    "filename": "44_camera-backpacks.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Camera Straps",
+    "slug": "camera-straps",
+    "order": 3,
+    "filename": "44_camera-straps.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Camera Tripods",
+    "slug": "camera-tripods",
+    "order": 4,
+    "filename": "44_camera-tripods.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Monopods",
+    "slug": "monopods",
+    "order": 5,
+    "filename": "44_monopods.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Gimbals",
+    "slug": "gimbals",
+    "order": 6,
+    "filename": "44_gimbals.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Camera Stabilizers",
+    "slug": "camera-stabilizers",
+    "order": 7,
+    "filename": "44_camera-stabilizers.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Camera Lenses",
+    "slug": "camera-lenses",
+    "order": 8,
+    "filename": "44_camera-lenses.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Lens Filters",
+    "slug": "lens-filters",
+    "order": 9,
+    "filename": "44_lens-filters.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Lens Hoods",
+    "slug": "lens-hoods",
+    "order": 10,
+    "filename": "44_lens-hoods.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Camera Flash",
+    "slug": "camera-flash",
+    "order": 11,
+    "filename": "44_camera-flash.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "LED Video Lights",
+    "slug": "led-video-lights",
+    "order": 12,
+    "filename": "44_led-video-lights.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Studio Lights",
+    "slug": "studio-lights",
+    "order": 13,
+    "filename": "44_studio-lights.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Softboxes",
+    "slug": "softboxes",
+    "order": 14,
+    "filename": "44_softboxes.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Reflectors",
+    "slug": "reflectors",
+    "order": 15,
+    "filename": "44_reflectors.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Microphones",
+    "slug": "microphones",
+    "order": 16,
+    "filename": "44_microphones.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Wireless Microphones",
+    "slug": "wireless-microphones",
+    "order": 17,
+    "filename": "44_wireless-microphones.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Camera Monitors",
+    "slug": "camera-monitors",
+    "order": 18,
+    "filename": "44_camera-monitors.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Video Capture Devices",
+    "slug": "video-capture-devices",
+    "order": 19,
+    "filename": "44_video-capture-devices.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Memory Cards",
+    "slug": "memory-cards",
+    "order": 20,
+    "filename": "44_memory-cards.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Camera Batteries",
+    "slug": "camera-batteries",
+    "order": 21,
+    "filename": "44_camera-batteries.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Camera Chargers",
+    "slug": "camera-chargers",
+    "order": 22,
+    "filename": "44_camera-chargers.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Cleaning Kits",
+    "slug": "cleaning-kits",
+    "order": 23,
+    "filename": "44_cleaning-kits.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Green Screens",
+    "slug": "green-screens",
+    "order": 24,
+    "filename": "44_green-screens.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Teleprompters",
+    "slug": "teleprompters",
+    "order": 25,
+    "filename": "44_teleprompters.jpg"
+  },
+  {
+    "parent_id": 44,
+    "parent_name": "Photo & Video Accessories",
+    "name": "Video Accessories",
+    "slug": "video-accessories",
+    "order": 26,
+    "filename": "44_video-accessories.jpg"
+  },
+  {
+    "parent_id": 45,
+    "parent_name": "Other Electronics",
+    "name": "Electronic Gadgets",
+    "slug": "electronic-gadgets",
+    "order": 1,
+    "filename": "45_electronic-gadgets.jpg"
+  },
+  {
+    "parent_id": 45,
+    "parent_name": "Other Electronics",
+    "name": "Electronic Accessories",
+    "slug": "electronic-accessories",
+    "order": 2,
+    "filename": "45_electronic-accessories.jpg"
+  },
+  {
+    "parent_id": 45,
+    "parent_name": "Other Electronics",
+    "name": "Novelty Electronics",
+    "slug": "novelty-electronics",
+    "order": 3,
+    "filename": "45_novelty-electronics.jpg"
+  },
+  {
+    "parent_id": 45,
+    "parent_name": "Other Electronics",
+    "name": "Educational Electronics",
+    "slug": "educational-electronics",
+    "order": 4,
+    "filename": "45_educational-electronics.jpg"
+  },
+  {
+    "parent_id": 45,
+    "parent_name": "Other Electronics",
+    "name": "DIY Electronics",
+    "slug": "diy-electronics",
+    "order": 5,
+    "filename": "45_diy-electronics.jpg"
+  },
+  {
+    "parent_id": 45,
+    "parent_name": "Other Electronics",
+    "name": "Electronic Kits",
+    "slug": "electronic-kits",
+    "order": 6,
+    "filename": "45_electronic-kits.jpg"
+  },
+  {
+    "parent_id": 45,
+    "parent_name": "Other Electronics",
+    "name": "Experimental Electronics",
+    "slug": "experimental-electronics",
+    "order": 7,
+    "filename": "45_experimental-electronics.jpg"
+  },
+  {
+    "parent_id": 45,
+    "parent_name": "Other Electronics",
+    "name": "Smart Gadgets",
+    "slug": "smart-gadgets",
+    "order": 8,
+    "filename": "45_smart-gadgets.jpg"
+  },
+  {
+    "parent_id": 45,
+    "parent_name": "Other Electronics",
+    "name": "Portable Electronics",
+    "slug": "portable-electronics",
+    "order": 9,
+    "filename": "45_portable-electronics.jpg"
+  },
+  {
+    "parent_id": 45,
+    "parent_name": "Other Electronics",
+    "name": "Mini Electronics",
+    "slug": "mini-electronics",
+    "order": 10,
+    "filename": "45_mini-electronics.jpg"
+  },
+  {
+    "parent_id": 45,
+    "parent_name": "Other Electronics",
+    "name": "Travel Electronics",
+    "slug": "travel-electronics",
+    "order": 11,
+    "filename": "45_travel-electronics.jpg"
+  },
+  {
+    "parent_id": 45,
+    "parent_name": "Other Electronics",
+    "name": "Specialty Electronics",
+    "slug": "specialty-electronics",
+    "order": 12,
+    "filename": "45_specialty-electronics.jpg"
+  },
+  {
+    "parent_id": 45,
+    "parent_name": "Other Electronics",
+    "name": "Replacement Electronics",
+    "slug": "replacement-electronics",
+    "order": 13,
+    "filename": "45_replacement-electronics.jpg"
+  },
+  {
+    "parent_id": 45,
+    "parent_name": "Other Electronics",
+    "name": "Spare Parts",
+    "slug": "spare-parts",
+    "order": 14,
+    "filename": "45_spare-parts.jpg"
+  },
+  {
+    "parent_id": 45,
+    "parent_name": "Other Electronics",
+    "name": "Electronic Gift Items",
+    "slug": "electronic-gift-items",
+    "order": 15,
+    "filename": "45_electronic-gift-items.jpg"
+  },
+  {
+    "parent_id": 45,
+    "parent_name": "Other Electronics",
+    "name": "New & Trending Electronics",
+    "slug": "new-trending-electronics",
+    "order": 16,
+    "filename": "45_new-trending-electronics.jpg"
+  },
+  {
+    "parent_id": 45,
+    "parent_name": "Other Electronics",
+    "name": "Clearance Electronics",
+    "slug": "clearance-electronics",
+    "order": 17,
+    "filename": "45_clearance-electronics.jpg"
+  },
+  {
+    "parent_id": 45,
+    "parent_name": "Other Electronics",
+    "name": "Miscellaneous Electronics",
+    "slug": "miscellaneous-electronics",
+    "order": 18,
+    "filename": "45_miscellaneous-electronics.jpg"
+  }
+]

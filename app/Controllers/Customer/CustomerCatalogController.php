@@ -592,6 +592,15 @@ class CustomerCatalogController
                 ];
             }, $images);
 
+            $primaryImg = null;
+            foreach ($product['images'] as $img) {
+                if (!empty($img['is_primary'])) {
+                    $primaryImg = $img['image_url'];
+                    break;
+                }
+            }
+            $product['primary_image_url'] = $primaryImg ?? ($product['images'][0]['image_url'] ?? null);
+
             $product['variants'] = $variants;
             $product['specifications'] = $specs;
 

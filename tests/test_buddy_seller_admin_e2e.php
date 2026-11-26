@@ -101,7 +101,7 @@ assertTest(
 assertTest(
     "Seller Dashboard returns non-zero orders, revenue, and active catalog items",
     ($metrics['catalog_active'] ?? 0) >= 5 && ($metrics['gross_revenue'] ?? 0) > 0,
-    "Active Listings: {$metrics['catalog_active']} | Gross Revenue: ৳ {$metrics['gross_revenue']}"
+    "Active Listings: {$metrics['catalog_active']} | Gross Revenue: ₹ {$metrics['gross_revenue']}"
 );
 
 // -------------------------------------------------------------

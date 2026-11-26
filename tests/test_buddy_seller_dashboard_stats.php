@@ -76,7 +76,7 @@ echo "PASS: Seller 2 dashboard stats returned successfully (HTTP 200).\n";
 echo " - Store: " . ($store2['store_name'] ?? 'N/A') . "\n";
 echo " - Todays Orders: " . ($metrics2['todays_orders'] ?? 0) . "\n";
 echo " - Total Orders: " . ($metrics2['total_orders'] ?? 0) . "\n";
-echo " - Gross Revenue: ৳" . ($metrics2['gross_revenue'] ?? 0) . "\n";
+echo " - Gross Revenue: ₹" . ($metrics2['gross_revenue'] ?? 0) . "\n";
 echo " - Delivered Units: " . ($metrics2['delivered_units'] ?? 0) . "\n";
 echo " - Top Product: " . ($metrics2['top_selling_product'] ?? 'N/A') . "\n";
 echo " - Catalog Active: " . ($metrics2['catalog_active'] ?? 0) . "\n";
@@ -108,7 +108,7 @@ $store4 = $data4['store'] ?? [];
 
 echo "PASS: Seller 4 dashboard stats returned successfully (HTTP 200).\n";
 echo " - Store 4 Name: " . ($store4['store_name'] ?? 'N/A') . "\n";
-echo " - Store 4 Gross Revenue: ৳" . ($metrics4['gross_revenue'] ?? 0) . "\n";
+echo " - Store 4 Gross Revenue: ₹" . ($metrics4['gross_revenue'] ?? 0) . "\n";
 echo " - Store 4 Total Orders: " . ($metrics4['total_orders'] ?? 0) . "\n";
 
 // Verify Seller 4 does not see Seller 2's store name or data

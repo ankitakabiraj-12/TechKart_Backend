@@ -109,7 +109,7 @@ echo "SUCCESS: Seller 2 retrieved " . count($s2OrdersList) . " distinct orders.\
 if (!empty($s2OrdersList)) {
     $first = $s2OrdersList[0];
     echo "  -> First Order: ID={$first['id']}, Number={$first['order_number']}, Status={$first['order_status']}, Buyer={$first['customer_name']}\n";
-    echo "  -> Subtotal=৳{$first['seller_subtotal']}, Quantity={$first['seller_quantity']}, Item count=" . count($first['items']) . "\n";
+    echo "  -> Subtotal=₹{$first['seller_subtotal']}, Quantity={$first['seller_quantity']}, Item count=" . count($first['items']) . "\n";
 }
 echo "\n";
 

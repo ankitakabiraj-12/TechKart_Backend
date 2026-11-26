@@ -72,10 +72,10 @@ if ($settleRes2['code'] !== 200) {
 $sData2 = $settleRes2['body']['data'];
 $summary2 = $sData2['financial_summary'] ?? [];
 echo "PASS: Seller 2 settlements and live financial summary returned successfully (HTTP 200).\n";
-echo " - Available Balance: ৳" . ($summary2['available_balance'] ?? 0) . "\n";
-echo " - Unbilled Escrow: ৳" . ($summary2['unbilled_escrow'] ?? 0) . "\n";
-echo " - Gross Sales GMV: ৳" . ($summary2['gross_sales_gmv'] ?? 0) . "\n";
-echo " - Delivered GMV: ৳" . ($summary2['delivered_gmv'] ?? 0) . "\n";
+echo " - Available Balance: ₹" . ($summary2['available_balance'] ?? 0) . "\n";
+echo " - Unbilled Escrow: ₹" . ($summary2['unbilled_escrow'] ?? 0) . "\n";
+echo " - Gross Sales GMV: ₹" . ($summary2['gross_sales_gmv'] ?? 0) . "\n";
+echo " - Delivered GMV: ₹" . ($summary2['delivered_gmv'] ?? 0) . "\n";
 echo " - Bank: " . ($summary2['bank_account'] ?? 'N/A') . "\n";
 echo " - Historical Settlements Count: " . ($sData2['total'] ?? 0) . "\n";
 
@@ -92,8 +92,8 @@ $sData4 = $settleRes4['body']['data'];
 $summary4 = $sData4['financial_summary'] ?? [];
 
 echo "PASS: Seller 4 settlements retrieved successfully (HTTP 200).\n";
-echo " - Seller 4 Gross GMV: ৳" . ($summary4['gross_sales_gmv'] ?? 0) . "\n";
-echo " - Seller 4 Available Balance: ৳" . ($summary4['available_balance'] ?? 0) . "\n";
+echo " - Seller 4 Gross GMV: ₹" . ($summary4['gross_sales_gmv'] ?? 0) . "\n";
+echo " - Seller 4 Available Balance: ₹" . ($summary4['available_balance'] ?? 0) . "\n";
 
 // Check that seller 4 doesn't see seller 2's settlements
 $sList2 = $sData2['settlements'] ?? [];
@@ -121,7 +121,7 @@ $pdo->exec("UPDATE order_items SET item_status = 'delivered' WHERE seller_id = 2
 // Re-check financial summary
 $recheck = makeRequest('GET', '/buddy/seller/settlements', ["Authorization: Bearer $token2"]);
 $newAvail = (float)($recheck['body']['data']['financial_summary']['available_balance'] ?? 0);
-echo " - Updated Delivered Balance for Seller 2: ৳ $newAvail\n";
+echo " - Updated Delivered Balance for Seller 2: ₹ $newAvail\n";
 
 if ($newAvail > 100) {
     // 6a. Request Early Payout
@@ -137,7 +137,7 @@ if ($newAvail > 100) {
         $createdPayout = $payoutReq['body']['data'];
         $createdId = $createdPayout['settlement_id'];
         $createdRef = $createdPayout['settlement_ref'];
-        echo "PASS: Early payout withdrawal requested successfully (Ref: {$createdRef}, Net: ৳ {$createdPayout['net_payout']}).\n";
+        echo "PASS: Early payout withdrawal requested successfully (Ref: {$createdRef}, Net: ₹ {$createdPayout['net_payout']}).\n";
 
         // 6b. Prevent Duplicate Concurrent Payouts (Must return 409 Conflict)
         $dupReq = makeRequest('POST', '/buddy/seller/settlements/request-payout', [
@@ -182,7 +182,7 @@ if ($newAvail > 100) {
         echo "FAIL: Payout request failed with code {$payoutReq['code']}: " . $payoutReq['raw'] . "\n";
     }
 } else {
-    echo "NOTE: Available balance was ৳ $newAvail. Testing validation rejection on low balance:\n";
+    echo "NOTE: Available balance was ₹ $newAvail. Testing validation rejection on low balance:\n";
     $payoutLow = makeRequest('POST', '/buddy/seller/settlements/request-payout', [
         'Content-Type: application/json',
         "Authorization: Bearer $token2",

@@ -81,9 +81,9 @@ $d2 = $repSeller2['body']['data'];
 echo "PASS: Seller 2 report retrieved successfully (HTTP 200).\n";
 echo " - Scope: Store '" . ($d2['scope']['store_name'] ?? 'N/A') . "', Seller ID: " . ($d2['scope']['seller_id'] ?? 'N/A') . "\n";
 echo " - Filter Period: " . ($d2['filter']['period'] ?? 'N/A') . " (" . ($d2['filter']['start_date'] ?? '') . " to " . ($d2['filter']['end_date'] ?? '') . ")\n";
-echo " - Gross Sales GMV: ৳" . ($d2['metrics']['gross_sales_gmv'] ?? 0) . "\n";
-echo " - Net Payout: ৳" . ($d2['metrics']['net_payout'] ?? 0) . "\n";
-echo " - Platform Commission (6%): ৳" . ($d2['metrics']['platform_commission'] ?? 0) . "\n";
+echo " - Gross Sales GMV: ₹" . ($d2['metrics']['gross_sales_gmv'] ?? 0) . "\n";
+echo " - Net Payout: ₹" . ($d2['metrics']['net_payout'] ?? 0) . "\n";
+echo " - Platform Commission (6%): ₹" . ($d2['metrics']['platform_commission'] ?? 0) . "\n";
 echo " - Total Orders: " . ($d2['metrics']['total_orders'] ?? 0) . "\n";
 echo " - Total Units Sold: " . ($d2['metrics']['total_units_sold'] ?? 0) . "\n";
 echo " - Daily Trend Days Count: " . count($d2['trends']['daily_sales'] ?? []) . "\n";
@@ -126,7 +126,7 @@ if ($repSeller4['code'] !== 200) {
 $d4 = $repSeller4['body']['data'];
 echo "PASS: Seller 4 report retrieved successfully (HTTP 200).\n";
 echo " - Scope: Store '" . ($d4['scope']['store_name'] ?? 'N/A') . "', Seller ID: " . ($d4['scope']['seller_id'] ?? 'N/A') . "\n";
-echo " - Seller 4 Gross Sales GMV: ৳" . ($d4['metrics']['gross_sales_gmv'] ?? 0) . "\n";
+echo " - Seller 4 Gross Sales GMV: ₹" . ($d4['metrics']['gross_sales_gmv'] ?? 0) . "\n";
 
 if ($d4['scope']['seller_id'] !== $d2['scope']['seller_id'] && $d4['scope']['store_name'] !== $d2['scope']['store_name']) {
     echo "PASS: Seller isolation strictly enforced! Seller 4 is isolated from Seller 2.\n";
@@ -156,7 +156,7 @@ if ($repAdmin['code'] !== 200) {
 $da = $repAdmin['body']['data'];
 echo "PASS: Admin marketplace-wide report retrieved successfully (HTTP 200).\n";
 echo " - Admin Scope: " . ($da['scope']['store_name'] ?? 'N/A') . ", is_admin: " . ($da['scope']['is_admin'] ? 'true' : 'false') . "\n";
-echo " - Marketplace Total GMV: ৳" . ($da['metrics']['gross_sales_gmv'] ?? 0) . "\n";
+echo " - Marketplace Total GMV: ₹" . ($da['metrics']['gross_sales_gmv'] ?? 0) . "\n";
 echo " - Marketplace Total Orders: " . ($da['metrics']['total_orders'] ?? 0) . "\n";
 
 // 9. Admin Filter by Specific Seller
